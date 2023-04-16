@@ -1,3 +1,3 @@
-## Image-Finder
+## App Movies
 
-An application for searching images by keyword using Pixabay API
+Application for searching and storage movies
