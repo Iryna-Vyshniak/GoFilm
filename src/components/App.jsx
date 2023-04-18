@@ -1,10 +1,14 @@
-import { lazy } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+//import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-//import { Home } from 'pages/Home/Home';
-const Home = lazy(() => import('pages/Home/Home'));
+import { SharedLayout } from './SharedLayout/SharedLayout';
 
-//import { Layout } from './Layout/Layout';
+import Home from 'pages/Home/Home';
+import Movies from 'pages/Movies/Movies';
+// const Home = lazy(() => import('pages/Home/Home'));
+// const Movies = lazy(() => import('pages/Movies/Movies'));
+
+// import { Layout } from './Layout/Layout';
 // import Home from 'path/to/pages/Home';
 // import About from 'path/to/pages/About';
 // import Products from 'path/to/pages/Products';
@@ -12,26 +16,22 @@ const Home = lazy(() => import('pages/Home/Home'));
 
 export const App = () => {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/movies">Movies</NavLink>
-          </li>
-        </ul>
-      </nav>
+    <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<div>Movies</div>} />
-        <Route path="/movies/:movieId" element={<div>Element Movies</div>} />
-        {/* <Route path="/movies/:movieId/cast" element="" /> */}
-        {/*   <Route path="/movies/:movieId/reviews " element="" />  */}
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/movies" element={<Movies />}>
+            <Route
+              path="/movies/:movieId"
+              element={<div>Element Movies</div>}
+            />
+          </Route>
+          {/* <Route path="/movies/:movieId/cast" element="" /> */}
+          {/*   <Route path="/movies/:movieId/reviews " element="" />  */}
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Route>
       </Routes>
       <GlobalStyle />
-    </div>
+    </>
   );
 };
