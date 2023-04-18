@@ -3,10 +3,14 @@ import styled from 'styled-components';
 export const SearchForm = styled.form`
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
+  justify-content: center;
+  margin: 0 auto;
 
-  box-shadow: inset 1px 1px 3px #356859, inset -1px -1px 5px #fff;
+  width: 100%;
+  max-width: 400px;
+
+  box-shadow: inset 1px 1px 6px #f3d8a0, inset -1px -1px 6px #fdbc9c,
+    1px 1px 6px #fff;
 
   border-radius: 3px;
   overflow: hidden;
