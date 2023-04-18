@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const MoviesBlock = styled.div`
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: small;
+  padding-top: ${({ theme }) => theme.space[5]}px;
+  padding-bottom: ${({ theme }) => theme.space[5]}px;
+  padding-left: ${({ theme }) => theme.space[4]}px;
+  padding-right: ${({ theme }) => theme.space[4]}px;
+  font-size: ${({ theme }) => theme.fontSizes.s};
   text-align: center;
 
   @media screen and (min-width: 480px) {
