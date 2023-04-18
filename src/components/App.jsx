@@ -1,5 +1,6 @@
 //import { lazy } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyle';
 //import { Layout } from './Layout/Layout';
 // import Home from 'path/to/pages/Home';
 // import About from 'path/to/pages/About';
@@ -10,8 +11,14 @@ export const App = () => {
   return (
     <div>
       <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/movies">Movies</NavLink>
+          </li>
+        </ul>
       </nav>
       <Routes>
         <Route path="/" element={<div>Home</div>} />
@@ -21,6 +28,7 @@ export const App = () => {
         <Route path="/movies/:movieId/reviews " element="" /> */}
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
+      <GlobalStyle />
     </div>
   );
 };
