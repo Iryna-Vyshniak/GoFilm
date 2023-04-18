@@ -64,7 +64,7 @@ export const getMoviesReviews = async movieId => {
     const { data } = await axios.get(`movie/${movieId}/reviews`);
     return data.results;
   } catch (error) {
-    throw new Error('Oops, there is no movie`s reviews');
+    throw new Error('Oops, we don`t have any reviews');
   }
 };
 
