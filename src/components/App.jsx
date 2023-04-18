@@ -1,6 +1,9 @@
-//import { lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
+//import { Home } from 'pages/Home/Home';
+const Home = lazy(() => import('pages/Home/Home'));
+
 //import { Layout } from './Layout/Layout';
 // import Home from 'path/to/pages/Home';
 // import About from 'path/to/pages/About';
@@ -21,11 +24,11 @@ export const App = () => {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
+        <Route path="/" element={<Home />} />
         <Route path="/movies" element={<div>Movies</div>} />
-        {/* <Route path="/movies/:movieId" element="" />
-        <Route path="/movies/:movieId/cast" element="" />
-        <Route path="/movies/:movieId/reviews " element="" /> */}
+        <Route path="/movies/:movieId" element={<div>Element Movies</div>} />
+        {/* <Route path="/movies/:movieId/cast" element="" /> */}
+        {/*   <Route path="/movies/:movieId/reviews " element="" />  */}
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
       <GlobalStyle />
