@@ -24,6 +24,7 @@ export const getMoviesByQuery = async (query, page = 1) => {
       params: {
         query,
         page,
+        include_adult: false,
         language: 'en-US',
       },
     });
@@ -33,7 +34,7 @@ export const getMoviesByQuery = async (query, page = 1) => {
   }
 };
 
-export const getMoviesById = async movieId => {
+export const getMoviesDetailsById = async movieId => {
   try {
     const { data } = await axios.get(`movie/${movieId}`, {
       params: {
