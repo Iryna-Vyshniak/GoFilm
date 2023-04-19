@@ -9,20 +9,29 @@ export const SearchForm = styled.form`
   width: 100%;
   max-width: 400px;
 
-  box-shadow: inset 1px 1px 6px #f3d8a0, inset -1px -1px 6px #fdbc9c,
-    1px 1px 6px #fff;
+  background-color: rgba(185, 228, 201, 0.4);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
 
-  border-radius: 3px;
+  box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
+
   overflow: hidden;
 `;
 
 export const SearchFormBtn = styled.button`
-  display: inline-block;
-  width: 48px;
-  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
   border: 0;
+  border-radius: 30px 0 0 30px;
 
   opacity: 0.6;
+  background-color: rgba(185, 228, 201, 1);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
@@ -34,6 +43,7 @@ export const SearchFormBtn = styled.button`
   svg {
     fill: ${props => props.theme.colors.accent};
     stroke: ${props => props.theme.colors.white};
+    stroke-width: 1px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover {
@@ -45,6 +55,7 @@ export const SearchFormBtn = styled.button`
 export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
+  min-height: 34px;
   font: inherit;
   font-size: 20px;
   border: none;
@@ -54,12 +65,13 @@ export const SearchFormInput = styled.input`
 
   background-color: transparent;
   color: ${props => props.theme.colors.accent};
-  text-shadow: ${props => props.theme.shadows.textShadow};
+  text-shadow: 0 0.4px 0.4px #fff;
 
   ::placeholder {
-    color: ${props => props.theme.colors.accent};
-    text-shadow: ${props => props.theme.shadows.textShadow};
-    font-weight: ${props => props.theme.fontWeights.normal};
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: ${props => props.theme.fonts.heading};
+    text-shadow: 0 0.4px 0.4px #fd5523;
+    letter-spacing: 1.3px;
   }
 `;
