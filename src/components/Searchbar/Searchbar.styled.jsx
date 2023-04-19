@@ -1,6 +1,30 @@
 import styled from 'styled-components';
+import { HiMagnifyingGlass } from 'react-icons/hi2';
 
-export const SearchForm = styled.form`
+export const Wrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 16px;
+
+  width: 100%;
+  max-width: 400px;
+
+  background-color: rgba(185, 228, 201, 0.4);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  outline: 0;
+  border: 0;
+  border-radius: 30px;
+
+  box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
+
+  overflow: hidden;
+  text-transform: uppercase;
+`;
+
+/* export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,9 +43,26 @@ export const SearchForm = styled.form`
   box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
 
   overflow: hidden;
+`; */
+
+export const Icon = styled(HiMagnifyingGlass)`
+  position: absolute;
+  left: 6px;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+
+  fill: ${props => props.theme.colors.accent};
+  stroke: ${props => props.theme.colors.white};
+  stroke-width: 1px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  :hover {
+    transform: scale(1.2);
+  }
 `;
 
-export const SearchFormBtn = styled.button`
+/* export const SearchFormBtn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +91,7 @@ export const SearchFormBtn = styled.button`
       transform: scale(1.2);
     }
   }
-`;
+`; */
 
 export const SearchFormInput = styled.input`
   display: inline-block;
@@ -60,7 +101,7 @@ export const SearchFormInput = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-  padding-left: ${props => props.theme.space[3]}px;
+  padding-left: ${props => props.theme.space[5]}px;
   padding-right: ${props => props.theme.space[3]}px;
 
   background-color: transparent;
