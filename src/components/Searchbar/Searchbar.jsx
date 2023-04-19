@@ -1,40 +1,36 @@
-import React, { useState } from 'react';
-import { SearchForm, SearchFormBtn, SearchFormInput } from './Searchbar.styled';
-import { HiMagnifyingGlass } from 'react-icons/hi2';
-import { toast } from 'react-toastify';
-import { notifyOptions } from 'utils/notify';
+//import React, { useState } from 'react';
+import { Icon, SearchFormInput, Wrapper } from './Searchbar.styled';
+// import { toast } from 'react-toastify';
+// import { notifyOptions } from 'utils/notify';
 import PropTypes from 'prop-types';
 
-export const Searchbar = ({ onSubmit }) => {
-  const [value, setValue] = useState('');
+export const Searchbar = ({ value, onChange }) => {
+  // const [value, setValue] = useState('');
 
-  const handleChange = ({ target: { value } }) => {
-    setValue(value.toLowerCase());
-  };
+  // const handleChange = ({ target: { value } }) => {
+  //   setValue(value.toLowerCase());
+  // };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (value.trim() === '') {
-      return toast.info('Please enter key words for search', notifyOptions);
-    }
-    onSubmit(value);
-    setValue('');
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   if (value.trim() === '') {
+  //     return toast.info('Please enter key words for search', notifyOptions);
+  //   }
+  //   onSubmit(value);
+  //   setValue('');
+  // };
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
-      <SearchFormBtn>
-        <HiMagnifyingGlass size="20" />
-      </SearchFormBtn>
+    <Wrapper>
+      <Icon />
       <SearchFormInput
         type="text"
-        autocomplete="off"
+        value={value}
+        onChange={e => onChange(e)}
         autoFocus
         placeholder="Search movies"
-        value={value}
-        onChange={handleChange}
       />
-    </SearchForm>
+    </Wrapper>
   );
 };
 
