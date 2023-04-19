@@ -7,7 +7,6 @@ import {
   MoviePoster,
   MovieTitle,
   ReleaseDate,
-  Vote,
 } from './Home.styled';
 import { Title } from 'components/Title/Title';
 import { getPopularMovies } from 'services/themoviedbAPI';
@@ -15,7 +14,7 @@ import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressba
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page /*  setPage */] = useState(1);
   //   const [totalResult, setTotalResult] = useState(null);
 
   useEffect(() => {
