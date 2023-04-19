@@ -15,13 +15,13 @@ export const SharedLayout = () => {
           GoFilm App
         </Logo>
         <nav>
-          <Link to="/" end>
-            Home
-          </Link>
+          <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </Container>
   );
