@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
 
     background: #FFFBE6;
+    font-size: 12px;
     line-height: 1.5;
   }
   code {
