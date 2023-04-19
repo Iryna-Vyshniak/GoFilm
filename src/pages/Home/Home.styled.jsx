@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const HomeBlock = styled.div`
-  padding-top: ${({ theme }) => theme.space[5]}px;
-  padding-bottom: ${({ theme }) => theme.space[5]}px;
+  // padding-top: ${({ theme }) => theme.space[5]}px;
+  // padding-bottom: ${({ theme }) => theme.space[5]}px;
+
   padding-left: ${({ theme }) => theme.space[4]}px;
   padding-right: ${({ theme }) => theme.space[4]}px;
   font-size: ${({ theme }) => theme.fontSizes.s};
@@ -37,7 +38,8 @@ export const MovieListItem = styled.li`
   transform: scale(1);
   border-radius: 8px;
 
-  background-color: ${props => props.theme.colors.secondary};
+  //background-color: ${props => props.theme.colors.secondary};
+
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
