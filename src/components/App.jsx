@@ -8,12 +8,6 @@ import Movies from 'pages/Movies/Movies';
 // const Home = lazy(() => import('pages/Home/Home'));
 // const Movies = lazy(() => import('pages/Movies/Movies'));
 
-// import { Layout } from './Layout/Layout';
-// import Home from 'path/to/pages/Home';
-// import About from 'path/to/pages/About';
-// import Products from 'path/to/pages/Products';
-// import NotFound from 'path/to/pages/NotFound';
-
 export const App = () => {
   return (
     <>
@@ -21,10 +15,19 @@ export const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:movieId" element={<div>Element Movies</div>} />
-          {/* <Route path="/movies/:movieId/cast" element="" /> */}
-          {/*   <Route path="/movies/:movieId/reviews " element="" />  */}
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route
+            path="/movies/:movieId"
+            element={<div>Element Movies ID</div>}
+          />
+          <Route
+            path="/movies/:movieId/cast"
+            element={<div>Element Movies ID Cast</div>}
+          />
+          <Route
+            path="/movies/:movieId/reviews "
+            element={<div>Element Movies ID Reviews</div>}
+          />
+          <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>
       <GlobalStyle />
