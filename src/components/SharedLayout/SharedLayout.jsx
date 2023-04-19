@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
 import { Container, Header, Logo, Link } from './SharedLayout.styled';
+import Footer from 'components/Footer/Footer';
 
 export const SharedLayout = () => {
   return (
@@ -21,6 +22,7 @@ export const SharedLayout = () => {
         </nav>
       </Header>
       <Outlet />
+      <Footer />
     </Container>
   );
 };
