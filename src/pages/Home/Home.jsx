@@ -11,6 +11,7 @@ import {
 } from './Home.styled';
 import { Title } from 'components/Title/Title';
 import { getPopularMovies } from 'services/themoviedbAPI';
+import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -24,10 +25,14 @@ const Home = () => {
         console.log(data);
         setMovies(data);
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       }
     })();
   }, [page]);
+
+  if (!movies) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <HomeBlock>
@@ -53,7 +58,7 @@ const Home = () => {
                   {parseInt(movie.release_date || movie.first_air_date)}
                 </ReleaseDate>
                 {movie.vote_average !== 0 && (
-                  <Vote>{movie.vote_average.toFixed(1)}</Vote>
+                  <RatingProgressbar rating={movie.vote_average.toFixed(1)} />
                 )}
               </Link>
             </MovieListItem>
