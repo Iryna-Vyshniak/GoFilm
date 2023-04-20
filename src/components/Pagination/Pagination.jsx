@@ -1,18 +1,23 @@
 import { Paginate } from './Pagination.styled';
 import PropTypes from 'prop-types';
+//import ReactPaginate from 'react-paginate';
 
 const Pagination = ({ handlePageClick, pages }) => {
- //console.log(pages);
+  //console.log(pages);
   return (
     <Paginate
+      nextLabel="»"
       onPageChange={handlePageClick}
       pageCount={pages}
       breakLabel="..."
-      nextLabel="»"
       previousLabel="«"
-      pageRangeDisplayed={5}
+      pageRangeDisplayed={3}
       marginPagesDisplayed={1}
       renderOnZeroPageCount={null}
+      onPageActive={window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })}
     />
   );
 };
