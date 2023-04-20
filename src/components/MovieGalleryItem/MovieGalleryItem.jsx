@@ -30,7 +30,7 @@ export const MovieGalleryItem = ({
           />
         </MoviePoster>
         <MovieTitle>{original_title}</MovieTitle>
-        <ReleaseDate>{parseInt(release_date)}</ReleaseDate>
+        {release_date && <ReleaseDate>{parseInt(release_date)}</ReleaseDate>}
         {vote_average !== 0 && (
           <RatingProgressbar rating={vote_average.toFixed(1)} />
         )}
