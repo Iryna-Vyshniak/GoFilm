@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 export const MovieGallery = ({ movies }) => {
   const location = useLocation();
-  console.log(movies);
+  //console.log(movies);
   return (
     <MovieListStyled>
       {movies.map(movie => (
