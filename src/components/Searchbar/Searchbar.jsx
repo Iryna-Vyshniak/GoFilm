@@ -1,10 +1,15 @@
 //import React, { useState } from 'react';
-import { Icon, SearchFormInput, Wrapper } from './Searchbar.styled';
+import {
+  Icon,
+  SearchForm,
+  SearchFormBtn,
+  SearchFormInput,
+} from './Searchbar.styled';
 // import { toast } from 'react-toastify';
 // import { notifyOptions } from 'utils/notify';
 import PropTypes from 'prop-types';
 
-export const Searchbar = ({ value, onChange }) => {
+export const Searchbar = ({ onSubmit }) => {
   // const [value, setValue] = useState('');
 
   // const handleChange = ({ target: { value } }) => {
@@ -20,17 +25,25 @@ export const Searchbar = ({ value, onChange }) => {
   //   setValue('');
   // };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { query } = e.target.elements;
+    onSubmit(query.value);
+    e.target.reset();
+  };
+
   return (
-    <Wrapper>
-      <Icon />
+    <SearchForm onSubmit={handleSubmit}>
+      <SearchFormBtn type="submit">
+        <Icon size="24" />
+      </SearchFormBtn>
       <SearchFormInput
         type="text"
-        value={value}
-        onChange={e => onChange(e)}
         autoFocus
-        placeholder="Search movies"
+        placeholder="Search movies..."
+        name="query"
       />
-    </Wrapper>
+    </SearchForm>
   );
 };
 
