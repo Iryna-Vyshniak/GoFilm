@@ -1,12 +1,33 @@
 import styled from 'styled-components';
 import { NavLink as MovieLink } from 'react-router-dom';
+import { RatingProgressbar as Vote } from 'components/RatingProgressbar/RatingProgressbar';
 
+export const BackdropImg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  overflow: hidden;
+
+  -webkit-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75), -20px 20px 65px #fff;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+`;
 export const NavLink = styled(MovieLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
   color: ${props => props.theme.colors.black};
-  text-shadow: 0 0.4px 0.4px #fff;
+  text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
   font-size: ${props => props.theme.fontSizes.m};
   font-weight: 500;
 
@@ -23,18 +44,42 @@ export const NavLink = styled(MovieLink)`
 
 export const WrapperMovie = styled.div`
   display: flex;
-  gap: 26px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 
   padding: 16px;
   font-weight: 500;
+  /* background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0) 0%,
+    rgba(121, 9, 9, 0) 10%,
+    #19281f 100%
+  ); */
 
   h1,
   h2 {
     color: #fd5523;
   }
   img {
+    width: 450px;
     border-radius: 2px;
   }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 16px;
+  }
+`;
+export const WrapperDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px;
+  font-weight: 500;
 `;
 
 export const MainTitle = styled.h1`
@@ -42,16 +87,18 @@ export const MainTitle = styled.h1`
   text-align: center;
   color: ${props => props.theme.colors.accent};
   text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
-  font-size: ${({ theme }) => theme.fontSizes.l};
-  font-weight: 400;
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-weight: 500;
 
   @media screen and (min-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-size: ${({ theme }) => theme.fontSizes.l};
   }
 `;
 
 export const MovieList = styled.ul`
   display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
   gap: 40px;
   margin: 0;
@@ -59,11 +106,23 @@ export const MovieList = styled.ul`
 `;
 
 export const MovieInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+
   height: auto;
   margin-top: 30px;
-  padding-bottom: 30px;
+  padding: 20px;
   border-bottom: 1px solid black;
-  border-top: 1px solid black;
+
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 0) 0%,
+    rgba(121, 9, 9, 0) 10%,
+    rgb(134, 167, 147) 100%
+  );
 `;
 
 export const MovieInfoTitle = styled.h4`
@@ -71,7 +130,7 @@ export const MovieInfoTitle = styled.h4`
   color: orangered;
 `;
 
-export const PlayBox = styled.div`
+export const PlayVideoBox = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -88,4 +147,11 @@ export const Btn = styled.button`
 
 export const AccentText = styled.span`
   font-weight: 700;
+`;
+
+export const RatingProgressbar = styled(Vote)`
+  position: absolute;
+  bottom: 0;
+  width: 44px;
+  height: 44px;
 `;
