@@ -25,7 +25,7 @@ const Home = () => {
         setError(false);
 
         const data = await getPopularMovies(page);
-        // console.log(data);
+        //console.log(data);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
