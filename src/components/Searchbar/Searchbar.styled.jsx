@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   text-transform: uppercase;
 `;
 
-/* export const SearchForm = styled.form`
+export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@ export const Wrapper = styled.div`
   box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
 
   overflow: hidden;
-`; */
+`;
 
 export const Icon = styled(HiMagnifyingGlass)`
   position: absolute;
@@ -62,7 +62,7 @@ export const Icon = styled(HiMagnifyingGlass)`
   }
 `;
 
-/* export const SearchFormBtn = styled.button`
+export const SearchFormBtn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ export const Icon = styled(HiMagnifyingGlass)`
       transform: scale(1.2);
     }
   }
-`; */
+`;
 
 export const SearchFormInput = styled.input`
   display: inline-block;
