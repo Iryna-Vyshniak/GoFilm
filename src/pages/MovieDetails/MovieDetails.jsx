@@ -7,6 +7,7 @@ import { FaYoutube } from 'react-icons/fa';
 import {
   AccentText,
   Btn,
+  MainTitle,
   MovieInfo,
   NavLink,
   PlayBox,
@@ -14,12 +15,11 @@ import {
 } from './MovieDetails.styled';
 
 import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
-import { Title } from 'components/Title/Title';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { Modal } from 'components/Modal/Modal';
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -100,32 +100,30 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Title title="Movie Details" />
       {isLoading && <Loader />}
       {error && <ImageErrorView message="Oops, mistake! Please try again" />}
       <WrapperMovie>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt=""
-          width="300"
-        />
+        {`https://image.tmdb.org/t/p/w500${poster_path}` && (
+          <img
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt=""
+            width="300"
+          />
+        )}
         <div>
-          <h1>
-            {original_title || original_name} (
-            <span>{parseInt(release_date)}</span>)
-          </h1>
+          <MainTitle>
+            {original_title || original_name}{' '}
+            {release_date && <span> ({parseInt(release_date)})</span>}
+          </MainTitle>
+
           <div style={{ position: 'relative' }}>
-            {/*  User Score: { {Math.round(vote_average * 10)}% } 
-            {vote_average !== 0 ? (
-              <RatingProgressbar rating={Math.round(vote_average * 10)} />
-            ) : (
-              '0%'
-            )}*/}
-            {vote_average !== 0 && (
+            {vote_average && vote_average !== 0 ? (
               <RatingProgressbar
                 style={{ bottom: '0', width: '44px', height: '44px' }}
                 rating={vote_average.toFixed(1)}
               />
+            ) : (
+              ''
             )}
 
             {movieVideo.length > 0 && (
@@ -173,7 +171,7 @@ const MovieDetails = () => {
         </div>
       </WrapperMovie>
       <MovieInfo>
-        <h1>MovieDetails</h1>
+        <h1>Additional information</h1>
         <LinkToBack
           to={backLinkLocationRef.current}
           children="Back to Movies"
