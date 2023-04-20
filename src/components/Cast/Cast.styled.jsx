@@ -11,10 +11,10 @@ export const CastList = styled.ul`
 export const CastItem = styled.li`
   display: flex;
   flex-direction: column;
-  flex-basis: calc((100% - 60px) / 6);
+  flex-wrap: wrap;
 
   max-width: 100%;
-  width: 200px;
+  width: 120px;
   height: 100%;
 
   border-radius: 8px;
