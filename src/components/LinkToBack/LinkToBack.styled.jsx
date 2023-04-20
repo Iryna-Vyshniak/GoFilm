@@ -1,23 +1,26 @@
 import styled from 'styled-components';
+import { Link as StyledLink } from 'react-router-dom';
 
-export const Btn = styled.button`
+export const Link = styled(StyledLink)`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  margin: 0 auto;
   margin-bottom: ${props => props.theme.space[4]}px;
   padding-right: ${props => props.theme.space[4]}px;
   padding-left: ${props => props.theme.space[4]}px;
   padding-top: ${props => props.theme.space[3]}px;
   padding-bottom: ${props => props.theme.space[3]}px;
 
+  width: 150px;
+
   border: none;
   border-radius: ${props => props.theme.radii.normal};
 
-  font-size: ${props => props.theme.fontSizes.m}
-  color:  ${props => props.theme.colors.accent};
-  text-shadow: ${props => props.theme.shadows.textShadow};
+  font-size: 12px;
+  color: ${props => props.theme.colors.accent};
+  text-shadow: 0 0.4px 0.4px #fff;
+  text-transform: uppercase;
 
   background-color: ${props => props.theme.colors.secondary};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
@@ -28,6 +31,6 @@ export const Btn = styled.button`
 
   &:hover,
   &:focus {
-    transform: scale(0.8);
+    transform: scale(0.9);
   }
 `;
