@@ -164,7 +164,7 @@ const MovieDetails = () => {
               <span>{dayjs(release_date).format('MMM D, YYYY')}</span>
             </div>
           )}
-          {runtime && (
+          {runtime !== 0 && (
             <div>
               <AccentText>Runtime: </AccentText>
               <span>{toHoursAndMinutes(runtime)}</span>
