@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background: #FFFBE6;
+    background: #B9E4C9;
     font-size: 12px;
     line-height: 1.5;
   }
@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  main {
+    flex: 1 1 auto;
+}
 
 h1,
 h2,
