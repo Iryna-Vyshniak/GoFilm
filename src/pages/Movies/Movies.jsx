@@ -1,56 +1,62 @@
-import React, { useState } from 'react';
-import { MoviesBlock } from './Movies.styled';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
+import { Btn, MoviesBlock } from './Movies.styled';
+import { useSearchParams } from 'react-router-dom';
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
+import { getMoviesByQuery } from 'services/themoviedbAPI';
+import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 
 const Movies = () => {
-  const [films /* setFilms */] = useState([
-    'film-1',
-    'film-2',
-    'film-3',
-    'film-4',
-    'film-5',
-  ]);
-  const location = useLocation();
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total_results, setTotalResults] = useState(null);
+
+  //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieId = searchParams.get('movieId') ?? '';
+  const query = searchParams.get('query') ?? '';
   //console.log(movieId);
 
-  // useEffect(() => {
-  // http запит
-  // }, [movieId])
-
-  const updateQueryString = e => {
-    const movieIdValue = e.target.value;
-    //console.log(movieIdValue);
-    // setSearchParams = e.target.value === '' ?  {} : { movieId: e.target.value };
-    if (movieIdValue === '') {
-      return setSearchParams({});
+  useEffect(() => {
+    if (query === '') {
+      return;
     }
-    setSearchParams({ movieId: movieIdValue });
+
+    (async () => {
+      try {
+        const data = await getMoviesByQuery(query, page);
+        console.log(data.results);
+        setMovies(prevMovie => [...prevMovie, ...data.results]);
+        setTotalResults(data.total_results);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [query, page]);
+
+  if (!movies) {
+    return;
+  }
+
+  const updateQueryString = inputValue => {
+    setPage(1);
+    setMovies([]);
+    setSearchParams(inputValue !== '' ? { query: inputValue } : {});
   };
 
-  const visibleFilms = films.filter(film =>
-    film.toLowerCase().includes(movieId.toLowerCase())
-  );
+  const onLoadMore = () => {
+    setPage(prevPage => prevPage + 1);
+  };
 
-  //console.log(location);
+  // console.log(movies);
 
   return (
     <MoviesBlock>
-      <Searchbar value={movieId} onChange={updateQueryString} />
+      <Searchbar onSubmit={updateQueryString} />
       {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
-      <InitialStateGallery text="Let`s find movies together!" />
-      <ul>
-        {visibleFilms.map(film => (
-          <li key={film}>
-            <Link key={film} to={`${film}`} state={{ from: location }}>
-              {film}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {!query && <InitialStateGallery text="Let`s find movies together!" />}
+      {query && <MovieGallery movies={movies} />}
+      {total_results / 20 >= page && <Btn onClick={onLoadMore}>Load More</Btn>}
     </MoviesBlock>
   );
 };
