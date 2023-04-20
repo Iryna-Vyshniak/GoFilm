@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: 100%;
-  /* width: 1200px; */
+  width: 1200px;
   margin: 0 auto;
-  /*  padding-left: ${({ theme }) => theme.space[4]}px;
-  padding-right: ${({ theme }) => theme.space[4]}px; */
+  // padding-left: ${({ theme }) => theme.space[4]}px;
+  // padding-right: ${({ theme }) => theme.space[4]}px;
+  background: #fffbe6;
 `;
 
 export const Header = styled.header`
