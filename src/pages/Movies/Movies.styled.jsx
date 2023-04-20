@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const MoviesBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   padding-top: ${({ theme }) => theme.space[5]}px;
   padding-bottom: ${({ theme }) => theme.space[5]}px;
   padding-left: ${({ theme }) => theme.space[4]}px;
