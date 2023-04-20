@@ -6,7 +6,7 @@ export const Paginate = styled(ReactPaginate)`
   justify-content: center;
   gap: 5px;
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 14px;
 
   .selected {
     border: 1px solid #ffffff;
@@ -28,7 +28,7 @@ export const Paginate = styled(ReactPaginate)`
     border: none;
     outline: none;
 
-    box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px rgba(94, 104, 121, 0.288);
+    box-shadow: -3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773);
 
     text-shadow: 0 1px 1px #fff;
     background-color: transparent;
