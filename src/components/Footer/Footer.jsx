@@ -3,9 +3,10 @@ import {
   FaFacebookF,
   FaInstagram,
   FaTwitter,
-  FaLinkedin,
+  FaLinkedinIn,
 } from 'react-icons/fa';
 import {
+  Btn,
   ContentWrapper,
   FooterBlock,
   InfoText,
@@ -30,10 +31,18 @@ const Footer = () => {
           interested in and latest news from the world of cinema
         </InfoText>
         <SocialIcons>
-          <FaFacebookF size="16px" />
-          <FaInstagram size="16px" />
-          <FaTwitter size="16px" />
-          <FaLinkedin size="16px" />
+          <Btn href="/">
+            <FaFacebookF size="16px" fill="#4267B2" />
+          </Btn>
+          <Btn href="/">
+            <FaInstagram size="16px" fill="#E1306C" />
+          </Btn>
+          <Btn href="/">
+            <FaTwitter size="16px" fill="#1DA1F2" />
+          </Btn>
+          <Btn href="/">
+            <FaLinkedinIn size="16px" fill="#4267B2" />
+          </Btn>
         </SocialIcons>
       </ContentWrapper>
     </FooterBlock>
