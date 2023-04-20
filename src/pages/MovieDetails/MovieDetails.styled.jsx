@@ -31,7 +31,6 @@ export const WrapperMovie = styled.div`
     color: #fd5523;
   }
   img {
-    border: 1px solid black;
     border-radius: 2px;
   }
 `;

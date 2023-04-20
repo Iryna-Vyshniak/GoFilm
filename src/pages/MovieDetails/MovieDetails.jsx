@@ -121,7 +121,7 @@ const MovieDetails = () => {
             ) : (
               '0%'
             )}*/}
-            {vote_average && (
+            {vote_average !== 0 && (
               <RatingProgressbar
                 style={{ bottom: '0', width: '44px', height: '44px' }}
                 rating={vote_average.toFixed(1)}
