@@ -71,3 +71,7 @@ export const Btn = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
+
+export const AccentText = styled.span`
+  font-weight: 700;
+`;
