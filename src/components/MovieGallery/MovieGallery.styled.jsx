@@ -14,3 +14,13 @@ export const List = styled.ul`
   padding-top: ${props => props.theme.space[3]}px;
   padding-bottom: ${props => props.theme.space[3]}px;
 `;
+
+export const MovieListStyled = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+  margin: 0 auto;
+  margin-bottom: 50px;
+`;
