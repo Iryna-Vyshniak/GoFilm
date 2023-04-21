@@ -8,11 +8,11 @@ export const SharedLayout = () => {
   return (
     <Container>
       <Header>
-        <Logo>
+        <Logo to="/">
           <span role="img" aria-label="film icon">
             <BsFilm size="20px" />
           </span>
-          GoFilm App
+          GoFilm
         </Logo>
         <nav>
           <Link to="/">Home</Link>
