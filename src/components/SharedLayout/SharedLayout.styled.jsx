@@ -42,9 +42,15 @@ export const Header = styled.header`
   }
 `;
 
-export const Logo = styled.p`
-  font-weight: 700;
+export const Logo = styled(NavLink)`
   margin: 0;
+  color: #fff;
+  text-shadow: 0 1px 1px #fd5523, 0 0.7px 0.7px #000, 0 -0.3px 0.3px #4b1414;
+  font-size: 18px;
+  font-family: ${props => props.theme.fonts.heading};
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  font-weight: 700;
 
   svg {
     fill: ${props => props.theme.colors.accent};
@@ -62,11 +68,11 @@ export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: #000;
   font-weight: 500;
 
   &.active {
     color: white;
-    background-color: orangered;
+    background-color: #fd5523;
   }
 `;
