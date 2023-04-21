@@ -20,10 +20,10 @@ const Footer = () => {
     <FooterBlock>
       <ContentWrapper>
         <MenuItems>
-          <MenuItem>Terms Of Use</MenuItem>
-          <MenuItem>Privacy-Policy</MenuItem>
           <MenuItem>About</MenuItem>
           <MenuItem>Blog</MenuItem>
+          <MenuItem>Terms Of Use</MenuItem>
+          <MenuItem>Privacy-Policy</MenuItem>
           <MenuItem>FAQ</MenuItem>
         </MenuItems>
         <InfoText>
