@@ -25,8 +25,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const MenuItems = styled.ul`
-  list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -107,4 +107,10 @@ export const Btn = styled.a`
     background: #ecf0f3;
     box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
   }
+`;
+
+export const Separator = styled.span`
+  padding: 0 0 0 10px;
+  color: #fff;
+  font-weight: 500;
 `;
