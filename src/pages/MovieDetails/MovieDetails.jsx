@@ -9,6 +9,8 @@ import {
   AccentText,
   BackdropImg,
   Btn,
+  Genre,
+  Genres,
   MainTitle,
   MovieInfo,
   MovieList,
@@ -46,7 +48,7 @@ const MovieDetails = () => {
         setIsLoading(true);
         setError(false);
         const data = await getMoviesDetailsById(movieId);
-        console.log(data);
+        // console.log(data);
         setMovieDetails(data);
       } catch (error) {
         console.log(error.message);
@@ -58,7 +60,7 @@ const MovieDetails = () => {
     (async () => {
       try {
         const data = await getVideosMovies(movieId);
-        console.log(data);
+        //console.log(data);
         if (data.length === 0) {
           return setMovieVideo(data);
         }
@@ -143,6 +145,17 @@ const MovieDetails = () => {
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
 
+              {/* жанри фільму */}
+              {genres && (
+                <Genres>
+                  {genres.map((genre, index) => (
+                    <Genre key={index} style={{ marginRight: '10px' }}>
+                      {genre.name}
+                    </Genre>
+                  ))}
+                </Genres>
+              )}
+
               {/* рейтинг фільму */}
               <div style={{ position: 'relative' }}>
                 {vote_average && vote_average !== 0 ? (
@@ -176,16 +189,6 @@ const MovieDetails = () => {
               {/* огляд фільму */}
               <h2>Overview</h2>
               <p>{overview}</p>
-              {/* жанри фільму */}
-              <h2>Genres</h2>
-              <p>
-                {genres &&
-                  genres.map((genre, index) => (
-                    <span key={index} style={{ marginRight: '10px' }}>
-                      {genre.name} /
-                    </span>
-                  ))}
-              </p>
               {/* продакшин компанії - логотипи */}
               {production_companies && (
                 <>
@@ -253,7 +256,7 @@ const MovieDetails = () => {
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${movieVideo}`}
                 muted={true}
-                controls={true}
+                controls
                 width="100%"
                 height="100%"
               />
