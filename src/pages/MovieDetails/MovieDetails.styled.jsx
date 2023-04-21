@@ -156,3 +156,17 @@ export const PosterMovie = styled.img`
   width: 50vw;
   height: auto;
 `;
+export const Genres = styled.ul`
+  display: flex;
+  gap: 8px;
+`;
+
+export const Genre = styled.li`
+  background-color: #fd5523;
+  color: #fff;
+  text-shadow: 0 0.4px 0.4px #000;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 2px 8px;
+`;
