@@ -18,6 +18,8 @@ export const Modal = ({ onModalClose, children }) => {
   }, [onModalClose]);
 
   const handleBackdropeClick = e => {
+    // console.log(e.target);
+    // console.log(e.currentTarget);
     if (e.target === e.currentTarget) {
       onModalClose();
     }
