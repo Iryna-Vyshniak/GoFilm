@@ -14,6 +14,8 @@ import {
   MovieList,
   NavLink,
   PlayVideoBox,
+  PosterMovie,
+  ProductionLogo,
   RatingProgressbar,
   WrapperDetails,
   WrapperMovie,
@@ -58,19 +60,19 @@ const MovieDetails = () => {
         const data = await getVideosMovies(movieId);
         console.log(data);
         if (data.length === 0) {
-          setMovieVideo(data);
-          return;
+          return setMovieVideo(data);
         }
 
-        const key = data.find(
+        // trailer ключ для відображення трейлеру фільму
+        const trailer = data.find(
           movie =>
             movie.name === 'official trailer' ||
             movie.name === 'Official Trailer' ||
             movie.name.includes('Official') ||
             movie.name[0]
         );
-        console.log(key);
-        setMovieVideo(key.key);
+        console.log(trailer);
+        setMovieVideo(trailer.key);
       } catch (error) {
         console.log(error.message);
       }
@@ -81,12 +83,14 @@ const MovieDetails = () => {
     return;
   }
 
+  //  переведення хвилин для перегляду фільму в години та хвилини
   const toHoursAndMinutes = totalMinutes => {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`;
   };
 
+  // тогл закриття-відривання модалки для перегляду фільму
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -112,7 +116,8 @@ const MovieDetails = () => {
 
       {!error && (
         <>
-          <>
+          {/* фонове зображення */}
+          {backdrop_path && (
             <BackdropImg>
               <img
                 src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
@@ -120,21 +125,25 @@ const MovieDetails = () => {
                 width="100"
               />
             </BackdropImg>
-          </>
+          )}
+
           <WrapperMovie>
+            {/* постер фільму */}
             {`https://image.tmdb.org/t/p/w500${poster_path}` && (
-              <img
+              <PosterMovie
                 src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                 alt=""
                 width="300"
               />
             )}
             <WrapperDetails>
+              {/* назва фільму */}
               <MainTitle>
                 {original_title || original_name}{' '}
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
 
+              {/* рейтинг фільму */}
               <div style={{ position: 'relative' }}>
                 {vote_average && vote_average !== 0 ? (
                   <RatingProgressbar
@@ -150,6 +159,7 @@ const MovieDetails = () => {
                   ''
                 )}
 
+                {/* трейлер фільму */}
                 {movieVideo.length > 0 && (
                   <PlayVideoBox>
                     <Btn onClick={toggleModal}>
@@ -163,8 +173,10 @@ const MovieDetails = () => {
                   </PlayVideoBox>
                 )}
               </div>
+              {/* огляд фільму */}
               <h2>Overview</h2>
               <p>{overview}</p>
+              {/* жанри фільму */}
               <h2>Genres</h2>
               <p>
                 {genres &&
@@ -174,6 +186,7 @@ const MovieDetails = () => {
                     </span>
                   ))}
               </p>
+              {/* продакшин компанії - логотипи */}
               {production_companies && (
                 <>
                   <h2>Production Companies</h2>
@@ -182,7 +195,7 @@ const MovieDetails = () => {
                       (production, idx) =>
                         production.logo_path !== null && (
                           <li key={idx}>
-                            <img
+                            <ProductionLogo
                               src={`https://image.tmdb.org/t/p/w500${production.logo_path}`}
                               alt="company logo"
                               width="80"
@@ -193,6 +206,7 @@ const MovieDetails = () => {
                   </MovieList>
                 </>
               )}
+              {/* статус, реліз та загальний час на перегляд фільму */}
               {status && (
                 <div>
                   <AccentText>Status: </AccentText>
@@ -213,6 +227,7 @@ const MovieDetails = () => {
               )}
             </WrapperDetails>
           </WrapperMovie>
+          {/* внутрішня маршрутизація на кастинг та огляд фільму */}
           <MovieInfo>
             <h1>Additional information</h1>
             <LinkToBack
@@ -232,15 +247,15 @@ const MovieDetails = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
+          {/* плеєр для перегляду трейлера фільму - в модальному вікні */}
           {showModal && (
-            <Modal closeModal={toggleModal}>
+            <Modal onModalClose={toggleModal}>
               <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${movieVideo}`}
                 muted={true}
                 controls={true}
                 width="100%"
                 height="100%"
-                url={`https://www.youtube.com/watch?v=${movieVideo}`}
-                //autoPlay={true}
               />
             </Modal>
           )}
