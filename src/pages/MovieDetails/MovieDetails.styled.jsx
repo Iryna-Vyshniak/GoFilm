@@ -158,13 +158,16 @@ export const PosterMovie = styled.img`
 `;
 export const Genres = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
 `;
 
 export const Genre = styled.li`
-  background-color: #fd5523;
-  color: #fff;
-  text-shadow: 0 0.4px 0.4px #000;
+  background-color: #b9e4c9;
+  color: #fd5523;
+  text-shadow: 0 0.4px 0.4px #fff;
   font-size: 12px;
   font-weight: 700;
   border-radius: 8px;
