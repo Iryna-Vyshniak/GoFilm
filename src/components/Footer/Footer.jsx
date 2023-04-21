@@ -12,6 +12,7 @@ import {
   InfoText,
   MenuItem,
   MenuItems,
+  Separator,
   SocialIcons,
 } from './Footer.styled';
 
@@ -20,10 +21,18 @@ const Footer = () => {
     <FooterBlock>
       <ContentWrapper>
         <MenuItems>
-          <MenuItem>About</MenuItem>
-          <MenuItem>Blog</MenuItem>
-          <MenuItem>Terms Of Use</MenuItem>
-          <MenuItem>Privacy-Policy</MenuItem>
+          <MenuItem>
+            About <Separator>|</Separator>
+          </MenuItem>
+          <MenuItem>
+            Blog <Separator>|</Separator>
+          </MenuItem>
+          <MenuItem>
+            Terms Of Use <Separator>|</Separator>
+          </MenuItem>
+          <MenuItem>
+            Privacy-Policy <Separator>|</Separator>
+          </MenuItem>
           <MenuItem>FAQ</MenuItem>
         </MenuItems>
         <InfoText>
