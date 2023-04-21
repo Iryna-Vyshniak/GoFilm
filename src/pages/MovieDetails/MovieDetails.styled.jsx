@@ -53,12 +53,6 @@ export const WrapperMovie = styled.div`
 
   padding: 16px;
   font-weight: 500;
-  /* background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 0) 0%,
-    rgba(121, 9, 9, 0) 10%,
-    #19281f 100%
-  ); */
 
   h1,
   h2 {

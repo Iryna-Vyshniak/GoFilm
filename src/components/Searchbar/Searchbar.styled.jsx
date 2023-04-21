@@ -33,7 +33,7 @@ export const SearchForm = styled.form`
   width: 100%;
   max-width: 400px;
 
-  background-color: rgba(185, 228, 201, 0.4);
+  /* background-color: rgba(185, 228, 201, 0.4); */
   backdrop-filter: blur(2px);
   color: #fff;
   outline: 0;
@@ -109,10 +109,10 @@ export const SearchFormInput = styled.input`
   text-shadow: 0 0.4px 0.4px #fff;
 
   ::placeholder {
-    color: #ffffff;
+    color: #37966f;
     font-size: 20px;
     font-family: ${props => props.theme.fonts.heading};
-    text-shadow: 0 0.4px 0.4px #fd5523;
+    text-shadow: 0 0.4px 0.4px #000;
     letter-spacing: 1.3px;
   }
 `;

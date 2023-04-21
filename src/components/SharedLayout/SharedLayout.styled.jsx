@@ -10,7 +10,10 @@ export const Container = styled.div`
   margin: 0 auto;
   // padding-left: ${({ theme }) => theme.space[4]}px;
   // padding-right: ${({ theme }) => theme.space[4]}px;
-  background: #fffbe6;
+
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  transition: all 0.25s linear;
 `;
 
 export const Header = styled.header`
@@ -23,6 +26,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+
   padding-top: ${({ theme }) => theme.space[3]}px;
   padding-bottom: ${({ theme }) => theme.space[3]}px;
   padding-left: ${({ theme }) => theme.space[4]}px;

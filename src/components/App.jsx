@@ -3,10 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
-//import  MovieDetails  from 'pages/MovieDetails/MovieDetails';
-//import  Reviews  from './Reviews/Reviews';
-//import  Cast  from './Cast/Cast';
-
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
@@ -33,6 +29,7 @@ export const App = () => {
           <Route path="*" element={<div>NotFound</div>} />
         </Route>
       </Routes>
+
       <GlobalStyle />
     </>
   );
