@@ -64,10 +64,6 @@ export const WrapperMovie = styled.div`
   h2 {
     color: #fd5523;
   }
-  img {
-    width: 450px;
-    border-radius: 2px;
-  }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -89,11 +85,11 @@ export const MainTitle = styled.h1`
   text-align: center;
   color: ${props => props.theme.colors.accent};
   text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: 500;
 
   @media screen and (min-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.l};
+    font-size: ${({ theme }) => theme.fontSizes.xl};
   }
 `;
 
@@ -148,6 +144,7 @@ export const Btn = styled.button`
 `;
 
 export const AccentText = styled.span`
+  color: #fd5523;
   font-weight: 700;
 `;
 
@@ -156,4 +153,12 @@ export const RatingProgressbar = styled(Vote)`
   bottom: 0;
   width: 44px;
   height: 44px;
+`;
+export const ProductionLogo = styled.img`
+  width: 15vw;
+  height: auto;
+`;
+export const PosterMovie = styled.img`
+  width: 50vw;
+  height: auto;
 `;
