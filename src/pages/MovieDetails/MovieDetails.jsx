@@ -1,7 +1,8 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/youtube';
+// import ReactPlayer from 'react-player';
 import { LinkToBack } from 'components/LinkToBack/LinkToBack';
 import { FaYoutube } from 'react-icons/fa';
 
@@ -19,6 +20,7 @@ import {
   PosterMovie,
   ProductionLogo,
   RatingProgressbar,
+  WrapRelease,
   WrapperDetails,
   WrapperMovie,
 } from './MovieDetails.styled';
@@ -65,16 +67,20 @@ const MovieDetails = () => {
           return setMovieVideo(data);
         }
 
-        // trailer ключ для відображення трейлеру фільму
-        const trailer = data.find(
-          movie =>
-            movie.name === 'official trailer' ||
-            movie.name === 'Official Trailer' ||
-            movie.name.includes('Official') ||
-            movie.name[0]
-        );
+        //trailer ключ для відображення трейлеру фільму
+        // const trailer = data.find(
+        //   movie =>
+        //     movie.name === 'official trailer' ||
+        //     movie.name === 'Official Trailer' ||
+        //     movie.name.includes('Official') ||
+        //     movie.name[0]
+        // );
+        // setMovieVideo(trailer.key);
+        // console.log(trailer.key);
+
+        const trailer = data[0].key;
         console.log(trailer);
-        setMovieVideo(trailer.key);
+        setMovieVideo(trailer);
       } catch (error) {
         console.log(error.message);
       }
@@ -210,24 +216,26 @@ const MovieDetails = () => {
                 </>
               )}
               {/* статус, реліз та загальний час на перегляд фільму */}
-              {status && (
-                <div>
-                  <AccentText>Status: </AccentText>
-                  <span>{status}</span>
-                </div>
-              )}
-              {release_date && (
-                <div>
-                  <AccentText>Release Date: </AccentText>
-                  <span>{dayjs(release_date).format('MMM D, YYYY')}</span>
-                </div>
-              )}
-              {runtime !== 0 && (
-                <div>
-                  <AccentText>Runtime: </AccentText>
-                  <span>{toHoursAndMinutes(runtime)}</span>
-                </div>
-              )}
+              <WrapRelease>
+                {status && (
+                  <div>
+                    <AccentText>Status: </AccentText>
+                    <span>{status}</span>
+                  </div>
+                )}
+                {release_date && (
+                  <div>
+                    <AccentText>Release Date: </AccentText>
+                    <span>{dayjs(release_date).format('MMM D, YYYY')}</span>
+                  </div>
+                )}
+                {runtime !== 0 && (
+                  <div>
+                    <AccentText>Runtime: </AccentText>
+                    <span>{toHoursAndMinutes(runtime)}</span>
+                  </div>
+                )}
+              </WrapRelease>
             </WrapperDetails>
           </WrapperMovie>
           {/* внутрішня маршрутизація на кастинг та огляд фільму */}
@@ -256,7 +264,7 @@ const MovieDetails = () => {
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${movieVideo}`}
                 muted={true}
-                controls
+                controls={true}
                 width="100%"
                 height="100%"
               />
