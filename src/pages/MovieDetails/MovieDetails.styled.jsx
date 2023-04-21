@@ -23,6 +23,8 @@ export const BackdropImg = styled.div`
   }
 `;
 export const NavLink = styled(MovieLink)`
+  position: relative;
+  z-index: 9;
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
