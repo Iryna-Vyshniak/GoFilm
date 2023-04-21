@@ -14,7 +14,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-cards';
 import 'swiper/css/effect-coverflow';
 
-import { Autoplay, Scrollbar, EffectCoverflow } from 'swiper';
+import { Autoplay, EffectCoverflow } from 'swiper';
 
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { Loader } from 'components/Loader/Loader';
