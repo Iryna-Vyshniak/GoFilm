@@ -26,14 +26,15 @@ export const ToggleContainer = styled.button`
 
     /*  sun icon */
 
-    :first-child {
-      transform: ${({ lightTheme }) =>
-        lightTheme ? 'translateY(0)' : 'translateY(100px)'};
+    &:first-child {
+      transform: ${({ lightTheme }) => {
+        return lightTheme ? 'translateY(0)' : 'translateY(100px)';
+      }};
     }
 
     /* moon icon */
 
-    :nth-child(2) {
+    &:last-child {
       transform: ${({ lightTheme }) =>
         lightTheme ? 'translateY(-100px)' : 'translateY(0)'};
     }
