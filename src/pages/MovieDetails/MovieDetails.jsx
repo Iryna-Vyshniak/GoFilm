@@ -34,7 +34,8 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movieVideo, setMovieVideo] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
@@ -97,9 +98,18 @@ const MovieDetails = () => {
   };
 
   // тогл закриття-відривання модалки для перегляду фільму
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
+  // const toggleModal = () => {
+  //   setShowModal(!showModal);
+  // };
+
+  // закриття-відривання модалки для перегляду фільму
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const {
     poster_path,
@@ -177,7 +187,7 @@ const MovieDetails = () => {
                 {/* трейлер фільму */}
                 {movieVideo.length > 0 && (
                   <PlayVideoBox>
-                    <Btn onClick={toggleModal}>
+                    <Btn onClick={openModal}>
                       <FaYoutube
                         size="64px"
                         color="red"
@@ -255,10 +265,10 @@ const MovieDetails = () => {
             <Outlet />
           </Suspense>
           {/* плеєр для перегляду трейлера фільму - в модальному вікні */}
-          {showModal && (
+          {modalIsOpen && (
             <ModalVideo
-              isOpen={toggleModal}
-              onClose={toggleModal}
+              isOpen={modalIsOpen}
+              onClose={closeModal}
               movieVideo={movieVideo}
             />
           )}
