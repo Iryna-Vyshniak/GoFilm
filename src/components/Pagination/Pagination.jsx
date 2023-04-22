@@ -2,10 +2,11 @@ import { Paginate } from './Pagination.styled';
 import PropTypes from 'prop-types';
 //import ReactPaginate from 'react-paginate';
 
-const Pagination = ({ handlePageClick, pages }) => {
+const Pagination = ({ handlePageClick, pages, currentPage }) => {
   //console.log(pages);
   return (
     <Paginate
+      initialPage={currentPage}
       nextLabel="»"
       onPageChange={handlePageClick}
       pageCount={pages}
