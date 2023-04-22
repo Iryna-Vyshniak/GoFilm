@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  CircleRating,
   MovieListItem,
   MoviePoster,
   MovieTitle,
@@ -32,7 +33,9 @@ export const MovieGalleryItem = ({
         <MovieTitle>{original_title}</MovieTitle>
         {release_date && <ReleaseDate>{parseInt(release_date)}</ReleaseDate>}
         {vote_average !== 0 && (
-          <RatingProgressbar rating={vote_average.toFixed(1)} />
+          <CircleRating>
+            <RatingProgressbar rating={vote_average.toFixed(1)} />
+          </CircleRating>
         )}
       </Link>
     </MovieListItem>
