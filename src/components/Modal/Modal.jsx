@@ -11,7 +11,7 @@ const customStyles = {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    zIndex: '100',
+    zIndex: '1200',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
