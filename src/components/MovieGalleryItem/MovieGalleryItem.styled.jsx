@@ -105,3 +105,20 @@ export const ReleaseDate = styled.p`
   border-radius: 8px;
   font-size: ${props => props.theme.fontSizes.xs};
 `;
+
+export const CircleRating = styled.div`
+  position: absolute;
+  bottom: 24px;
+  left: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  text-shadow: 0 0.3px 0.3px #000;
+  border-radius: 50%;
+  padding: 2px;
+`;
