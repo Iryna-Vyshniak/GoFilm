@@ -1,8 +1,6 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
-import ReactPlayer from 'react-player/youtube';
-// import ReactPlayer from 'react-player';
 import { LinkToBack } from 'components/LinkToBack/LinkToBack';
 import { FaYoutube } from 'react-icons/fa';
 
@@ -29,7 +27,7 @@ import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 // import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
-import { Modal } from 'components/Modal/Modal';
+import { ModalVideo } from 'components/Modal/Modal';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -68,19 +66,19 @@ const MovieDetails = () => {
         }
 
         //trailer ключ для відображення трейлеру фільму
-        // const trailer = data.find(
-        //   movie =>
-        //     movie.name === 'official trailer' ||
-        //     movie.name === 'Official Trailer' ||
-        //     movie.name.includes('Official') ||
-        //     movie.name[0]
-        // );
-        // setMovieVideo(trailer.key);
-        // console.log(trailer.key);
+        const trailer = data.find(
+          movie =>
+            movie.name === 'official trailer' ||
+            movie.name === 'Official Trailer' ||
+            movie.name.includes('Official') ||
+            movie.name[0]
+        );
+        setMovieVideo(trailer.key);
+        console.log(trailer.key);
 
-        const trailer = data[0].key;
+        /*   const trailer = data[0].key;
         console.log(trailer);
-        setMovieVideo(trailer);
+        setMovieVideo(trailer); */
       } catch (error) {
         console.log(error.message);
       }
@@ -155,9 +153,7 @@ const MovieDetails = () => {
               {genres && (
                 <Genres>
                   {genres.map((genre, index) => (
-                    <Genre key={index} style={{ marginRight: '10px' }}>
-                      {genre.name}
-                    </Genre>
+                    <Genre key={index}>{genre.name}</Genre>
                   ))}
                 </Genres>
               )}
@@ -260,15 +256,11 @@ const MovieDetails = () => {
           </Suspense>
           {/* плеєр для перегляду трейлера фільму - в модальному вікні */}
           {showModal && (
-            <Modal onModalClose={toggleModal}>
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${movieVideo}`}
-                muted={true}
-                controls={true}
-                width="100%"
-                height="100%"
-              />
-            </Modal>
+            <ModalVideo
+              isOpen={toggleModal}
+              onClose={toggleModal}
+              movieVideo={movieVideo}
+            />
           )}
         </>
       )}
