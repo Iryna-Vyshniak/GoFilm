@@ -124,7 +124,11 @@ const Home = () => {
           </Grid2>
           <Title title="Trending Today" />
           <MovieGallery movies={movies} />
-          <Pagination handlePageClick={handlePageClick} pages={totalPages} />
+          <Pagination
+            handlePageClick={handlePageClick}
+            pages={totalPages}
+            currentPage={page - 1}
+          />
         </>
       )}
     </HomeBlock>
