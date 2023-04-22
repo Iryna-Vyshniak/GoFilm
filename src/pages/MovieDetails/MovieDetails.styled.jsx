@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink as MovieLink } from 'react-router-dom';
-import { RatingProgressbar as Vote } from 'components/RatingProgressbar/RatingProgressbar';
 
 export const BackdropImg = styled.div`
   position: absolute;
@@ -122,11 +121,11 @@ export const MovieInfoTitle = styled.h4`
   color: orangered;
 `;
 
-export const PlayVideoBox = styled.div`
+export const VotePlayVideoBox = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: 70px;
   cursor: pointer;
 `;
 
@@ -142,12 +141,6 @@ export const AccentText = styled.span`
   font-weight: 700;
 `;
 
-export const RatingProgressbar = styled(Vote)`
-  position: absolute;
-  bottom: 0;
-  width: 44px;
-  height: 44px;
-`;
 export const ProductionLogo = styled.img`
   width: 15vw;
   height: auto;
@@ -180,4 +173,22 @@ export const WrapRelease = styled.div`
   align-items: center;
   justify-content: center;
   gap: 8px;
+`;
+
+export const CircleRating = styled.div`
+  position: absolute;
+  bottom: 8px;
+  right: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 50px;
+  width: 54px;
+  height: 54px;
+
+  text-shadow: 0 0.3px 0.3px #000;
+  border-radius: 50%;
+  padding: 2px;
 `;
