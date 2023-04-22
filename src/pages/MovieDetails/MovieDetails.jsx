@@ -8,16 +8,17 @@ import {
   AccentText,
   BackdropImg,
   Btn,
+  CircleRating,
   Genre,
   Genres,
   MainTitle,
   MovieInfo,
   MovieList,
   NavLink,
-  PlayVideoBox,
   PosterMovie,
   ProductionLogo,
-  RatingProgressbar,
+  VotePlayVideoBox,
+  // RatingProgressbar,
   WrapRelease,
   WrapperDetails,
   WrapperMovie,
@@ -26,7 +27,7 @@ import {
 import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-// import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
+import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { ModalVideo } from 'components/Modal/Modal';
 
 const MovieDetails = () => {
@@ -169,40 +170,25 @@ const MovieDetails = () => {
               )}
 
               {/* рейтинг фільму */}
-              <div style={{ position: 'relative' }}>
+              <VotePlayVideoBox>
                 {vote_average && vote_average !== 0 ? (
-                  <RatingProgressbar
-                    styles={{
-                      root: {
-                        position: 'absolute',
-                        bottom: '0px',
-                        width: '54px',
-                        height: '54px',
-                      },
-                      text: {
-                        fontSize: '44px',
-                      },
-                    }}
-                    rating={vote_average.toFixed(1)}
-                  />
+                  <CircleRating>
+                    <RatingProgressbar rating={vote_average.toFixed(1)} />
+                  </CircleRating>
                 ) : (
                   ''
                 )}
-
                 {/* трейлер фільму */}
                 {movieVideo.length > 0 && (
-                  <PlayVideoBox>
-                    <Btn onClick={openModal}>
-                      <FaYoutube
-                        size="64px"
-                        color="red"
-                        style={{ marginRight: '10px' }}
-                      />
-                    </Btn>
-                    {/* <span>Watch Trailer</span> */}
-                  </PlayVideoBox>
+                  <Btn onClick={openModal}>
+                    <FaYoutube
+                      size="64px"
+                      color="red"
+                      style={{ marginLeft: '10px' }}
+                    />
+                  </Btn>
                 )}
-              </div>
+              </VotePlayVideoBox>
               {/* огляд фільму */}
               <h2>Overview</h2>
               <p>{overview}</p>
