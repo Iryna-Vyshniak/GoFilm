@@ -172,11 +172,16 @@ const MovieDetails = () => {
               <div style={{ position: 'relative' }}>
                 {vote_average && vote_average !== 0 ? (
                   <RatingProgressbar
-                    style={{
-                      position: 'absolute',
-                      bottom: '0',
-                      width: '44px',
-                      height: '44px',
+                    styles={{
+                      root: {
+                        position: 'absolute',
+                        bottom: '0px',
+                        width: '54px',
+                        height: '54px',
+                      },
+                      text: {
+                        fontSize: '44px',
+                      },
                     }}
                     rating={vote_average.toFixed(1)}
                   />
