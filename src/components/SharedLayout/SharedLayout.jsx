@@ -12,7 +12,7 @@ import { useDarkMode } from 'components/useDarkMode/useDarkMode';
 
 import Footer from 'components/Footer/Footer';
 
-export const SharedLayout = colorChangeSetter => {
+export const SharedLayout = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
