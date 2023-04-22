@@ -173,6 +173,7 @@ export const Genre = styled.li`
   border-radius: 8px;
   padding: 2px 8px;
 `;
+
 export const WrapRelease = styled.div`
   display: flex;
   flex-wrap: wrap;
