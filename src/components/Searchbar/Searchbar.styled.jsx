@@ -29,25 +29,27 @@ export const SearchForm = styled.form`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  margin-top: -70px;
 
   width: 100%;
-  max-width: 400px;
 
-  /* background-color: rgba(185, 228, 201, 0.4); */
+  max-width: 20.4rem;
+  height: 2.2rem;
+
   backdrop-filter: blur(2px);
   color: #fff;
   outline: 0;
   border: 0;
   border-radius: 30px;
 
-  box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
+  box-shadow: 1px 1px 1px #f3d8a0, 1px 1px 1px #fff;
 
   overflow: hidden;
 `;
 
 export const Icon = styled(HiMagnifyingGlass)`
   position: absolute;
-  left: 6px;
+  right: -5px;
   margin-right: 10px;
   width: 20px;
   height: 20px;
@@ -97,16 +99,24 @@ export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
   min-height: 34px;
+
+  border-radius: 0.1rem;
+
   font: inherit;
-  font-size: 20px;
+
+  font-size: 1.2rem;
+
   border: none;
   outline: none;
+
   padding-left: ${props => props.theme.space[5]}px;
   padding-right: ${props => props.theme.space[3]}px;
 
-  background-color: transparent;
+  background: none;
+
   color: ${props => props.theme.colors.accent};
   text-shadow: 0 0.4px 0.4px #fff;
+  letter-spacing: 1.4px;
 
   ::placeholder {
     color: #37966f;
