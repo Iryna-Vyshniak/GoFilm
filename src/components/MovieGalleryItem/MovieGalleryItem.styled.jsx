@@ -66,25 +66,6 @@ export const MovieTitle = styled.h2`
   font-size: ${props => props.theme.fontSizes.xs};
 `;
 
-export const Vote = styled.p`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
-  padding-left: ${({ theme }) => theme.space[2]}px;
-  padding-right: ${({ theme }) => theme.space[2]}px;
-
-  background-color: rgba(185, 228, 201, 0.473);
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-
-  color: ${props => props.theme.colors.white};
-  text-shadow: 0 0.4px 0.4px #fd5523;
-
-  border-radius: 8px;
-  font-size: ${props => props.theme.fontSizes.xs};
-`;
-
 export const ReleaseDate = styled.p`
   position: absolute;
   top: 10px;
@@ -93,12 +74,12 @@ export const ReleaseDate = styled.p`
   padding-left: ${({ theme }) => theme.space[2]}px;
   padding-right: ${({ theme }) => theme.space[2]}px;
 
-  background-color: rgba(185, 228, 201, 0.473);
+  background-color: rgba(185, 228, 201, 0.773);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-  color: ${props => props.theme.colors.white};
-  text-shadow: 0 0.4px 0.4px #fd5523;
+  color: rgba(255, 0, 0, 1);
+  text-shadow: 0 0.4px 0.4px #000;
 
   border-radius: 8px;
   font-size: ${props => props.theme.fontSizes.xs};
