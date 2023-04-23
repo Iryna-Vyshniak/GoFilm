@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import { Btn, MoviesBlock, Poster } from './Movies.styled';
+import {
+  BackdropImg,
+  Btn,
+  GradientBlockBottom,
+  GradientBlockTop,
+  HeroContainer,
+  MoviesBlock,
+  Poster,
+  SectionHero,
+} from './Movies.styled';
 import { Link, useSearchParams } from 'react-router-dom';
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
@@ -20,6 +29,8 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
+import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
+import HeroPoster from 'assets/hero-poster.jpeg';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -32,7 +43,6 @@ const Movies = () => {
   //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
-  //console.log(movieId);
 
   useEffect(() => {
     if (query === '') {
@@ -77,7 +87,7 @@ const Movies = () => {
     return <div>Loading...</div>;
   }
 
-  //console.log(movies);
+  console.log(movies);
 
   const updateQueryString = inputValue => {
     setPage(1);
@@ -92,86 +102,102 @@ const Movies = () => {
   //console.log(films);
 
   return (
-    <MoviesBlock>
-      <Searchbar onSubmit={updateQueryString} />
-      {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
-      {isLoading && <Loader />}
-      {error && <ImageErrorView message="Oops, mistake! Please try again" />}
-      {!query && <InitialStateGallery text="Let`s find movies together!" />}
-      {query && <MovieGallery movies={movies} />}
-      {total_results / 20 >= page && <Btn onClick={onLoadMore}>Load More</Btn>}
-      {!error && films.length !== 0 && (
-        <>
-          <Grid2
-            container
-            spacing={1}
-            rowSpacing={1}
-            component="section"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Grid2 container spacing={1}>
-              <Swiper
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                modules={[Autoplay, EffectCoverflow]}
-                loop={true}
-                autoplay={{
-                  delay: 1900,
-                  disableOnInteraction: false,
-                }}
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 2,
-                  slideShadows: true,
-                }}
-                breakpoints={{
-                  // when window width is >= 320px
-                  320: {
-                    slidesPerView: 1,
-                    spaceBetween: 0,
-                  },
-                  // when window width is >= 640px
-                  640: {
-                    slidesPerView: 4,
-                    spaceBetween: 20,
-                  },
-                  // when window width is >= 1040px
-                  1040: {
-                    slidesPerView: 5,
-                    spaceBetween: 50,
-                  },
-                }}
-              >
-                {films.map(movie => {
-                  return (
-                    <SwiperSlide key={movie.id}>
-                      <Link
-                        to={`/movies/${movie.id}`}
-                        style={{ margin: `0 auto` }}
-                      >
-                        <Poster
-                          src={
-                            movie.poster_path
-                              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-                              : NoPoster
-                          }
-                          alt={movie.original_title}
-                        />
-                      </Link>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+    <>
+      {/* <HeroHomePage movies={movies} /> */}
+      <MoviesBlock>
+        <SectionHero>
+          <HeroContainer>
+            <GradientBlockTop></GradientBlockTop>
+
+            <BackdropImg>
+              <img src={HeroPoster} alt="poster opacity" width="1200" />
+            </BackdropImg>
+
+            <GradientBlockBottom></GradientBlockBottom>
+          </HeroContainer>
+        </SectionHero>
+        <Searchbar onSubmit={updateQueryString} />
+        {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
+        {isLoading && <Loader />}
+        {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+        {!query && <InitialStateGallery text="Let`s find movies together!" />}
+        {query && <MovieGallery movies={movies} />}
+        {total_results / 20 >= page && (
+          <Btn onClick={onLoadMore}>Load More</Btn>
+        )}
+        {!error && films.length !== 0 && (
+          <>
+            <Grid2
+              container
+              spacing={1}
+              rowSpacing={1}
+              component="section"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid2 container spacing={1}>
+                <Swiper
+                  effect={'coverflow'}
+                  grabCursor={true}
+                  centeredSlides={true}
+                  modules={[Autoplay, EffectCoverflow]}
+                  loop={true}
+                  autoplay={{
+                    delay: 1900,
+                    disableOnInteraction: false,
+                  }}
+                  coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 2,
+                    slideShadows: true,
+                  }}
+                  breakpoints={{
+                    // when window width is >= 320px
+                    320: {
+                      slidesPerView: 1,
+                      spaceBetween: 0,
+                    },
+                    // when window width is >= 640px
+                    640: {
+                      slidesPerView: 4,
+                      spaceBetween: 20,
+                    },
+                    // when window width is >= 1040px
+                    1040: {
+                      slidesPerView: 5,
+                      spaceBetween: 50,
+                    },
+                  }}
+                >
+                  {films.map(movie => {
+                    return (
+                      <SwiperSlide key={movie.id}>
+                        <Link
+                          to={`/movies/${movie.id}`}
+                          style={{ margin: `0 auto` }}
+                        >
+                          <Poster
+                            src={
+                              movie.poster_path
+                                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+                                : NoPoster
+                            }
+                            alt={movie.original_title}
+                          />
+                        </Link>
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </Grid2>
             </Grid2>
-          </Grid2>
-        </>
-      )}
-    </MoviesBlock>
+          </>
+        )}
+      </MoviesBlock>
+    </>
   );
 };
 
