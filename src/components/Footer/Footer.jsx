@@ -25,7 +25,7 @@ const Footer = () => {
             About <Separator>|</Separator>
           </MenuItem>
           <MenuItem>
-            Blog <Separator>|</Separator>
+            Contact Us <Separator>|</Separator>
           </MenuItem>
           <MenuItem>
             Terms Of Use <Separator>|</Separator>
