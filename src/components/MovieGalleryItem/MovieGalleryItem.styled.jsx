@@ -14,8 +14,6 @@ export const MovieListItem = styled.li`
   transform: scale(1);
   border-radius: 8px;
 
-  //background-color: ${props => props.theme.colors.secondary};
-
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
@@ -61,8 +59,8 @@ export const MovieTitle = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  color: ${props => props.theme.colors.accent};
-  text-shadow: 0 0.4px 0.4px #fff;
+  color: ${({ theme }) => theme.cardsTextColor};
+  text-shadow: ${({ theme }) => theme.textShadow};
   text-align: center;
 
   font-size: ${props => props.theme.fontSizes.xs};
