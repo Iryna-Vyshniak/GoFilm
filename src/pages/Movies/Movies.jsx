@@ -31,6 +31,7 @@ import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
 import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
 import HeroPoster from 'assets/hero-poster.jpeg';
+import { BackdropPoster } from 'pages/MovieDetails/MovieDetails.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
