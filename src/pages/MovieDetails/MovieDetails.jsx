@@ -6,11 +6,17 @@ import { FaYoutube } from 'react-icons/fa';
 
 import {
   AccentText,
+  BackdropContainer,
+  BackdropImage,
   BackdropImg,
+  BackdropPoster,
   Btn,
   CircleRating,
   Genre,
   Genres,
+  GradientBlockBottom,
+  GradientBlockTop,
+  HeroContainer,
   MainTitle,
   MovieInfo,
   MovieList,
@@ -28,6 +34,8 @@ import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { ModalVideo } from 'components/Modal/Modal';
+
+import HeroPoster from 'assets/hero-poster.jpeg';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -134,15 +142,26 @@ const MovieDetails = () => {
         <>
           {/* фонове зображення */}
           {backdrop_path && (
-            <BackdropImg>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
-                alt="poster opacity"
-                width="100"
-              />
-            </BackdropImg>
+            <>
+              <BackdropContainer>
+                <GradientBlockTop></GradientBlockTop>
+                {poster_path ? (
+                  <BackdropPoster>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                      alt="poster opacity"
+                      width="1200"
+                    />
+                  </BackdropPoster>
+                ) : (
+                  <BackdropPoster>
+                    <img src={HeroPoster} alt="poster opacity" width="1200" />
+                  </BackdropPoster>
+                )}
+                <GradientBlockBottom></GradientBlockBottom>
+              </BackdropContainer>
+            </>
           )}
-
           <WrapperMovie>
             {/* постер фільму */}
             {`https://image.tmdb.org/t/p/w500${poster_path}` && (
@@ -152,6 +171,7 @@ const MovieDetails = () => {
                 width="300"
               />
             )}
+
             <WrapperDetails>
               {/* назва фільму */}
               <MainTitle>
