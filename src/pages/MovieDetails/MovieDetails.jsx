@@ -192,7 +192,7 @@ const MovieDetails = () => {
               <h2>Overview</h2>
               <p>{overview}</p>
               {/* продакшин компанії - логотипи */}
-              {production_companies.length > 0 && (
+              {production_companies && (
                 <>
                   <h2>Production Companies</h2>
                   <MovieList>
