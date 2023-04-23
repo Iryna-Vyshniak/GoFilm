@@ -49,7 +49,7 @@ export const SectionHero = styled.section`
   margin-bottom: 30px;
   padding-top: 84px;
   padding-bottom: 84px;
-  background-color: rgba(0, 0, 0, 0.638);
+  background-color: rgba(0, 0, 0, 1);
 
   @media screen and (min-width: 768px) {
     padding-top: 100px;
