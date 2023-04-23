@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.c3d5249d.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.dbd2af71.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.fb29c332.js",
     "static/css/391.45947c46.chunk.css": "/goit-react-hw-05-movies/static/css/391.45947c46.chunk.css",
-    "static/js/391.2bfba84e.chunk.js": "/goit-react-hw-05-movies/static/js/391.2bfba84e.chunk.js",
+    "static/js/391.fb5b3065.chunk.js": "/goit-react-hw-05-movies/static/js/391.fb5b3065.chunk.js",
     "static/css/909.45947c46.chunk.css": "/goit-react-hw-05-movies/static/css/909.45947c46.chunk.css",
     "static/js/909.64ed6833.chunk.js": "/goit-react-hw-05-movies/static/js/909.64ed6833.chunk.js",
     "static/css/118.854202df.chunk.css": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css",
@@ -22,9 +22,9 @@
     "static/media/sun.svg": "/goit-react-hw-05-movies/static/media/sun.99c5d2f91212d11207c7768155a3718e.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.c3d5249d.css.map": "/goit-react-hw-05-movies/static/css/main.c3d5249d.css.map",
-    "main.dbd2af71.js.map": "/goit-react-hw-05-movies/static/js/main.dbd2af71.js.map",
+    "main.fb29c332.js.map": "/goit-react-hw-05-movies/static/js/main.fb29c332.js.map",
     "391.45947c46.chunk.css.map": "/goit-react-hw-05-movies/static/css/391.45947c46.chunk.css.map",
-    "391.2bfba84e.chunk.js.map": "/goit-react-hw-05-movies/static/js/391.2bfba84e.chunk.js.map",
+    "391.fb5b3065.chunk.js.map": "/goit-react-hw-05-movies/static/js/391.fb5b3065.chunk.js.map",
     "909.45947c46.chunk.css.map": "/goit-react-hw-05-movies/static/css/909.45947c46.chunk.css.map",
     "909.64ed6833.chunk.js.map": "/goit-react-hw-05-movies/static/js/909.64ed6833.chunk.js.map",
     "118.854202df.chunk.css.map": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css.map",
@@ -38,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.dbd2af71.js"
+    "static/js/main.fb29c332.js"
   ]
 }
