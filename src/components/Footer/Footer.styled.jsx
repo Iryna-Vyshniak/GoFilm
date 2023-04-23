@@ -4,7 +4,8 @@ export const FooterBlock = styled.footer`
   position: relative;
   display: flex;
   padding: 16px 0;
-  background: #b9e4c9;
+
+  background: ${({ theme }) => theme.backgroundHeaderFooter};
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
     0 4px 5px 1px rgba(0, 0, 0, 0.14), 0px 1px 10px 1px rgba(0, 0, 0, 0.12);
 `;
