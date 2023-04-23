@@ -2,7 +2,6 @@ import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-
 export const RatingProgressbar = ({ rating }) => {
   return (
     <CircularProgressbar
@@ -22,11 +21,10 @@ export const RatingProgressbar = ({ rating }) => {
         transform: 'rotate(0.25turn)',
         transformOrigin: 'center center',
         pathTransitionDuration: 0.5,
-        textColor: '#fd5523',
+        textColor: 'rgb(255, 0, 0)',
         trailColor: '#fff',
         backgroundColor: 'rgba(185, 228, 201, 0.773)',
       })}
     />
   );
 };
-
