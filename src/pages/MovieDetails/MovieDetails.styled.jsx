@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink as MovieLink } from 'react-router-dom';
 
-export const BackdropImg = styled.div`
+/* export const BackdropImage = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -20,7 +20,8 @@ export const BackdropImg = styled.div`
     object-fit: cover;
     object-position: center;
   }
-`;
+`; */
+
 export const NavLink = styled(MovieLink)`
   position: relative;
   z-index: 9;
@@ -50,7 +51,7 @@ export const WrapperMovie = styled.div`
   justify-content: center;
   gap: 16px;
 
-  padding: 16px;
+  padding: 0 16px;
   font-weight: 500;
 
   h1,
@@ -197,4 +198,61 @@ export const CircleRating = styled.div`
   text-shadow: 0 0.3px 0.3px #000;
   border-radius: 50%;
   padding: 2px;
+`;
+
+//--------------------------------
+export const BackdropContainer = styled.section`
+  position: relative;
+
+  margin: 0 auto;
+  margin-top: -80px;
+  padding: 0;
+
+  width: 100%;
+  height: 450px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+`;
+
+export const BackdropPoster = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  flex: 1 0 auto;
+
+  img {
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    background-color: rgba(0, 0, 0, 1);
+  }
+`;
+
+export const GradientBlockTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: ${({ theme }) => theme.gradientBlock};
+`;
+
+export const GradientBlockBottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+
+  background: ${({ theme }) => theme.gradientHeroBanner};
 `;
