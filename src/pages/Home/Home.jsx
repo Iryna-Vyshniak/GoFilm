@@ -18,6 +18,7 @@ import 'swiper/css/effect-coverflow';
 import { Autoplay, EffectCoverflow } from 'swiper';
 import { CardFilm } from 'components/CardFilm/CardFilm';
 import Grid2 from '@mui/material/Unstable_Grid2';
+import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -65,6 +66,7 @@ const Home = () => {
       {error && <ImageErrorView message="Oops, mistake! Please try again" />}
       {!error && movies.length !== 0 && (
         <>
+          <HeroHomePage movies={movies} />
           <Grid2
             container
             spacing={1}
