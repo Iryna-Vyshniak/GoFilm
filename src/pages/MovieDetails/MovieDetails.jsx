@@ -18,7 +18,6 @@ import {
   PosterMovie,
   ProductionLogo,
   VotePlayVideoBox,
-  // RatingProgressbar,
   WrapRelease,
   WrapperDetails,
   WrapperMovie,
@@ -35,7 +34,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movieVideo, setMovieVideo] = useState('');
-  // const [showModal, setShowModal] = useState(false);
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
@@ -193,7 +192,7 @@ const MovieDetails = () => {
               <h2>Overview</h2>
               <p>{overview}</p>
               {/* продакшин компанії - логотипи */}
-              {production_companies && (
+              {production_companies.length > 0 && (
                 <>
                   <h2>Production Companies</h2>
                   <MovieList>
