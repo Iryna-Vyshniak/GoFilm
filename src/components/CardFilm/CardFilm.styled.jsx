@@ -63,8 +63,8 @@ export const MovieTitle = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  color: ${props => props.theme.colors.accent};
-  text-shadow: 0 0.4px 0.4px #fff;
+  color: ${({ theme }) => theme.cardsTextColor};
+  text-shadow: ${({ theme }) => theme.textShadow};
   text-align: center;
 
   font-size: ${props => props.theme.fontSizes.xs};
@@ -78,7 +78,7 @@ export const Vote = styled.p`
   padding-left: ${({ theme }) => theme.space[2]}px;
   padding-right: ${({ theme }) => theme.space[2]}px;
 
-  background-color: rgba(185, 228, 201, 0.473);
+  background-color: rgba(185, 228, 201, 0.773);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
@@ -101,7 +101,7 @@ export const ReleaseDate = styled.p`
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-  color: ${props => props.theme.colors.white};
+  color: rgb(255, 0, 0);
   text-shadow: 0 0.4px 0.4px #fd5523;
 
   border-radius: 8px;
