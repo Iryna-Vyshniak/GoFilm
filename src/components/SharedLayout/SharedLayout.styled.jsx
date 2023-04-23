@@ -35,7 +35,7 @@ export const Header = styled.header`
 
   width: 100%;
 
-  background-color: ${props => props.theme.colors.secondary};
+  background: ${({ theme }) => theme.backgroundHeaderFooter};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
@@ -72,7 +72,7 @@ export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: #000;
+  color: ${({ theme }) => theme.text};
   font-weight: 500;
 
   &.active {
