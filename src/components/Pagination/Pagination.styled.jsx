@@ -5,11 +5,12 @@ export const Paginate = styled(ReactPaginate)`
   display: flex;
   justify-content: center;
   gap: 5px;
-  margin: 10px 0;
+  margin: 30px 0;
   font-size: 14px;
 
   .selected {
     border: 1px solid #ffffff;
+    border-radius: 8px;
     background: #ecf0f3;
     box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
     text-shadow: 0.0625rem 0.0625rem 0.0625rem #fff;
@@ -24,11 +25,11 @@ export const Paginate = styled(ReactPaginate)`
     height: 32px;
     text-align: center;
 
-    border-radius: 4px;
+    border-radius: 8px;
     border: none;
     outline: none;
 
-    box-shadow: -3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773);
+    box-shadow: ${({ theme }) => theme.buttonShadow};
 
     text-shadow: 0 1px 1px #fff;
     background-color: transparent;
