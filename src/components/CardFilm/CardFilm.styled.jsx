@@ -4,7 +4,10 @@ export const MovieListItem = styled.li`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
+
+  margin: 0 auto;
   padding-bottom: ${({ theme }) => theme.space[3]}px;
 
   max-width: 100%;
@@ -29,10 +32,8 @@ export const MovieListItem = styled.li`
 
   img {
     display: block;
-    min-height: 100%;
-    height: 340px;
-    max-width: 100%;
-    width: 250px;
+    height: 100%;
+    width: 100%;
 
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
