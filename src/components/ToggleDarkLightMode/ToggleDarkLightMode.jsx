@@ -12,6 +12,9 @@ export const lightTheme = {
     'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 251, 230, 1) 100%)',
   backgroundHeaderFooter: '#b9e4c9',
   gradientBlock: 'rgba(255, 251, 230, 0.8)',
+  cardsTextColor: '#FD5523',
+  textShadow: '0 0.4px 0.4px #fff',
+  buttonShadow: '-3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773)',
 };
 
 export const darkTheme = {
@@ -27,6 +30,9 @@ export const darkTheme = {
     'linear-gradient(180deg, rgba(55,150,111,0.2) 0%, rgba(55,150,111,0.3) 10%, #19281f 100%)',
 
   gradientBlock: 'none',
+  cardsTextColor: '#fff',
+  textShadow: '0 0.4px 0.4px #000',
+  buttonShadow: '-1px -1px 1px #ffffff, 1px 1px 1px rgba(185, 228, 201, 0.773)',
 };
 
 export const ToggleDarkLightMode = ({ theme, toggleTheme }) => {
