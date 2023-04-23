@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Btn, MoviesBlock } from './Movies.styled';
+import { Btn, MoviesBlock, Poster } from './Movies.styled';
 import { Link, useSearchParams } from 'react-router-dom';
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
@@ -150,8 +150,11 @@ const Movies = () => {
                 {films.map(movie => {
                   return (
                     <SwiperSlide key={movie.id}>
-                      <Link to={`/movies/${movie.id}`}>
-                        <img
+                      <Link
+                        to={`/movies/${movie.id}`}
+                        style={{ margin: `0 auto` }}
+                      >
+                        <Poster
                           src={
                             movie.poster_path
                               ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
