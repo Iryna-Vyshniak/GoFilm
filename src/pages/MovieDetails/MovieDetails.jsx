@@ -7,8 +7,6 @@ import { FaYoutube } from 'react-icons/fa';
 import {
   AccentText,
   BackdropContainer,
-  BackdropImage,
-  BackdropImg,
   BackdropPoster,
   Btn,
   CircleRating,
@@ -16,7 +14,6 @@ import {
   Genres,
   GradientBlockBottom,
   GradientBlockTop,
-  HeroContainer,
   MainTitle,
   MovieInfo,
   MovieList,

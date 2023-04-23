@@ -29,9 +29,7 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
-import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
 import HeroPoster from 'assets/hero-poster.jpeg';
-import { BackdropPoster } from 'pages/MovieDetails/MovieDetails.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -88,7 +86,7 @@ const Movies = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(movies);
+  //console.log(movies);
 
   const updateQueryString = inputValue => {
     setPage(1);
