@@ -145,9 +145,15 @@ export const ProductionLogo = styled.img`
   width: 15vw;
   height: auto;
 `;
+
 export const PosterMovie = styled.img`
+  max-width: 100%;
   width: 50vw;
   height: auto;
+
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 export const Genres = styled.ul`
   display: flex;
