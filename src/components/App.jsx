@@ -1,8 +1,14 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+import { ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { RxThickArrowUp } from 'react-icons/rx';
 import { GlobalStyle } from './GlobalStyle';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PageNotFound } from './PageNotFound/PageNotFound';
+import ScrollToTop from 'react-scroll-up';
+//import { BtnScrollToTop } from './App.styled';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
@@ -30,7 +36,24 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
-
+      <ScrollToTop
+        showUnder={120}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bottom: 35,
+          backgroundColor: 'rgba(185, 228, 201, 0.8)',
+          width: '42px',
+          height: '42px',
+          padding: '8px',
+          borderRadius: '50%',
+          boxShadow: '0px 2px 4px -1px rgba(0, 0, 0, 0.2)',
+        }}
+      >
+        <RxThickArrowUp size="28" strokeWidth="0.2px" />
+      </ScrollToTop>
+      <ToastContainer transition={Slide} draggablePercent={60} />
       <GlobalStyle />
     </>
   );
