@@ -36,12 +36,12 @@ export const darkTheme = {
 };
 
 export const ToggleDarkLightMode = ({ theme, toggleTheme }) => {
-  //const isLight = theme === 'light';
+  const isLight = theme === 'light';
 
   return (
-    <ToggleContainer onClick={toggleTheme}>
-      <MoonIcon />
+    <ToggleContainer lightTheme={isLight} onClick={toggleTheme}>
       <SunIcon />
+      <MoonIcon />
     </ToggleContainer>
   );
 };
