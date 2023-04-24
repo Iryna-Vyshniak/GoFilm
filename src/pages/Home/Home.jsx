@@ -63,7 +63,9 @@ const Home = () => {
   return (
     <HomeBlock>
       {isLoading && <Loader />}
-      {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+      {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
+      повідомленням помилки */}
+      {error && <ImageErrorView message="Oops, mistake... Please try again" />}
       {!error && movies.length !== 0 && (
         <>
           <HeroHomePage movies={movies} />
