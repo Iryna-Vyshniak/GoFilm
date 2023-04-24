@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ToastContainer, Slide, toast } from 'react-toastify';
+import { notifyOptions } from 'utils/notify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   ActorName,
@@ -19,7 +23,7 @@ import {
   SmallText,
   TitleList,
 } from './Movies.styled';
-import { Link, useSearchParams } from 'react-router-dom';
+
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { getActorsPopular, getMoviesByQuery } from 'services/themoviedbAPI';
@@ -44,7 +48,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [actors, setActors] = useState([]);
   const [page, setPage] = useState(1);
-  const [total_results, setTotalResults] = useState(null);
+  const [totalPages, setTotalPages] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -53,8 +57,11 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (query === '') {
-      return;
+    if (!query) return;
+
+    // при новому запиті - запит відбувається з 1 сторінки та попередній масив зображень обнуляється
+    if (page === 1) {
+      setMovies([]);
     }
 
     (async () => {
@@ -65,9 +72,10 @@ const Movies = () => {
         const data = await getMoviesByQuery(query, page);
         //console.log(data.results);
         setMovies(prevMovie => [...prevMovie, ...data.results]);
-        setTotalResults(data.total_results);
+        setTotalPages(Math.floor(data.total_results / 20));
       } catch (error) {
-        console.log(error);
+        setError(error);
+        setMovies([]);
       } finally {
         setIsLoading(false);
       }
@@ -84,7 +92,8 @@ const Movies = () => {
         //console.log(data);
         setActors(data);
       } catch (error) {
-        console.log(error.message);
+        setError(error);
+        setMovies([]);
       } finally {
         setIsLoading(false);
       }
@@ -98,6 +107,13 @@ const Movies = () => {
   //console.log(movies);
 
   const updateQueryString = inputValue => {
+    if (inputValue === query) {
+      return toast.warn(
+        `We already found movies for ${inputValue.toUpperCase()}.
+         Please, enter another phrase`,
+        notifyOptions
+      );
+    }
     setPage(1);
     setMovies([]);
     setSearchParams(inputValue !== '' ? { query: inputValue } : {});
@@ -127,12 +143,23 @@ const Movies = () => {
         <Searchbar onSubmit={updateQueryString} />
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
         {isLoading && <Loader />}
-        {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+        {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
+      повідомленням помилки */}
+        {error && (
+          <ImageErrorView message="Oops, mistake... Please try again" />
+        )}
+        {/* якщо при запиті зображення не знайдені - рендериться дефолтне зображення з повідомленням */}
+        {totalPages === 0 && (
+          <ImageErrorView message="Oops, mistake... Please try again" />
+        )}
+
         {!query && <InitialStateGallery text="Let`s find movies together!" />}
         {query && <MovieGallery movies={movies} />}
-        {total_results / 20 >= page && (
+        {/* якщо при запиті зображення знайдені, запит не в стадії очікування та ще є сторінки з зображеннями - рендериться кнопка Load More*/}
+        {movies.length > 0 && !isLoading && page <= totalPages && (
           <Btn onClick={onLoadMore}>Load More</Btn>
         )}
+        {/* якщо запит успішний  - рендериться галерея зображень */}
         {!error && actors.length !== 0 && (
           <>
             <BlockInfoActors>
