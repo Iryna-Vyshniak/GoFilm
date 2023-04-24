@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { ToastContainer, Slide, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { notifyOptions } from 'utils/notify';
 import 'react-toastify/dist/ReactToastify.css';
 
