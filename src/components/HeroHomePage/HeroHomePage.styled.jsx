@@ -4,17 +4,19 @@ export const BackdropImg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  overflow: hidden;
 
   flex: 1 0 auto;
   //   flex-grow: 1;
   //   flex-shrink: 1;
   //   flex-basis: auto;
 
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
   img {
+    opacity: 0.5;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -64,32 +66,12 @@ export const HeroContainer = styled.section`
   display: flex;
   align-items: center;
   padding: 0;
-  width: 100%;
-  height: 450px;
 
-  @media screen and (min-width: 768px) {
-    width: 768px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    width: 1200px;
-  }
-
-  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (min-width: 480px) {
-    width: 480px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 768px;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 1200px;
-  }
+  width: 100%;
+  height: 450px;
 `;
