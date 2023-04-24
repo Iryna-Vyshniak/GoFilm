@@ -27,9 +27,8 @@ export const ToggleContainer = styled.button`
     /*  sun icon */
 
     &:first-child {
-      transform: ${({ lightTheme }) => {
-        return lightTheme ? 'translateY(0)' : 'translateY(100px)';
-      }};
+      transform: ${({ lightTheme }) =>
+        lightTheme ? 'translateY(0)' : 'translateY(100px)'};
     }
 
     /* moon icon */
