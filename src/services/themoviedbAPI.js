@@ -86,3 +86,11 @@ export const getGenresMovies = async () => {
     throw new Error('Oops, there is no movie');
   }
 };
+export const getActorsPopular = async () => {
+  try {
+    const { data } = await axios.get(`person/popular`);
+    return data.results;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
