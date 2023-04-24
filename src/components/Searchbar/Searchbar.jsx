@@ -5,14 +5,17 @@ import {
   SearchFormBtn,
   SearchFormInput,
 } from './Searchbar.styled';
-// import { toast } from 'react-toastify';
-// import { notifyOptions } from 'utils/notify';
+import { toast } from 'react-toastify';
+import { notifyOptions } from 'utils/notify';
 import PropTypes from 'prop-types';
 
 export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const { query } = e.target.elements;
+    if (query.value.trim() === '') {
+      return toast.info('Please enter key words for search', notifyOptions);
+    }
     onSubmit(query.value);
     e.target.reset();
   };
