@@ -70,7 +70,9 @@ export const Reviews = () => {
           ))}
         </ReviewsList>
       ) : (
-        <div>We don't have any reviews for this movie</div>
+        <div style={{ padding: '26px', textAlign: 'center' }}>
+          We don't have any reviews for this movie
+        </div>
       )}
     </>
   );
