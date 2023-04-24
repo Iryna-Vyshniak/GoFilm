@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.86bee891.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.84921ed0.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.8a3dfa66.js",
     "static/css/138.6d9018de.chunk.css": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css",
-    "static/js/138.91adf6f0.chunk.js": "/goit-react-hw-05-movies/static/js/138.91adf6f0.chunk.js",
+    "static/js/138.99d3a25f.chunk.js": "/goit-react-hw-05-movies/static/js/138.99d3a25f.chunk.js",
     "static/css/317.2bc78f53.chunk.css": "/goit-react-hw-05-movies/static/css/317.2bc78f53.chunk.css",
     "static/js/317.7fe18260.chunk.js": "/goit-react-hw-05-movies/static/js/317.7fe18260.chunk.js",
     "static/css/118.854202df.chunk.css": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css",
@@ -24,9 +24,9 @@
     "static/media/sun.svg": "/goit-react-hw-05-movies/static/media/sun.99c5d2f91212d11207c7768155a3718e.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.86bee891.css.map": "/goit-react-hw-05-movies/static/css/main.86bee891.css.map",
-    "main.84921ed0.js.map": "/goit-react-hw-05-movies/static/js/main.84921ed0.js.map",
+    "main.8a3dfa66.js.map": "/goit-react-hw-05-movies/static/js/main.8a3dfa66.js.map",
     "138.6d9018de.chunk.css.map": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css.map",
-    "138.91adf6f0.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.91adf6f0.chunk.js.map",
+    "138.99d3a25f.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.99d3a25f.chunk.js.map",
     "317.2bc78f53.chunk.css.map": "/goit-react-hw-05-movies/static/css/317.2bc78f53.chunk.css.map",
     "317.7fe18260.chunk.js.map": "/goit-react-hw-05-movies/static/js/317.7fe18260.chunk.js.map",
     "118.854202df.chunk.css.map": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css.map",
@@ -40,6 +40,6 @@
   },
   "entrypoints": [
     "static/css/main.86bee891.css",
-    "static/js/main.84921ed0.js"
+    "static/js/main.8a3dfa66.js"
   ]
 }
