@@ -4,7 +4,7 @@ export const ReviewsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px;
+  padding: 26px;
 `;
 export const ReviewItem = styled.li`
   display: flex;
