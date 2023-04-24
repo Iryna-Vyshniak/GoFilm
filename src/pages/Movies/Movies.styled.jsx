@@ -50,9 +50,22 @@ export const Btn = styled.button`
   }
 `;
 
-export const Poster = styled.img`
+export const AvatarWrap = styled.div`
   display: inline-block;
-  border-radius: 8px;
+  margin-bottom: 15px;
+
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+
+  overflow: hidden;
+`;
+export const Poster = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -76,14 +89,37 @@ export const BackdropImg = styled.div`
     object-position: top;
   }
 `;
+export const BgBlockActors = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  flex: 1 1 auto;
+
+  img {
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+`;
+
+export const BackdropActors = styled.div`
+  padding-top: 84px;
+  padding-bottom: 84px;
+  width: 100%;
+  height: 100px;
+`;
 
 export const GradientBlockTop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-
-  width: 100%;
-  height: 100%;
 
   background: ${({ theme }) => theme.gradientBlock};
 `;
@@ -109,6 +145,23 @@ export const SectionHero = styled.section`
 
   background-color: rgba(0, 0, 0, 1);
 `;
+
+export const SectionActors = styled.section`
+  position: relative;
+
+  margin-bottom: -180px;
+  margin-top: 30px;
+
+  padding-top: 84px;
+`;
+export const BlockInfoActors = styled.div`
+  position: relative;
+  z-index: 50;
+  margin-bottom: -110px;
+  margin-top: 30px;
+
+  padding-top: 84px;
+`;
 export const HeroContainer = styled.section`
   display: flex;
   align-items: center;
@@ -124,4 +177,51 @@ export const HeroContainer = styled.section`
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
+`;
+
+export const ActorName = styled.p`
+  color: ${({ theme }) => theme.cardsTextColor};
+  text-shadow: ${({ theme }) => theme.textShadow};
+  text-align: center;
+
+  font-size: ${props => props.theme.fontSizes.xs};
+`;
+export const Known = styled.p`
+  color: ${({ theme }) => theme.cardsTextColor};
+  text-shadow: ${({ theme }) => theme.textShadow};
+  text-align: center;
+
+  font-size: ${props => props.theme.fontSizes.xs};
+  opacity: 0.5;
+`;
+
+export const TitleList = styled.h2`
+  margin-bottom: ${props => props.theme.space[4]}px;
+
+  width: 100%;
+  height: 4rem;
+
+  backdrop-filter: blur(0.7125rem);
+
+  text-align: center;
+  color: ${props => props.theme.colors.accent};
+  text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-family: ${props => props.theme.fonts.heading};
+  font-weight: 700;
+
+  @media screen and (min-width: 480px) {
+    font-size: ${({ theme }) => theme.fontSizes.l};
+  }
+`;
+
+export const SmallText = styled.p`
+  position: relative;
+  color: ${({ theme }) => theme.cardsTextColor};
+  text-shadow: ${({ theme }) => theme.textShadow};
+  text-align: center;
+
+  font-size: ${props => props.theme.fontSizes.s};
+  font-style: italic;
+  opacity: 0.5;
 `;
