@@ -225,7 +225,7 @@ const Movies = () => {
                   {actors.map(({ id, profile_path, name, known_for }) => {
                     return (
                       <SwiperSlide key={id}>
-                        <Link to={`/movies}`} style={{ margin: `0 auto` }}>
+                        <Link to="/" style={{ margin: `0 auto` }}>
                           <AvatarWrap>
                             <Poster
                               src={
