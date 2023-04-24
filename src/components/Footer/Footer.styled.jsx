@@ -16,11 +16,11 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   gap: 8px;
 
-  width: 100%;
-  max-width: 1200px;
-
   margin: 0 auto;
   padding: 0 20px;
+
+  width: 100%;
+  max-width: 1200px;
 
   font-size: 12px;
 `;
