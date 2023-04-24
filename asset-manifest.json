@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.c3d5249d.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.6d45fc5f.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.cdb7f72e.js",
     "static/css/138.6d9018de.chunk.css": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css",
-    "static/js/138.08ff7a93.chunk.js": "/goit-react-hw-05-movies/static/js/138.08ff7a93.chunk.js",
+    "static/js/138.3b3a0446.chunk.js": "/goit-react-hw-05-movies/static/js/138.3b3a0446.chunk.js",
     "static/css/522.664e6324.chunk.css": "/goit-react-hw-05-movies/static/css/522.664e6324.chunk.css",
     "static/js/522.8bf1c750.chunk.js": "/goit-react-hw-05-movies/static/js/522.8bf1c750.chunk.js",
     "static/css/118.854202df.chunk.css": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css",
@@ -23,9 +23,9 @@
     "static/media/sun.svg": "/goit-react-hw-05-movies/static/media/sun.99c5d2f91212d11207c7768155a3718e.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.c3d5249d.css.map": "/goit-react-hw-05-movies/static/css/main.c3d5249d.css.map",
-    "main.6d45fc5f.js.map": "/goit-react-hw-05-movies/static/js/main.6d45fc5f.js.map",
+    "main.cdb7f72e.js.map": "/goit-react-hw-05-movies/static/js/main.cdb7f72e.js.map",
     "138.6d9018de.chunk.css.map": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css.map",
-    "138.08ff7a93.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.08ff7a93.chunk.js.map",
+    "138.3b3a0446.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.3b3a0446.chunk.js.map",
     "522.664e6324.chunk.css.map": "/goit-react-hw-05-movies/static/css/522.664e6324.chunk.css.map",
     "522.8bf1c750.chunk.js.map": "/goit-react-hw-05-movies/static/js/522.8bf1c750.chunk.js.map",
     "118.854202df.chunk.css.map": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css.map",
@@ -39,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.6d45fc5f.js"
+    "static/js/main.cdb7f72e.js"
   ]
 }
