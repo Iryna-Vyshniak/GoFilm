@@ -1,39 +1,48 @@
 import React, { useEffect, useState } from 'react';
 
 import {
+  ActorName,
+  AvatarWrap,
+  BackdropActors,
   BackdropImg,
+  BgBlockActors,
+  BlockInfoActors,
   Btn,
   GradientBlockBottom,
   GradientBlockTop,
   HeroContainer,
+  Known,
   MoviesBlock,
   Poster,
+  SectionActors,
   SectionHero,
+  SmallText,
+  TitleList,
 } from './Movies.styled';
 import { Link, useSearchParams } from 'react-router-dom';
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
-import { getMoviesByQuery, getPopularMovies } from 'services/themoviedbAPI';
+import { getActorsPopular, getMoviesByQuery } from 'services/themoviedbAPI';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import 'swiper/css/effect-cards';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/scrollbar';
 
-import { Autoplay, EffectCoverflow } from 'swiper';
+import { Autoplay, Scrollbar } from 'swiper';
 
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
 import HeroPoster from 'assets/hero-poster.jpeg';
+import ActorsBg from 'assets/actors-bg.png';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [films, setFilms] = useState([]);
+  const [actors, setActors] = useState([]);
   const [page, setPage] = useState(1);
   const [total_results, setTotalResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,18 +80,18 @@ const Movies = () => {
         setIsLoading(true);
         setError(false);
 
-        const data = await getPopularMovies(page);
+        const data = await getActorsPopular();
         //console.log(data);
-        setFilms(data.results);
+        setActors(data);
       } catch (error) {
         console.log(error.message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [page]);
+  }, []);
 
-  if (!films) {
+  if (!actors) {
     return <div>Loading...</div>;
   }
 
@@ -124,8 +133,27 @@ const Movies = () => {
         {total_results / 20 >= page && (
           <Btn onClick={onLoadMore}>Load More</Btn>
         )}
-        {!error && films.length !== 0 && (
+        {!error && actors.length !== 0 && (
           <>
+            <BlockInfoActors>
+              <TitleList>List of popular persons</TitleList>
+
+              <SmallText>
+                <small>This list updates daily</small>
+              </SmallText>
+            </BlockInfoActors>
+
+            <SectionActors>
+              <BackdropActors>
+                <GradientBlockTop></GradientBlockTop>
+
+                <BgBlockActors>
+                  <img src={ActorsBg} alt="poster opacity" width="1200" />
+                </BgBlockActors>
+
+                <GradientBlockBottom></GradientBlockBottom>
+              </BackdropActors>
+            </SectionActors>
             <Grid2
               container
               spacing={1}
@@ -137,55 +165,57 @@ const Movies = () => {
             >
               <Grid2 container spacing={1}>
                 <Swiper
-                  effect={'coverflow'}
-                  grabCursor={true}
                   centeredSlides={true}
-                  modules={[Autoplay, EffectCoverflow]}
+                  spaceBetween={30}
+                  scrollbar={{
+                    hide: true,
+                  }}
+                  modules={[Autoplay, Scrollbar]}
+                  className="mySwiper"
                   loop={true}
                   autoplay={{
-                    delay: 1900,
+                    delay: 2000,
                     disableOnInteraction: false,
-                  }}
-                  coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 2,
-                    slideShadows: true,
                   }}
                   breakpoints={{
                     // when window width is >= 320px
                     320: {
-                      slidesPerView: 1,
+                      slidesPerView: 2,
                       spaceBetween: 0,
                     },
                     // when window width is >= 640px
                     640: {
-                      slidesPerView: 4,
+                      slidesPerView: 6,
                       spaceBetween: 20,
                     },
                     // when window width is >= 1040px
                     1040: {
-                      slidesPerView: 5,
+                      slidesPerView: 8,
                       spaceBetween: 50,
                     },
                   }}
                 >
-                  {films.map(movie => {
+                  {actors.map(({ id, profile_path, name, known_for }) => {
                     return (
-                      <SwiperSlide key={movie.id}>
-                        <Link
-                          to={`/movies/${movie.id}`}
-                          style={{ margin: `0 auto` }}
-                        >
-                          <Poster
-                            src={
-                              movie.poster_path
-                                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-                                : NoPoster
-                            }
-                            alt={movie.original_title}
-                          />
+                      <SwiperSlide key={id}>
+                        <Link to={`/movies}`} style={{ margin: `0 auto` }}>
+                          <AvatarWrap>
+                            <Poster
+                              src={
+                                profile_path
+                                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                                  : `https://image.tmdb.org/t/p/w300${NoPoster}`
+                              }
+                              alt={name}
+                            />
+                          </AvatarWrap>
+
+                          <ActorName>{name}</ActorName>
+                          {known_for[0] && (
+                            <>
+                              <Known>{known_for[0].title}</Known>
+                            </>
+                          )}
                         </Link>
                       </SwiperSlide>
                     );
