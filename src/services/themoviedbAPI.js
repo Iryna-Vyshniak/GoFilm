@@ -17,6 +17,18 @@ export const getPopularMovies = async (page = 1) => {
     throw new Error('Oops, there is no movies');
   }
 };
+export const getTopRatedMovies = async () => {
+  try {
+    const { data } = await axios.get(`/movie/top_rated`, {
+      params: {
+        language: 'en-US',
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movies');
+  }
+};
 
 export const getMoviesByQuery = async (query, page = 1) => {
   try {
