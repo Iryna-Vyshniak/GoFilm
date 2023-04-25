@@ -56,7 +56,6 @@ text-decoration: none;
 
 div.swiper-wrapper {
   position: relative;
-   padding: 30px 0;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -78,7 +77,6 @@ div.swiper-wrapper {
 }
 
 .swiper-slide {
-  padding: 30px;
   text-align: center;
   font-size: 18px;
   color: #fff;
@@ -98,7 +96,6 @@ swiper-slide {
   position: relative;
   transition-property: transform;
   display: block;
-  padding: 30px 0;
 }
 
 div.swiper.swiper-initialized.swiper-horizontal.mySwiper{
