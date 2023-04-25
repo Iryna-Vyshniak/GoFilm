@@ -39,7 +39,7 @@ export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
         <MdOutlineClose />
       </CloseBtn>
       <ReactPlayer
-        url={`https://www.youtube.com/watch?v=${movieVideo}`}
+        url={`https://www.youtube.com/watch?v=${movieVideo}?showinfo=0&enablejsapi=1&origin=http://localhost:3000`}
         muted={true}
         controls
         width="100%"
