@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ToggleContainer = styled.button`
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   overflow: hidden;
@@ -20,7 +21,7 @@ export const ToggleContainer = styled.button`
   svg {
     height: auto;
     width: 2.5rem;
-    transition: all 0.3s linear;
+    transition: all 300ms linear;
 
     /* перевіряємо, чи є svg активним, і якщо так - переміщуємо відповідну піктограму з видимої області - подібно до того, як місяць йде, коли день, і навпаки */
 
