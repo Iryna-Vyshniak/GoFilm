@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.86bee891.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.48549421.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.ca7b5283.js",
     "static/css/138.6d9018de.chunk.css": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css",
-    "static/js/138.54458a0f.chunk.js": "/goit-react-hw-05-movies/static/js/138.54458a0f.chunk.js",
+    "static/js/138.858ab51f.chunk.js": "/goit-react-hw-05-movies/static/js/138.858ab51f.chunk.js",
     "static/css/317.2bc78f53.chunk.css": "/goit-react-hw-05-movies/static/css/317.2bc78f53.chunk.css",
     "static/js/317.806e6af4.chunk.js": "/goit-react-hw-05-movies/static/js/317.806e6af4.chunk.js",
     "static/css/118.854202df.chunk.css": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css",
@@ -24,9 +24,9 @@
     "static/media/moon.svg": "/goit-react-hw-05-movies/static/media/moon.a8fb9e4ee82f6777c940ccc513c480a4.svg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.86bee891.css.map": "/goit-react-hw-05-movies/static/css/main.86bee891.css.map",
-    "main.48549421.js.map": "/goit-react-hw-05-movies/static/js/main.48549421.js.map",
+    "main.ca7b5283.js.map": "/goit-react-hw-05-movies/static/js/main.ca7b5283.js.map",
     "138.6d9018de.chunk.css.map": "/goit-react-hw-05-movies/static/css/138.6d9018de.chunk.css.map",
-    "138.54458a0f.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.54458a0f.chunk.js.map",
+    "138.858ab51f.chunk.js.map": "/goit-react-hw-05-movies/static/js/138.858ab51f.chunk.js.map",
     "317.2bc78f53.chunk.css.map": "/goit-react-hw-05-movies/static/css/317.2bc78f53.chunk.css.map",
     "317.806e6af4.chunk.js.map": "/goit-react-hw-05-movies/static/js/317.806e6af4.chunk.js.map",
     "118.854202df.chunk.css.map": "/goit-react-hw-05-movies/static/css/118.854202df.chunk.css.map",
@@ -40,6 +40,6 @@
   },
   "entrypoints": [
     "static/css/main.86bee891.css",
-    "static/js/main.48549421.js"
+    "static/js/main.ca7b5283.js"
   ]
 }
