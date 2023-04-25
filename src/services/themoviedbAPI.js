@@ -50,6 +50,7 @@ export const getMoviesDetailsById = async movieId => {
   try {
     const { data } = await axios.get(`movie/${movieId}`, {
       params: {
+        id: movieId,
         language: 'en-US',
       },
     });
@@ -63,6 +64,7 @@ export const getMoviesCast = async movieId => {
   try {
     const { data } = await axios.get(`movie/${movieId}/credits`, {
       params: {
+        id: movieId,
         language: 'en-US',
       },
     });
@@ -74,7 +76,12 @@ export const getMoviesCast = async movieId => {
 
 export const getMoviesReviews = async movieId => {
   try {
-    const { data } = await axios.get(`movie/${movieId}/reviews`);
+    const { data } = await axios.get(`movie/${movieId}/reviews`, {
+      params: {
+        id: movieId,
+        language: 'en-US',
+      },
+    });
     return data.results;
   } catch (error) {
     throw new Error('Oops, we don`t have any reviews');
@@ -83,7 +90,12 @@ export const getMoviesReviews = async movieId => {
 
 export const getVideosMovies = async movieId => {
   try {
-    const { data } = await axios.get(`movie/${movieId}/videos`);
+    const { data } = await axios.get(`movie/${movieId}/videos`, {
+      params: {
+        id: movieId,
+        language: 'en-US',
+      },
+    });
     return data.results;
   } catch (error) {
     throw new Error('Oops, there is no movie`s videos');
