@@ -3,7 +3,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { LinkToBack } from 'components/LinkToBack/LinkToBack';
 import { FaYoutube } from 'react-icons/fa';
-
+import { Rating } from '@mui/material';
 import {
   AccentText,
   BackdropContainer,
@@ -54,7 +54,7 @@ const MovieDetails = () => {
         setIsLoading(true);
         setError(false);
         const data = await getMoviesDetailsById(movieId);
-        //console.log(data);
+        console.log(data);
         setMovieDetails(data);
       } catch (error) {
         <ImageErrorView message="Oops, mistake! Please try again" />;
@@ -175,7 +175,16 @@ const MovieDetails = () => {
                 {original_title || original_name}{' '}
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
-
+              {/* rating stars */}
+              {vote_average && (
+                <Rating
+                  name="read-only"
+                  defaultValue={(vote_average / 10) * 5}
+                  precision={0.5}
+                  size="large"
+                  readOnly
+                />
+              )}
               {/* жанри фільму */}
               {genres && (
                 <Genres>
