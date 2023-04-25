@@ -6,7 +6,7 @@ import Pagination from 'components/Pagination/Pagination';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { getPopularMovies } from 'services/themoviedbAPI';
+import { getPopularMovies, getTopRatedMovies } from 'services/themoviedbAPI';
 
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,6 +22,7 @@ import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [topMovies, setTopMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +50,23 @@ const Home = () => {
     })();
   }, [page]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        setError(false);
+
+        const data = await getTopRatedMovies();
+        //console.log(data);
+        setTopMovies(data.results);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [page]);
+
   //console.log(movies);
 
   if (!movies) {
@@ -66,7 +84,7 @@ const Home = () => {
       {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
       повідомленням помилки */}
       {error && <ImageErrorView message="Oops, mistake... Please try again" />}
-      {!error && movies.length !== 0 && (
+      {!error && topMovies.length !== 0 && (
         <>
           <HeroHomePage movies={movies} />
           <Grid2
@@ -78,7 +96,7 @@ const Home = () => {
             justifyContent="center"
             alignItems="center"
           >
-            <Title title="Watch Popular Movies" />
+            <Title title="Top Rated Movies" />
             <Grid2 container spacing={1} padding="8px">
               <Swiper
                 effect={'coverflow'}
@@ -116,7 +134,7 @@ const Home = () => {
                   },
                 }}
               >
-                {movies.map(movie => {
+                {topMovies.map(movie => {
                   return (
                     <SwiperSlide key={movie.id}>
                       <CardFilm movie={movie} />
@@ -126,7 +144,7 @@ const Home = () => {
               </Swiper>
             </Grid2>
           </Grid2>
-          <Title title="Trending Today" />
+          <Title title="Trending List Today" />
           <MovieGallery movies={movies} />
           <Pagination
             handlePageClick={handlePageClick}
