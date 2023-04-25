@@ -1,11 +1,13 @@
 import Modal from 'react-modal';
 import React from 'react';
+import ReactPlayer from 'react-player';
+import { MdOutlineClose } from 'react-icons/md';
 import { CloseBtn } from './Modal.styled';
-import ReactPlayer from 'react-player/youtube';
 
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    zIndex: 1300,
   },
   content: {
     position: 'absolute',
@@ -28,12 +30,15 @@ Modal.setAppElement('#root');
 export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
   return (
     <Modal
+      closeTimeoutMS={200}
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Inline Styles Modal Example"
       style={customStyles}
     >
-      <CloseBtn onClick={onClose}>X</CloseBtn>
+      <CloseBtn onClick={onClose}>
+        <MdOutlineClose />
+      </CloseBtn>
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${movieVideo}`}
         muted={true}
