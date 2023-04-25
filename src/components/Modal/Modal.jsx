@@ -30,7 +30,6 @@ Modal.setAppElement('#root');
 export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
   return (
     <Modal
-      closeTimeoutMS={200}
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Inline Styles Modal Example"
