@@ -40,7 +40,7 @@ const MovieDetails = () => {
   const [error, setError] = useState(false);
   const [movieVideo, setMovieVideo] = useState('');
 
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
@@ -57,7 +57,7 @@ const MovieDetails = () => {
         //console.log(data);
         setMovieDetails(data);
       } catch (error) {
-        console.log(error.message);
+        <ImageErrorView message="Oops, mistake! Please try again" />;
       } finally {
         setIsLoading(false);
       }
@@ -74,13 +74,13 @@ const MovieDetails = () => {
         //trailer ключ для відображення трейлеру фільму
         const trailer = data.find(
           movie =>
-            movie.name === 'official trailer' ||
-            movie.name === 'Official Trailer' ||
+            movie.name[0] ||
             movie.name.includes('Official') ||
-            movie.name[0]
+            movie.name === 'Official Trailer' ||
+            movie.name === 'official trailer'
         );
         setMovieVideo(trailer.key);
-        console.log(trailer.key);
+        //console.log(trailer.key);
 
         /*   const trailer = data[0].key;
         console.log(trailer);
@@ -103,18 +103,18 @@ const MovieDetails = () => {
   };
 
   // тогл закриття-відривання модалки для перегляду фільму
-  // const toggleModal = () => {
-  //   setShowModal(!showModal);
-  // };
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
 
   // закриття-відривання модалки для перегляду фільму
-  function openModal() {
-    setIsOpen(true);
+  /* function openModal() {
+    setModalIsOpen(true);
   }
 
   function closeModal() {
-    setIsOpen(false);
-  }
+    setModalIsOpen(false);
+  } */
 
   const {
     poster_path,
@@ -196,7 +196,7 @@ const MovieDetails = () => {
                 )}
                 {/* трейлер фільму */}
                 {movieVideo.length > 0 && (
-                  <Btn onClick={openModal}>
+                  <Btn onClick={toggleModal}>
                     <FaYoutube
                       size="64px"
                       color="red"
@@ -271,14 +271,27 @@ const MovieDetails = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
-          {/* плеєр для перегляду трейлера фільму - в модальному вікні */}
-          {modalIsOpen && (
+          {/* плеєр для перегляду трейлера фільму - в модальному вікні
+          It's recommended to not use modal with conditional rendering. There is a problem with createPortal when using this way (need to check if it still happening. It starts happening on version +16.3 of react).
+          The bug also happens when the Modal lives next to a component that conditionally renders.
+          We Can't use:
+          {modalIsOpen && (......)
+          The best way to use that is creating a component where we have all the code that we need, a componet seems something like this:
+          */}
+
+          <ModalVideo
+            isOpen={modalIsOpen}
+            onClose={toggleModal}
+            movieVideo={movieVideo}
+          />
+
+          {/* {modalIsOpen && (
             <ModalVideo
               isOpen={modalIsOpen}
-              onClose={closeModal}
+              onClose={toggleModal}
               movieVideo={movieVideo}
             />
-          )}
+          )} */}
         </>
       )}
     </>
