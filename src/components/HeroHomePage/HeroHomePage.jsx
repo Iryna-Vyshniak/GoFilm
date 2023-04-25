@@ -9,7 +9,8 @@ import {
 import HeroPoster from 'assets/hero-poster.jpeg';
 
 export const HeroHomePage = ({ movies }) => {
-  const { poster_path } = movies[Math.floor(Math.random() * 20)];
+  const poster_path = movies[Math.floor(Math.random() * 20)]?.poster_path;
+  // const {poster_path} = movies[Math.floor(Math.random() * 20)];
   return (
     <>
       <SectionHero>
