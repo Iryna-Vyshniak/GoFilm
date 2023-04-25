@@ -95,6 +95,7 @@ const Home = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
+            marginBottom="30px"
           >
             <Title title="Top Rated Movies" />
             <Grid2 container spacing={1} padding="8px">
