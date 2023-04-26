@@ -25,7 +25,7 @@ export const GenresSelect = ({ onSelect }) => {
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
         const genresData = await getGenresMovies();
-        console.log(genresData);
+        //console.log(genresData);
         setGenres(genresData);
       } catch (error) {
         setError('Something went wrong, reload the page, it might help 🥹');
@@ -48,22 +48,13 @@ export const GenresSelect = ({ onSelect }) => {
         options={options}
         isLoading={isLoading}
         onChange={option => onSelect(option.value)}
-        placeholder="Choose genres"
-        autoFocus
-        closeMenuOnSelect={false}
+        //placeholder="Choose genres"
+        // autoFocus
+        //closeMenuOnSelect={false}
         components={animatedComponents}
-        isMulti
+        // isMulti
         className="react-select-container genres"
         classNamePrefix="react-select"
-        /*  theme={theme => ({
-          ...theme,
-          borderRadius: 0,
-          colors: {
-            ...theme.colors,
-            primary25: '#B9E4C9',
-            primary: '#FD5523',
-          },
-        })} */
       />
       {/*  <MovieGalleryByGenres movies={fetchMovies()} /> */}
       {error && !isLoading && (
