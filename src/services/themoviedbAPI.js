@@ -110,6 +110,28 @@ export const getGenresMovies = async () => {
     throw new Error('Oops, there is no movie');
   }
 };
+export const getMoviesWithGenres = async movieId => {
+  try {
+    const { data } = await axios.get(
+      `/discover/movie?with_genres=${movieId}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`
+    );
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
+
+// export const getGenresMovies = async controller => {
+//   try {
+//     const { data } = await axios.get(`genre/movie/list`, {
+//       signal: controller.signal,
+//     });
+//     return data.genres;
+//   } catch (error) {
+//     throw new Error('Oops, there is no movie');
+//   }
+// };
+
 export const getActorsPopular = async () => {
   try {
     const { data } = await axios.get(`person/popular`);
