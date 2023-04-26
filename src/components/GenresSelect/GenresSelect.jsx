@@ -14,6 +14,33 @@ export const GenresSelect = ({ onSelect }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const customStyles = {
+    option: (defaultStyles, state) => ({
+      ...defaultStyles,
+      fontSize: '14px',
+      color: state.isSelected ? '#212529' : '#fd5523',
+      backgroundColor: state.isSelected
+        ? 'rgba(185, 228, 201, 0.773)'
+        : '#FFFBE6',
+    }),
+
+    control: defaultStyles => ({
+      ...defaultStyles,
+      backgroundColor: 'rgba(185, 228, 201, 0.773)',
+      border: 'none',
+      boxShadow: 'none',
+    }),
+    singleValue: defaultStyles => ({
+      ...defaultStyles,
+      color: '#FFF',
+      backgroundColor: '#fd5523',
+      borderRadius: '30px',
+      maxWidth: '45%',
+      padding: '5px 10px',
+      marginLeft: '30px',
+    }),
+  };
+
   // genres
   useEffect(() => {
     // const abortController = new AbortController();
@@ -48,13 +75,14 @@ export const GenresSelect = ({ onSelect }) => {
         options={options}
         isLoading={isLoading}
         onChange={option => onSelect(option.value)}
-        placeholder="Choose genres"
+        //placeholder="Choose genres"
         // autoFocus
         closeMenuOnSelect={false}
         components={animatedComponents}
         // isMulti
         className="react-select-container"
         classNamePrefix="react-select"
+        styles={customStyles}
       />
       {/*  <MovieGalleryByGenres movies={fetchMovies()} /> */}
       {error && !isLoading && (
