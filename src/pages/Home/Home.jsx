@@ -14,8 +14,8 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-cards';
 import 'swiper/css/effect-coverflow';
-
 import { Autoplay, EffectCoverflow } from 'swiper';
+
 import { CardFilm } from 'components/CardFilm/CardFilm';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
@@ -150,7 +150,7 @@ const Home = () => {
           <Pagination
             handlePageClick={handlePageClick}
             pages={totalPages}
-            currentPage={page - 1}
+            currentPage={page}
           />
         </>
       )}
