@@ -6,7 +6,7 @@ import {
   HeroContainer,
   SectionHero,
 } from './HeroHomePage.styled';
-import HeroPoster from 'assets/hero-poster.jpeg';
+import HeroPoster from 'assets/heroBanner.jpg';
 
 export const HeroHomePage = ({ movies }) => {
   const poster_path = movies[Math.floor(Math.random() * 20)]?.poster_path;
