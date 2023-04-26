@@ -6,7 +6,7 @@ const Pagination = ({ handlePageClick, pages, currentPage }) => {
   //console.log(pages);
   return (
     <Paginate
-      initialPage={currentPage}
+      initialPage={currentPage - 1}
       nextLabel="»"
       onPageChange={handlePageClick}
       pageCount={pages}
