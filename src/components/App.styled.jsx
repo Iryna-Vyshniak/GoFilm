@@ -34,11 +34,6 @@ export const ModalDescr = styled.p`
 `;
 
 export const BtnScrollToTop = styled(ScrollToTop)`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
- */
-
   padding: 8px;
   width: 44px;
   background-color: rgba(185, 228, 201, 0.5);
