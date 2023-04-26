@@ -54,7 +54,7 @@ const MovieDetails = () => {
         setIsLoading(true);
         setError(false);
         const data = await getMoviesDetailsById(movieId);
-        console.log(data);
+        //console.log(data);
         setMovieDetails(data);
       } catch (error) {
         <ImageErrorView message="Oops, mistake! Please try again" />;
