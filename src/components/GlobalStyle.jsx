@@ -103,4 +103,69 @@ padding: 30px 0;
 }
 
 
+/* SELECT */
+.react-select__menu-list{
+            background-color: rgba(185, 228, 201, 0.773);
+            color: #000;
+             font-size: 14px;
+        }
+        .react-select__option{
+           
+            font-weight: 700;
+        }
+        .react-select__option:hover{
+            background-color: #FD5523;
+            color: #fff;
+        }
+        .react-select-container {
+            &.genres {
+                width: 100%;
+                @media screen and (min-width: 768px) {
+                    max-width: 500px;
+                    min-width: 250px;
+                }
+            }
+            }
+            .react-select__control {
+                border: 0;
+                outline: 0;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.212);
+                border-radius: 20px;
+ font-size: 14px;
+
+                .react-select__value-container {
+                    .react-select__placeholder,
+                    .react-select__input-container {
+                        color: #fff;
+                        margin: 0 10px;
+                    }
+                }
+                .react-select__single-value {
+                    color: #fff;
+                }
+                .react-select__multi-value {
+                    background-color: #FD5523;
+                    border-radius: 10px;
+                     color: #fff;
+                    .react-select__multi-value__label {
+                        color: #fff;
+                    }
+                    .react-select__multi-value__remove {
+                        background-color: transparent;
+                        color: rgb(169, 32, 32);
+                        cursor: pointer;
+                        &:hover {
+                            color: #37966F;
+                        }
+                    }
+                }
+            }
+            .react-select__menu {
+                top: 40px;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    
 `;
