@@ -26,7 +26,11 @@ import {
 
 import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
-import { getActorsPopular, getMoviesByQuery } from 'services/themoviedbAPI';
+import {
+  getActorsPopular,
+  getMoviesByQuery,
+  getMoviesWithGenres,
+} from 'services/themoviedbAPI';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 
 // CAROUSEL SWIPER IMPORT
@@ -43,19 +47,27 @@ import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
 import HeroPoster from 'assets/hero-poster.jpeg';
 import ActorsBg from 'assets/actors-bg.png';
+import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [actors, setActors] = useState([]);
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  const [data, setData] = useState([]);
+
   //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+  // select
+  // const { movieId } = useParams();
+  // console.log(movieId); => undefined
 
+  // movies
   useEffect(() => {
     if (!query) return;
 
@@ -82,6 +94,7 @@ const Movies = () => {
     })();
   }, [query, page]);
 
+  // actors
   useEffect(() => {
     (async () => {
       try {
@@ -104,8 +117,6 @@ const Movies = () => {
     return <div>Loading...</div>;
   }
 
-  //console.log(movies);
-
   const updateQueryString = inputValue => {
     if (inputValue === query) {
       return toast.warn(
@@ -123,8 +134,25 @@ const Movies = () => {
     setPage(prevPage => prevPage + 1);
   };
 
-  //console.log(films);
+  // ОTРИМАННЯ ФІЛЬМІВ ЗА ЖАНРАМИ
+  const fetchMovies = async movieId => {
+    try {
+      setIsLoading(true);
+      setError(false);
+      const moviesData = await getMoviesWithGenres(movieId);
+      // console.log(movieId);
+      // console.log(moviesData.results);
 
+      setData(moviesData.results);
+    } catch (error) {
+      setData([]);
+      setError(<ImageErrorView message="Oops, mistake! Please try again" />);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  //console.log(data);
   return (
     <>
       {/* <HeroHomePage movies={movies} /> */}
@@ -140,7 +168,12 @@ const Movies = () => {
             <GradientBlockBottom></GradientBlockBottom>
           </HeroContainer>
         </SectionHero>
+
+        {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar onSubmit={updateQueryString} />
+        <GenresSelect onSelect={fetchMovies} />
+        <MovieGallery movies={data} />
+
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
