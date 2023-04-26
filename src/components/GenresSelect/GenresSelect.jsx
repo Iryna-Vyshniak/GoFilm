@@ -43,23 +43,23 @@ export const GenresSelect = ({ onSelect }) => {
   }));
 
   return (
-    <div>
+    <>
       <Select
         options={options}
         isLoading={isLoading}
         onChange={option => onSelect(option.value)}
-        //placeholder="Choose genres"
+        placeholder="Choose genres"
         // autoFocus
-        //closeMenuOnSelect={false}
+        closeMenuOnSelect={false}
         components={animatedComponents}
         // isMulti
-        className="react-select-container genres"
+        className="react-select-container"
         classNamePrefix="react-select"
       />
       {/*  <MovieGalleryByGenres movies={fetchMovies()} /> */}
       {error && !isLoading && (
         <ImageErrorView message="Oops, mistake... Please try again" />
       )}
-    </div>
+    </>
   );
 };
