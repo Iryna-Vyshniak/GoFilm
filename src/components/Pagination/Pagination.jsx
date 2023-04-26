@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 
 const Pagination = ({ handlePageClick, pages, currentPage }) => {
   //console.log(pages);
+  /* if (currentPage === 1) {
+    return currentPage;
+  } else {
+    currentPage = currentPage - 1;
+  } */
   return (
     <Paginate
       initialPage={currentPage - 1}
