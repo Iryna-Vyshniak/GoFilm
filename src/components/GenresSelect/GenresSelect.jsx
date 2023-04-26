@@ -77,6 +77,8 @@ export const GenresSelect = ({ onSelect }) => {
         onChange={option => onSelect(option.value)}
         placeholder="Select genres..."
         components={animatedComponents}
+        // isClearable={true}
+        // isMulti={false}
         styles={customStyles}
         className="react-select-container"
         classNamePrefix="react-select"
