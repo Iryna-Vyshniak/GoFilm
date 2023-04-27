@@ -88,7 +88,7 @@ export const ReleaseDate = styled.p`
 export const CircleRating = styled.div`
   position: absolute;
   bottom: 24px;
-  left: 10px;
+  right: 10px;
 
   display: flex;
   align-items: center;
@@ -114,4 +114,10 @@ export const Stars = styled.div`
   border-radius: 8px;
   background-color: transparent;
   backdrop-filter: blur(7.5px);
+`;
+
+export const GenresBlock = styled.div`
+  position: absolute;
+  bottom: 34px;
+  left: 10px;
 `;
