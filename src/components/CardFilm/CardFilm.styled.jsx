@@ -72,7 +72,7 @@ export const MovieTitle = styled.h2`
 
 export const CircleRating = styled.div`
   position: absolute;
-  bottom: 4px;
+  bottom: 42px;
   left: 10px;
 
   display: flex;
