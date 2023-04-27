@@ -74,15 +74,13 @@ export const GenresSelect = ({ onSelect }) => {
       <Select
         options={options}
         isLoading={isLoading}
-        onChange={option => onSelect(option.value)}
+        onChange={option => (!option ? '' : onSelect(option.value))}
         placeholder="Select genres..."
         components={animatedComponents}
-        // isClearable={true}
-        // isMulti={false}
+        isClearable={true}
         styles={customStyles}
         className="react-select-container"
         classNamePrefix="react-select"
-        //closeMenuOnSelect={false}
       />
       {error && !isLoading && (
         <ImageErrorView message="Oops, mistake... Please try again" />
