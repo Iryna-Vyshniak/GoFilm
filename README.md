@@ -6,6 +6,9 @@ Individual Learning Project.
 
 Application for searching and storage movies.
 
+Welcome to my first React Project! I'm working on this project to gain more
+knowledge and practice my React skills.
+
 Display popular movies with using themoviedb.org API. React, React-Router, React
 Player, React Modal, React Circular Progressbar, React Paginate, Swiper etc.
 
