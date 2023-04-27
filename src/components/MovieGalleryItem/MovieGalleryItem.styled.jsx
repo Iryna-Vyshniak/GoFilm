@@ -101,3 +101,17 @@ export const CircleRating = styled.div`
   border-radius: 50%;
   padding: 2px;
 `;
+export const Stars = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding-left: ${({ theme }) => theme.space[1]}px;
+  padding-right: ${({ theme }) => theme.space[1]}px;
+  padding-top: ${({ theme }) => theme.space[0]}px;
+  padding-bottom: ${({ theme }) => theme.space[0]}px;
+  width: 50%;
+  height: 22px;
+  border-radius: 8px;
+  background-color: transparent;
+  backdrop-filter: blur(7.5px);
+`;
