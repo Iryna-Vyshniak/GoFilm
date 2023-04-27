@@ -172,11 +172,11 @@ const MovieDetails = () => {
             <WrapperDetails>
               {/* назва фільму */}
               <MainTitle>
-                {original_title || original_name}{' '}
+                {original_title || original_name}
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
               {/* rating stars */}
-              {vote_average !== 0 && (
+              {vote_average && vote_average !== 0 && (
                 <Rating
                   name="read-only"
                   defaultValue={(vote_average / 10) * 5}
@@ -196,7 +196,7 @@ const MovieDetails = () => {
 
               {/* рейтинг фільму */}
               <VotePlayVideoBox>
-                {vote_average !== 0 && (
+                {vote_average && vote_average !== 0 && (
                   <CircleRating>
                     <RatingProgressbar rating={vote_average?.toFixed(1)} />
                   </CircleRating>
