@@ -38,6 +38,9 @@ export const MenuItems = styled.ul`
 `;
 
 export const MenuItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all ease 0.3s;
   cursor: pointer;
   font-size: 12px;
@@ -114,4 +117,25 @@ export const Separator = styled.span`
   padding: 0 0 0 10px;
   color: #fff;
   font-weight: 500;
+`;
+
+export const LinkToSupport = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fd5523;
+  text-shadow: 0 0.4px 0.4px #fff;
+  font-weight: 500;
+  :hover {
+    border-radius: 4px;
+    background: linear-gradient(to bottom, #005bbb 40%, #ffd500 60%);
+  }
+`;
+
+export const LogoProject = styled.img`
+  display: block;
+  width: 100%;
+  height: 32px;
 `;
