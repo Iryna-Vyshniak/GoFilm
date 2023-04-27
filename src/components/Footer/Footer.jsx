@@ -10,11 +10,17 @@ import {
   ContentWrapper,
   FooterBlock,
   InfoText,
+  LinkToSupport,
   MenuItem,
   MenuItems,
   Separator,
   SocialIcons,
 } from './Footer.styled';
+
+import Save from 'assets/save@2x.png';
+import Action from 'assets/action@2x.png';
+import Hope from 'assets/hope@2x.png';
+import World from 'assets/world@2x.png';
 
 const Footer = () => {
   return (
@@ -22,18 +28,52 @@ const Footer = () => {
       <ContentWrapper>
         <MenuItems>
           <MenuItem>
-            About <Separator>|</Separator>
+            <LinkToSupport
+              href="https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis"
+              aria-label="support ukrainian children"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={Save} alt="Project Save the Children" width="100" />
+              Save the Children
+            </LinkToSupport>
+            <Separator>|</Separator>
           </MenuItem>
           <MenuItem>
-            Contact Us <Separator>|</Separator>
+            <LinkToSupport
+              href="https://www.wvi.org/emergencies/ukraine"
+              aria-label="support ukrainians"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={World} alt="Project World Vision" width="80" />
+              World Vision
+            </LinkToSupport>
+            <Separator>|</Separator>
           </MenuItem>
           <MenuItem>
-            Terms Of Use <Separator>|</Separator>
+            <LinkToSupport
+              href="https://www.projecthope.org/country/ukraine/"
+              aria-label="support ukrainians"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={Hope} alt="Project HOPE" width="80" />
+              Project HOPE
+            </LinkToSupport>
+            <Separator>|</Separator>
           </MenuItem>
           <MenuItem>
-            Privacy-Policy <Separator>|</Separator>
+            <LinkToSupport
+              href="https://www.actionagainsthunger.org/location/europe/ukraine/"
+              aria-label="support ukrainians"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={Action} alt="Action Against Hunger" width="80" />
+              Action Against Hunger
+            </LinkToSupport>
           </MenuItem>
-          <MenuItem>FAQ</MenuItem>
         </MenuItems>
         <InfoText>
           GoFilm - the best choice to figure out all one about movie which you
