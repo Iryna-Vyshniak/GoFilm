@@ -7,9 +7,10 @@ import {
   ReleaseDate,
 } from './MovieGalleryItem.styled';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
-import PropTypes from 'prop-types';
+import NoPoster from 'assets/no-poster.jpg';
 
 export const MovieGalleryItem = ({
   movie: { id, poster_path, original_title, release_date, vote_average },
@@ -24,7 +25,7 @@ export const MovieGalleryItem = ({
             src={
               poster_path
                 ? `https://image.tmdb.org/t/p/w300${poster_path}`
-                : `https://astoriamuseums.org/wp-content/uploads/2020/10/OFM-poster-not-available.png`
+                : NoPoster
             }
             alt={original_title}
             width="200"
