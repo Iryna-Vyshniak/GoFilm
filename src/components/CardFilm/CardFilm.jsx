@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Rating } from '@mui/material';
 import PropTypes from 'prop-types';
 import NoPoster from 'assets/no-poster.jpg';
 import { CircleRating, MovieListItem, MoviePoster } from './CardFilm.styled';
@@ -23,9 +24,18 @@ export const CardFilm = ({
           />
         </MoviePoster>
         {vote_average !== 0 && (
-          <CircleRating>
-            <RatingProgressbar rating={vote_average.toFixed(1)} />
-          </CircleRating>
+          <>
+            <CircleRating>
+              <RatingProgressbar rating={vote_average.toFixed(1)} />
+            </CircleRating>
+            <Rating
+              name="read-only"
+              defaultValue={(vote_average / 10) * 5}
+              precision={0.5}
+              size="large"
+              readOnly
+            />
+          </>
         )}
       </Link>
     </MovieListItem>
