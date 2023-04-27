@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MovieListItem = styled.li`
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,8 +73,8 @@ export const MovieTitle = styled.h2`
 
 export const CircleRating = styled.div`
   position: absolute;
-  bottom: 42px;
-  left: 10px;
+  top: 10px;
+  right: 10px;
 
   display: flex;
   align-items: center;
@@ -85,4 +86,10 @@ export const CircleRating = styled.div`
   text-shadow: 0 0.3px 0.3px #000;
   border-radius: 50%;
   padding: 2px;
+`;
+
+export const GenresBlock = styled.div`
+  position: absolute;
+  bottom: 48px;
+  right: 0;
 `;
