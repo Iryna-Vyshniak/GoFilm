@@ -158,7 +158,6 @@ export const BlockInfoActors = styled.div`
   position: relative;
   z-index: 50;
   margin-bottom: -110px;
-  margin-top: 30px;
 
   padding-top: 84px;
 `;
