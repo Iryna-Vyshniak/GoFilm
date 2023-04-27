@@ -176,7 +176,7 @@ const MovieDetails = () => {
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
               {/* rating stars */}
-              {vote_average && (
+              {vote_average && vote_average > 0 && (
                 <Rating
                   name="read-only"
                   defaultValue={(vote_average / 10) * 5}
@@ -196,12 +196,10 @@ const MovieDetails = () => {
 
               {/* рейтинг фільму */}
               <VotePlayVideoBox>
-                {vote_average && vote_average !== 0 ? (
+                {vote_average && vote_average > 0 && (
                   <CircleRating>
-                    <RatingProgressbar rating={vote_average.toFixed(1)} />
+                    <RatingProgressbar rating={vote_average?.toFixed(1)} />
                   </CircleRating>
-                ) : (
-                  ''
                 )}
                 {/* трейлер фільму */}
                 {movieVideo.length > 0 && (
@@ -218,18 +216,18 @@ const MovieDetails = () => {
               <h2>Overview</h2>
               <p>{overview}</p>
               {/* продакшин компанії - логотипи */}
-              {production_companies && (
+              {production_companies && production_companies.length > 0 && (
                 <>
                   <h2>Production Companies</h2>
                   <MovieList>
-                    {production_companies.map(
+                    {production_companies?.map(
                       (production, idx) =>
                         production.logo_path !== null && (
                           <li key={idx}>
                             <ProductionLogo
                               src={`https://image.tmdb.org/t/p/w500${production.logo_path}`}
                               alt="company logo"
-                              width="80"
+                              width="120"
                             />
                           </li>
                         )
