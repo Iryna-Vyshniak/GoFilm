@@ -3,6 +3,14 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { notifyOptions } from 'utils/notify';
 import 'react-toastify/dist/ReactToastify.css';
+// CAROUSEL SWIPER IMPORT
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/scrollbar';
+import { Autoplay, Scrollbar } from 'swiper';
+
+import Grid2 from '@mui/material/Unstable_Grid2';
 
 import {
   ActorName,
@@ -33,21 +41,13 @@ import {
 } from 'services/themoviedbAPI';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 
-// CAROUSEL SWIPER IMPORT
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/scrollbar';
-
-import { Autoplay, Scrollbar } from 'swiper';
-
-import Grid2 from '@mui/material/Unstable_Grid2';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
 import HeroPoster from 'assets/hero-poster.jpeg';
 import ActorsBg from 'assets/actors-bg.png';
 import { GenresSelect } from 'components/GenresSelect/GenresSelect';
+import { Title } from 'components/Title/Title';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -58,14 +58,11 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
-  // select
-  // const { movieId } = useParams();
-  // console.log(movieId); => undefined
 
   // movies
   useEffect(() => {
@@ -80,7 +77,7 @@ const Movies = () => {
       try {
         setIsLoading(true);
         setError(false);
-
+        setData(null);
         const data = await getMoviesByQuery(query, page);
         //console.log(data.results);
         setMovies(prevMovie => [...prevMovie, ...data.results]);
@@ -101,12 +98,11 @@ const Movies = () => {
         setIsLoading(true);
         setError(false);
 
-        const data = await getActorsPopular();
+        const dataActors = await getActorsPopular();
         //console.log(data);
-        setActors(data);
+        setActors(dataActors);
       } catch (error) {
         setError(error);
-        setMovies([]);
       } finally {
         setIsLoading(false);
       }
@@ -134,25 +130,24 @@ const Movies = () => {
     setPage(prevPage => prevPage + 1);
   };
 
-  // ОTРИМАННЯ ФІЛЬМІВ ЗА ЖАНРАМИ
+  // get movies by genres
   const fetchMovies = async movieId => {
     try {
       setIsLoading(true);
       setError(false);
+      setMovies([]);
       const moviesData = await getMoviesWithGenres(movieId);
-      // console.log(movieId);
-      // console.log(moviesData.results);
-
       setData(moviesData.results);
     } catch (error) {
-      setData([]);
+      setData(null);
       setError(<ImageErrorView message="Oops, mistake! Please try again" />);
     } finally {
       setIsLoading(false);
     }
   };
 
-  //console.log(data);
+  // console.log(movies);
+  // console.log(data);
   return (
     <>
       {/* <HeroHomePage movies={movies} /> */}
@@ -168,32 +163,42 @@ const Movies = () => {
             <GradientBlockBottom></GradientBlockBottom>
           </HeroContainer>
         </SectionHero>
-
         {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar onSubmit={updateQueryString} />
         <GenresSelect onSelect={fetchMovies} />
-        <MovieGallery movies={data} />
 
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
+        {!query && data === null && (
+          <InitialStateGallery text="Let`s find movies together!" />
+        )}
+
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
       повідомленням помилки */}
         {error && (
           <ImageErrorView message="Oops, mistake... Please try again" />
         )}
+
         {/* якщо при запиті зображення не знайдені - рендериться дефолтне зображення з повідомленням */}
-        {totalPages === 0 && (
-          <ImageErrorView message="Oops, mistake... Please try again" />
+        {totalPages === 0 && data === null && (
+          <ImageErrorView message="I didn`t find movies. Please try again" />
         )}
 
-        {!query && <InitialStateGallery text="Let`s find movies together!" />}
-        {query && <MovieGallery movies={movies} />}
+        {/* рендер галереї зображень */}
+        {!error && data && (
+          <>
+            <Title title="Trending List Today" />
+            <MovieGallery movies={data} />
+          </>
+        )}
+
+        {!error && query && <MovieGallery movies={movies} />}
         {/* якщо при запиті зображення знайдені, запит не в стадії очікування та ще є сторінки з зображеннями - рендериться кнопка Load More*/}
         {movies.length > 0 && !isLoading && page <= totalPages && (
           <Btn onClick={onLoadMore}>Load More</Btn>
         )}
-        {/* якщо запит успішний  - рендериться галерея зображень */}
-        {!error && actors.length !== 0 && (
+        {/* якщо запит успішний  - рендериться галерея зображень акторів*/}
+        {actors && (
           <>
             <BlockInfoActors>
               <TitleList>List of popular persons</TitleList>
