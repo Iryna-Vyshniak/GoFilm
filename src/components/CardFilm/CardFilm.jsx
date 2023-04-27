@@ -26,7 +26,7 @@ export const CardFilm = ({
         {vote_average !== 0 && (
           <>
             <CircleRating>
-              <RatingProgressbar rating={vote_average.toFixed(1)} />
+              <RatingProgressbar rating={vote_average?.toFixed(1)} />
             </CircleRating>
             <Rating
               name="read-only"
