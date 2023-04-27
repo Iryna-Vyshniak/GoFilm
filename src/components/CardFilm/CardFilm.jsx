@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import PropTypes from 'prop-types';
 import NoPoster from 'assets/no-poster.jpg';
-import { CircleRating, MovieListItem, MoviePoster } from './CardFilm.styled';
+import {
+  CircleRating,
+  GenresBlock,
+  MovieListItem,
+  MoviePoster,
+} from './CardFilm.styled';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
+import { Genres } from 'components/Genres/Genres';
 
 export const CardFilm = ({
-  movie: { id, poster_path, original_title, vote_average },
+  movie: { id, poster_path, original_title, vote_average, genre_ids },
 }) => {
   return (
     <MovieListItem>
@@ -37,6 +43,9 @@ export const CardFilm = ({
             />
           </>
         )}
+        <GenresBlock>
+          <Genres data={genre_ids?.slice(0, 2)} />
+        </GenresBlock>
       </Link>
     </MovieListItem>
   );

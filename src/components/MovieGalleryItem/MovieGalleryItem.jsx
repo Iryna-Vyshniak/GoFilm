@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   CircleRating,
+  GenresBlock,
   MovieListItem,
   MoviePoster,
   MovieTitle,
@@ -13,9 +14,17 @@ import { Rating } from '@mui/material';
 
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import NoPoster from 'assets/no-poster.jpg';
+import { Genres } from 'components/Genres/Genres';
 
 export const MovieGalleryItem = ({
-  movie: { id, poster_path, original_title, release_date, vote_average },
+  movie: {
+    id,
+    poster_path,
+    original_title,
+    release_date,
+    vote_average,
+    genre_ids,
+  },
   state,
 }) => {
   //console.log(movie);
@@ -57,6 +66,9 @@ export const MovieGalleryItem = ({
           </CircleRating>
         )}
       </Link>
+      <GenresBlock>
+        <Genres data={genre_ids?.slice(0, 1)} />
+      </GenresBlock>
     </MovieListItem>
   );
 };
