@@ -8,7 +8,7 @@ import { getGenresMovies } from 'services/themoviedbAPI';
 
 const animatedComponents = makeAnimated();
 
-export const GenresSelect = ({ onSelect }) => {
+export const GenresSelect = ({ onSelect, t }) => {
   const [genres, setGenres] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +55,7 @@ export const GenresSelect = ({ onSelect }) => {
         //console.log(genresData);
         setGenres(genresData);
       } catch (error) {
-        setError('Something went wrong, reload the page, it might help 🥹');
+        setError(`{t('moviesPage.set_error')}`);
       } finally {
         setIsLoading(false);
       }
@@ -75,7 +75,7 @@ export const GenresSelect = ({ onSelect }) => {
         options={options}
         isLoading={isLoading}
         onChange={option => (!option ? '' : onSelect(option.value))}
-        placeholder="Select genres..."
+        placeholder={t('moviesPage.placeholder_genres')}
         components={animatedComponents}
         isClearable={true}
         styles={customStyles}
@@ -83,7 +83,7 @@ export const GenresSelect = ({ onSelect }) => {
         classNamePrefix="react-select"
       />
       {error && !isLoading && (
-        <ImageErrorView message="Oops, mistake... Please try again" />
+        <ImageErrorView message={t('moviesPage.mistake')} />
       )}
     </>
   );
