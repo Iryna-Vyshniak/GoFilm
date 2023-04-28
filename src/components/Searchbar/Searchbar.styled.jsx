@@ -119,6 +119,7 @@ export const SearchFormInput = styled.input`
   letter-spacing: 1.4px;
 
   ::placeholder {
+    text-align: center;
     color: #37966f;
     font-size: 20px;
     font-family: ${props => props.theme.fonts.heading};
