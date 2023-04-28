@@ -20,6 +20,14 @@
     "load_more": "Показати ще",
     "description_persons_list": "Цей список оновлюється щодня",
     "placeholder_search": "Пошук фільмів...",
-    "placeholder_genres": "Обрати за жанрами..."
+    "placeholder_genres": "Обрати за жанрами...",
+    "additional_information": "Додаткова інформація",
+    "back_to_movies": "Назад до фільмів",
+    "cast": "Aкторський склад",
+    "cast_desription": "Інформація про акторський склад не знайдена",
+    "character": "Персонаж:",
+    "reviews": "Відгуки",
+    "reviews_desription": "У нас немає рецензій на цей фільм",
+    "author": "Автор: "
   }
 }
