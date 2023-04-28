@@ -21,6 +21,7 @@ export const Link = styled(StyledLink)`
   color: ${props => props.theme.colors.accent};
   text-shadow: 0 0.4px 0.4px #fff;
   text-transform: uppercase;
+  text-align: center;
 
   background-color: ${props => props.theme.colors.secondary};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
