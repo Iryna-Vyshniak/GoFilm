@@ -33,6 +33,7 @@ import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressba
 import { ModalVideo } from 'components/Modal/Modal';
 
 import HeroPoster from 'assets/hero-poster.jpeg';
+import { useTranslation } from 'react-i18next';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -47,6 +48,7 @@ const MovieDetails = () => {
   //const params = useParams();
   const { movieId } = useParams();
   //console.log(movieId);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -57,7 +59,7 @@ const MovieDetails = () => {
         //console.log(data);
         setMovieDetails(data);
       } catch (error) {
-        <ImageErrorView message="Oops, mistake! Please try again" />;
+        <ImageErrorView message={t('moviesPage.set_error')} />;
       } finally {
         setIsLoading(false);
       }
@@ -65,7 +67,7 @@ const MovieDetails = () => {
 
     (async () => {
       try {
-        const data = await getVideosMovies(movieId);
+        const data = await getVideosMovies(movieId, t);
         //console.log(data);
         if (data.length === 0) {
           return setMovieVideo(data);
@@ -89,7 +91,7 @@ const MovieDetails = () => {
         console.log(error.message);
       }
     })();
-  }, [movieId]);
+  }, [movieId, t]);
 
   if (!movieId) {
     return;
@@ -106,15 +108,6 @@ const MovieDetails = () => {
   const toggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
-
-  // закриття-відривання модалки для перегляду фільму
-  /* function openModal() {
-    setModalIsOpen(true);
-  }
-
-  function closeModal() {
-    setModalIsOpen(false);
-  } */
 
   const {
     poster_path,
@@ -133,7 +126,7 @@ const MovieDetails = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+      {error && <ImageErrorView message={t('moviesPage.mistake')} />}
 
       {!error && (
         <>
@@ -260,22 +253,22 @@ const MovieDetails = () => {
           </WrapperMovie>
           {/* внутрішня маршрутизація на кастинг та огляд фільму */}
           <MovieInfo>
-            <h1>Additional information</h1>
+            <h1>{t('moviesPage.additional_information')}</h1>
             <LinkToBack
               to={backLinkLocationRef.current}
-              children="Back to Movies"
+              children={t('moviesPage.back_to_movies')}
             />
             <nav>
               <NavLink to="cast" state={location.state}>
-                Cast
+                {t('moviesPage.cast')}
               </NavLink>
               <NavLink to="reviews" state={location.state}>
-                Reviews
+                {t('moviesPage.reviews')}
               </NavLink>
             </nav>
           </MovieInfo>
 
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div> {t('loading')}</div>}>
             <Outlet />
           </Suspense>
           {/* плеєр для перегляду трейлера фільму - в модальному вікні
