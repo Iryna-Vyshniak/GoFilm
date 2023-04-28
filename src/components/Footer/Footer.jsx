@@ -22,7 +22,7 @@ import Action from 'assets/action@2x.png';
 import Hope from 'assets/hope@2x.png';
 import World from 'assets/world@2x.png';
 
-const Footer = () => {
+const Footer = ({ t }) => {
   return (
     <FooterBlock>
       <ContentWrapper>
@@ -75,10 +75,7 @@ const Footer = () => {
             </LinkToSupport>
           </MenuItem>
         </MenuItems>
-        <InfoText>
-          GoFilm - the best choice to figure out all one about movie which you
-          interested in and latest news from the world of cinema
-        </InfoText>
+        <InfoText>{t('homePage.footer_slogan')}</InfoText>
         <SocialIcons>
           <Btn href="/">
             <FaFacebookF size="16px" fill="#4267B2" />
