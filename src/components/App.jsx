@@ -8,7 +8,6 @@ import { GlobalStyle } from './GlobalStyle';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PageNotFound } from './PageNotFound/PageNotFound';
 import ScrollToTop from 'react-scroll-up';
-//import { BtnScrollToTop } from './App.styled';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
