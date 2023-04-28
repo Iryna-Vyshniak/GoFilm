@@ -3,11 +3,11 @@ export const theme = {
     black: '#000',
     white: '#fff',
     text: '#356859',
-    background: '#FFFBE6',
+    background: '#fffdf5',
     primary: '#37966F',
     secondary: '#B9E4C9',
     accent: '#FD5523',
-    muted: '#FFFBE6',
+    muted: '#fffdf5',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
