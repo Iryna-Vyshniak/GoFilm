@@ -19,6 +19,7 @@ import { Autoplay, EffectCoverflow } from 'swiper';
 import { CardFilm } from 'components/CardFilm/CardFilm';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -29,6 +30,7 @@ const Home = () => {
   const [error, setError] = useState(false);
 
   const page = Number(searchParams.get('page'));
+  const { t } = useTranslation();
 
   //console.log(page);
 
@@ -97,7 +99,7 @@ const Home = () => {
             alignItems="center"
             marginBottom="30px"
           >
-            <Title title="Top Rated Movies" />
+            <Title title={t('homePage.top_title')} />
             <Grid2 container spacing={1} padding="8px">
               <Swiper
                 effect={'coverflow'}
@@ -145,7 +147,7 @@ const Home = () => {
               </Swiper>
             </Grid2>
           </Grid2>
-          <Title title="Trending List Today" />
+          <Title title={t('homePage.trending_title')} />
           <MovieGallery movies={movies} />
           <Pagination
             handlePageClick={handlePageClick}
