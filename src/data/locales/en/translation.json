@@ -1,9 +1,25 @@
 {
   "title": "Title",
   "language": "Language",
+  "home_link": "Home",
+  "movie_link": "Movie",
+  "loading": "Loading...",
   "homePage": {
     "top_title": "Top Rated Movies",
     "trending_title": "Trending List Today",
     "footer_slogan": "GoFilm - the best choice to figure out all one about movie which you interested in and latest news from the world of cinema"
+  },
+  "moviesPage": {
+    "toast_warn": "We already found movies. Please, enter another phrase",
+    "mistake": "Oops, mistake! Please try again",
+    "set_error": "Something went wrong, reload the page, it might help 🥹",
+    "not_found": "I didn`t find movies. Please try again",
+    "title": "Let`s find movies together!",
+    "trend_list": "Trending List Today",
+    "persons_list": "List of popular persons",
+    "load_more": "Load More",
+    "description_persons_list": "This list updates daily",
+    "placeholder_search": "Search movies...",
+    "placeholder_genres": "Select genres..."
   }
 }
