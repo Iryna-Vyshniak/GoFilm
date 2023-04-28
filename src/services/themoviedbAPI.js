@@ -5,11 +5,12 @@ axios.defaults.params = {
   api_key: `80849c20aa63241eb028c4e7b7d0f3a8`,
 };
 
-export const getPopularMovies = async (page = 1) => {
+export const getPopularMovies = async (page = 1, lng) => {
   try {
     const { data } = await axios.get('/trending/movie/day', {
       params: {
         page,
+        language: lng,
       },
     });
     return data;
@@ -17,11 +18,11 @@ export const getPopularMovies = async (page = 1) => {
     throw new Error('Oops, there is no movies');
   }
 };
-export const getTopRatedMovies = async () => {
+export const getTopRatedMovies = async lng => {
   try {
     const { data } = await axios.get(`/movie/top_rated`, {
       params: {
-        language: 'en-US',
+        language: lng,
       },
     });
     return data;
@@ -30,14 +31,14 @@ export const getTopRatedMovies = async () => {
   }
 };
 
-export const getMoviesByQuery = async (query, page = 1) => {
+export const getMoviesByQuery = async (query, page = 1, lng) => {
   try {
     const { data } = await axios.get('/search/movie', {
       params: {
         query,
         page,
         include_adult: false,
-        language: 'en-US',
+        language: lng,
       },
     });
     return data;
@@ -46,12 +47,12 @@ export const getMoviesByQuery = async (query, page = 1) => {
   }
 };
 
-export const getMoviesDetailsById = async movieId => {
+export const getMoviesDetailsById = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`movie/${movieId}`, {
       params: {
         id: movieId,
-        language: 'en-US',
+        language: lng,
       },
     });
     return data;
@@ -60,12 +61,12 @@ export const getMoviesDetailsById = async movieId => {
   }
 };
 
-export const getMoviesCast = async movieId => {
+export const getMoviesCast = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`movie/${movieId}/credits`, {
       params: {
         id: movieId,
-        language: 'en-US',
+        language: lng,
       },
     });
     return data.cast;
@@ -74,12 +75,12 @@ export const getMoviesCast = async movieId => {
   }
 };
 
-export const getMoviesReviews = async movieId => {
+export const getMoviesReviews = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`movie/${movieId}/reviews`, {
       params: {
         id: movieId,
-        language: 'en-US',
+        language: lng,
       },
     });
     return data.results;
@@ -88,12 +89,12 @@ export const getMoviesReviews = async movieId => {
   }
 };
 
-export const getVideosMovies = async movieId => {
+export const getVideosMovies = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`movie/${movieId}/videos`, {
       params: {
         id: movieId,
-        language: 'en-US',
+        language: lng,
       },
     });
     return data.results;
@@ -102,18 +103,22 @@ export const getVideosMovies = async movieId => {
   }
 };
 
-export const getGenresMovies = async () => {
+export const getGenresMovies = async lng => {
   try {
-    const { data } = await axios.get(`genre/movie/list`);
+    const { data } = await axios.get(`genre/movie/list`, {
+      params: {
+        language: lng,
+      },
+    });
     return data.genres;
   } catch (error) {
     throw new Error('Oops, there is no movie');
   }
 };
-export const getMoviesWithGenres = async movieId => {
+export const getMoviesWithGenres = async (movieId, lng) => {
   try {
     const { data } = await axios.get(
-      `/discover/movie?with_genres=${movieId}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`
+      `/discover/movie?with_genres=${movieId}&language=${lng}&sort_by=popularity.desc&include_adult=false&page=1`
     );
     return data;
   } catch (error) {
