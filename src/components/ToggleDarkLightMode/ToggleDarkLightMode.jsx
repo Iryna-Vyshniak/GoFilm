@@ -4,14 +4,14 @@ import { ReactComponent as SunIcon } from 'assets/sun.svg';
 import { ToggleContainer } from './ToggleDarkLightMode.styled';
 
 export const lightTheme = {
-  body: '#FFFBE6',
+  body: '#fffdf5',
   text: '#000',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
   gradientHeroBanner:
-    'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 251, 230, 1) 100%)',
+    'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 253, 245, 1) 100%)',
   backgroundHeaderFooter: '#b9e4c9',
-  gradientBlock: 'rgba(255, 251, 230, 0.8)',
+  gradientBlock: 'rgba(255, 253, 245, 0.8)',
   cardsTextColor: '#FD5523',
   textShadow: '0 0.4px 0.4px #fff',
   buttonShadow: '-3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773)',
