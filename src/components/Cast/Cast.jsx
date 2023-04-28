@@ -15,6 +15,7 @@ import {
   Wrap,
 } from './Cast.styled';
 import Avatar from 'assets/avatar.png';
+import { useTranslation } from 'react-i18next';
 
 const Cast = () => {
   //const params = useParams();
@@ -23,6 +24,7 @@ const Cast = () => {
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -32,7 +34,7 @@ const Cast = () => {
         const data = await getMoviesCast(movieId);
         setCastList(data);
       } catch (error) {
-        console.log(error.message);
+        setError(`{t('moviesPage.set_error')}`);
       } finally {
         setIsLoading(false);
       }
@@ -40,18 +42,18 @@ const Cast = () => {
   }, [movieId]);
 
   if (!castList) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   return (
     <>
-      <Title title="Cast" />
+      <Title title={t('moviesPage.cast')} />
       {isLoading && <Loader />}
-      {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+      {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {error && !isLoading && (
-        <span style={{ color: 'red' }}>Actor info not found</span>
+        <span style={{ color: 'red' }}>{t('moviesPage.cast_desription')}</span>
       )}
-      {!error && (
+      {castList.length !== 0 ? (
         <CastList>
           {castList.map(actor => (
             <CastItem key={actor.id}>
@@ -70,12 +72,17 @@ const Cast = () => {
               <Wrap>
                 <p>{actor.name}</p>
                 <p>
-                  Character: <MovieHero>{actor.character}</MovieHero>
+                  {t('moviesPage.character')}
+                  <MovieHero>{actor.character}</MovieHero>
                 </p>
               </Wrap>
             </CastItem>
           ))}
         </CastList>
+      ) : (
+        <div style={{ padding: '26px', textAlign: 'center' }}>
+          {t('moviesPage.cast_desription')}
+        </div>
       )}
     </>
   );
