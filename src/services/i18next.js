@@ -31,7 +31,6 @@ i18n
     detection: {
       order: ['path', 'localStorage', 'cookie', 'htmlTag', 'subdomain'],
       cashes: ['localStorage', 'cookie'],
-      //lookupLocalStorage: I18
     },
     backend: {
       loadPath: '../data/locales/{{lng}}/translation.json',
