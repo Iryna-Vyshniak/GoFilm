@@ -20,6 +20,14 @@
     "load_more": "Load More",
     "description_persons_list": "This list updates daily",
     "placeholder_search": "Search movies...",
-    "placeholder_genres": "Select genres..."
+    "placeholder_genres": "Select genres...",
+    "additional_information": "Additional information",
+    "back_to_movies": "Back to Movies",
+    "cast": "Cast",
+    "cast_desription": "Actor info not found",
+    "character": "Character: ",
+    "reviews": "Reviews",
+    "reviews_desription": "We don't have any reviews for this movie",
+    "author": "Author: "
   }
 }
