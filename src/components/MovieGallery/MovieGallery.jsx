@@ -3,7 +3,7 @@ import { MovieGalleryItem } from 'components/MovieGalleryItem/MovieGalleryItem';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-export const MovieGallery = ({ movies }) => {
+export const MovieGallery = ({ movies}) => {
   const location = useLocation();
   //console.log(movies);
   return (
