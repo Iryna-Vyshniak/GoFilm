@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { notifyOptions } from 'utils/notify';
 import PropTypes from 'prop-types';
 
-export const Searchbar = ({ onSubmit }) => {
+export const Searchbar = ({ onSubmit, t }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const { query } = e.target.elements;
@@ -25,7 +25,7 @@ export const Searchbar = ({ onSubmit }) => {
       <SearchFormInput
         type="text"
         autoFocus
-        placeholder="Search movies..."
+        placeholder={t('moviesPage.placeholder_search')}
         name="query"
       />
       <SearchFormBtn type="submit">
