@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+// import i18next from 'i18next';
 import { HomeBlock } from './Home.styled';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
@@ -7,6 +8,7 @@ import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { getPopularMovies, getTopRatedMovies } from 'services/themoviedbAPI';
+// import { langs } from 'services/i18next';
 
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -41,7 +43,7 @@ const Home = () => {
         setError(false);
 
         const data = await getPopularMovies(page);
-        //console.log(data);
+        // console.log(langs);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
@@ -148,7 +150,7 @@ const Home = () => {
             </Grid2>
           </Grid2>
           <Title title={t('homePage.trending_title')} />
-          <MovieGallery movies={movies} />
+          <MovieGallery movies={movies} t={t} />
           <Pagination
             handlePageClick={handlePageClick}
             pages={totalPages}
