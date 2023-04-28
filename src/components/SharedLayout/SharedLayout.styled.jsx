@@ -8,8 +8,6 @@ export const Container = styled.div`
   max-width: 100%;
   width: 1200px;
   margin: 0 auto;
-  // padding-left: ${({ theme }) => theme.space[4]}px;
-  // padding-right: ${({ theme }) => theme.space[4]}px;
 
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
@@ -78,5 +76,16 @@ export const Link = styled(NavLink)`
   &.active {
     color: white;
     background-color: #fd5523;
+  }
+`;
+export const LangThemeBlock = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
   }
 `;
