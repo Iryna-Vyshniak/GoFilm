@@ -14,15 +14,16 @@ import {
   ReviewsList,
   Wrap,
 } from './Reviews.styled';
+import { useTranslation } from 'react-i18next';
 
 export const Reviews = () => {
   //const params = useParams();
   const { movieId } = useParams();
   //console.log(movieId);
   const [movieReviews, setMovieReviews] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -32,7 +33,7 @@ export const Reviews = () => {
         const data = await getMoviesReviews(movieId);
         setMovieReviews(data);
       } catch (error) {
-        console.log(error.message);
+        setError(`{t('moviesPage.set_error')}`);
       } finally {
         setIsLoading(false);
       }
@@ -40,14 +41,14 @@ export const Reviews = () => {
   }, [movieId]);
 
   if (!movieReviews) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   return (
     <>
-      <Title title="Reviews" />
+      <Title title={t('moviesPage.reviews')} />
       {isLoading && <Loader />}
-      {error && <ImageErrorView message="Oops, mistake! Please try again" />}
+      {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {movieReviews.length !== 0 ? (
         <ReviewsList>
           {movieReviews.map(review => (
@@ -63,7 +64,10 @@ export const Reviews = () => {
                     alt={review.author}
                   />
                 </ReviewPhotoThumb>
-                <ReviewsAuthor>Author: {review.author}</ReviewsAuthor>
+                <ReviewsAuthor>
+                  {t('moviesPage.author')}
+                  {review.author}
+                </ReviewsAuthor>
               </Wrap>
               <ReviewContent>{review.content}</ReviewContent>
             </ReviewItem>
@@ -71,7 +75,7 @@ export const Reviews = () => {
         </ReviewsList>
       ) : (
         <div style={{ padding: '26px', textAlign: 'center' }}>
-          We don't have any reviews for this movie
+          {t('moviesPage.reviews_desription')}
         </div>
       )}
     </>
