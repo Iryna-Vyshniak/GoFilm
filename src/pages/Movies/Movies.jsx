@@ -48,6 +48,7 @@ import HeroPoster from 'assets/hero-poster.jpeg';
 import ActorsBg from 'assets/actors-bg.png';
 import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 import { Title } from 'components/Title/Title';
+import { useTranslation } from 'react-i18next';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -63,6 +64,7 @@ const Movies = () => {
   //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+  const { t } = useTranslation();
 
   // movies
   useEffect(() => {
@@ -110,16 +112,12 @@ const Movies = () => {
   }, []);
 
   if (!actors) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   const updateQueryString = inputValue => {
     if (inputValue === query) {
-      return toast.warn(
-        `We already found movies for ${inputValue.toUpperCase()}.
-         Please, enter another phrase`,
-        notifyOptions
-      );
+      return toast.warn(`{t('moviesPage.toast_warn')}`, notifyOptions);
     }
     setPage(1);
     setMovies([]);
@@ -140,7 +138,7 @@ const Movies = () => {
       setData(moviesData.results);
     } catch (error) {
       setData(null);
-      setError(<ImageErrorView message="Oops, mistake! Please try again" />);
+      setError(<ImageErrorView message={t('moviesPage.mistake')} />);
     } finally {
       setIsLoading(false);
     }
@@ -164,30 +162,28 @@ const Movies = () => {
           </HeroContainer>
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
-        <Searchbar onSubmit={updateQueryString} />
-        <GenresSelect onSelect={fetchMovies} />
+        <Searchbar onSubmit={updateQueryString} t={t} />
+        <GenresSelect onSelect={fetchMovies} t={t} />
 
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
         {!query && data === null && (
-          <InitialStateGallery text="Let`s find movies together!" />
+          <InitialStateGallery text={t('moviesPage.title')} />
         )}
 
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
       повідомленням помилки */}
-        {error && (
-          <ImageErrorView message="Oops, mistake... Please try again" />
-        )}
+        {error && <ImageErrorView message={t('moviesPage.mistake')} />}
 
         {/* якщо при запиті зображення не знайдені - рендериться дефолтне зображення з повідомленням */}
         {totalPages === 0 && data === null && (
-          <ImageErrorView message="I didn`t find movies. Please try again" />
+          <ImageErrorView message={t('moviesPage.not_found')} />
         )}
 
         {/* рендер галереї зображень */}
         {!error && data && (
           <>
-            <Title title="Trending List Today" />
+            <Title title={t('moviesPage.trend_list')} />
             <MovieGallery movies={data} />
           </>
         )}
@@ -195,16 +191,16 @@ const Movies = () => {
         {!error && query && <MovieGallery movies={movies} />}
         {/* якщо при запиті зображення знайдені, запит не в стадії очікування та ще є сторінки з зображеннями - рендериться кнопка Load More*/}
         {movies.length > 0 && !isLoading && page <= totalPages && (
-          <Btn onClick={onLoadMore}>Load More</Btn>
+          <Btn onClick={onLoadMore}>{t('moviesPage.load_more')}</Btn>
         )}
         {/* якщо запит успішний  - рендериться галерея зображень акторів*/}
         {actors && (
           <>
             <BlockInfoActors>
-              <TitleList>List of popular persons</TitleList>
+              <TitleList>{t('moviesPage.persons_list')}</TitleList>
 
               <SmallText>
-                <small>This list updates daily</small>
+                <small>{t('moviesPage.description_persons_list')}</small>
               </SmallText>
             </BlockInfoActors>
 
