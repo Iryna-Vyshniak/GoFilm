@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import i18next from 'i18next';
+import i18next from 'i18next';
 import { HomeBlock } from './Home.styled';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
@@ -23,6 +23,8 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
 import { useTranslation } from 'react-i18next';
 
+i18next.dir();
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
@@ -43,7 +45,6 @@ const Home = () => {
         setError(false);
 
         const data = await getPopularMovies(page);
-        // console.log(langs);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
@@ -70,6 +71,25 @@ const Home = () => {
       }
     })();
   }, [page]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       setError(false);
+
+  //       const data = await getLanguages();
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   })();
+  // }, []);
+
+  // Отримала список мов (теги ISO 639-1), що використовуються в TMDB. Мені потрібна українська, тому я можу передати в запит language=uk?
+  //37: {iso_639_1: 'uk', english_name: 'Ukrainian', name: 'Український'} , uk-UA
 
   //console.log(movies);
 
