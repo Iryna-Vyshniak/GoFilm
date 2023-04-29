@@ -1,5 +1,5 @@
 {
-  "title": "Title",
+  "title": "GoFilm",
   "language": "Language",
   "home_link": "Home",
   "movie_link": "Movie",
@@ -7,7 +7,7 @@
   "homePage": {
     "top_title": "Top Rated Movies",
     "trending_title": "Trending List Today",
-    "footer_slogan": "GoFilm - the best choice to figure out all one about movie which you interested in and latest news from the world of cinema"
+    "footer_slogan": "GoFilm - all about movies, actors and film industry news"
   },
   "moviesPage": {
     "toast_warn": "We already found movies. Please, enter another phrase",
