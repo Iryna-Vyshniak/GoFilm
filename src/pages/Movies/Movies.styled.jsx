@@ -77,7 +77,6 @@ export const BackdropImg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
   overflow: hidden;
 
   flex: 1 1 auto;
@@ -87,6 +86,7 @@ export const BackdropImg = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: top;
+    opacity: 0.5;
   }
 `;
 export const BgBlockActors = styled.div`
@@ -158,6 +158,7 @@ export const BlockInfoActors = styled.div`
   position: relative;
   z-index: 50;
   margin-bottom: -110px;
+  margin-top: 30px;
 
   padding-top: 84px;
 `;
