@@ -117,7 +117,11 @@ const Movies = () => {
 
   const updateQueryString = inputValue => {
     if (inputValue === query) {
-      return toast.warn(`{t('moviesPage.toast_warn')}`, notifyOptions);
+      return toast.warn(
+        `We already found movies for ${inputValue.toUpperCase()}.
+         Please, enter another phrase`,
+        notifyOptions
+      );
     }
     setPage(1);
     setMovies([]);

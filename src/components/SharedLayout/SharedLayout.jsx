@@ -74,7 +74,7 @@ export const SharedLayout = ({ currentLanguage, languages }) => {
             </LangThemeBlock>
           </Header>
           <main>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>{t('loading')}</div>}>
               <Outlet />
             </Suspense>
           </main>

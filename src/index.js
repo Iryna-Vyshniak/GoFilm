@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import { I18nextProvider } from 'react-i18next';
+// import { I18nextProvider } from 'react-i18next';
 import 'services/i18next';
 
 import { App } from './components/App';
@@ -17,13 +17,13 @@ const loadingMarkup = (
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      <I18nextProvider>
-        <BrowserRouter basename="/goit-react-hw-05-movies">
-          <ThemeProvider theme={theme}>
-            <App />
-          </ThemeProvider>
-        </BrowserRouter>
-      </I18nextProvider>
+      {/*  <I18nextProvider> */}
+      <BrowserRouter basename="/goit-react-hw-05-movies">
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+      {/* </I18nextProvider> */}
     </React.StrictMode>
   </Suspense>
 );
