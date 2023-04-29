@@ -21,12 +21,43 @@ const Reviews = lazy(() =>
   }))
 );
 
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'uk',
+    name: 'Українська',
+    country_code: 'ua',
+  },
+];
+
 export const App = () => {
+  const currentLanguageCode = window.localStorage.getItem('i18nextLng') || 'en';
+  console.log(currentLanguageCode);
+
+  const currentLanguage = languages.find(
+    lang => lang.code === currentLanguageCode
+  );
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <SharedLayout
+              currentLanguage={currentLanguage}
+              languages={languages}
+            />
+          }
+        >
+          <Route
+            index
+            element={<Home currentLanguage={currentLanguageCode} />}
+          />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="/movies/:movieId/cast" element={<Cast />} />
