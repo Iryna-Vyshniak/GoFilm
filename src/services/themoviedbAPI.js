@@ -5,12 +5,12 @@ axios.defaults.params = {
   api_key: `80849c20aa63241eb028c4e7b7d0f3a8`,
 };
 
-export const getPopularMovies = async (page = 1) => {
+export const getPopularMovies = async (page = 1, lng) => {
   try {
     const { data } = await axios.get('/trending/movie/day', {
       params: {
         page,
-        language: 'en',
+        language: lng,
       },
     });
     return data;
@@ -103,11 +103,11 @@ export const getVideosMovies = async movieId => {
   }
 };
 
-export const getGenresMovies = async () => {
+export const getGenresMovies = async lng => {
   try {
     const { data } = await axios.get(`genre/movie/list`, {
       params: {
-        language: 'en',
+        language: lng,
       },
     });
     return data.genres;
@@ -115,10 +115,10 @@ export const getGenresMovies = async () => {
     throw new Error('Oops, there is no movie');
   }
 };
-export const getMoviesWithGenres = async movieId => {
+export const getMoviesWithGenres = async (movieId, lng) => {
   try {
     const { data } = await axios.get(
-      `/discover/movie?with_genres=${movieId}&language=en&sort_by=popularity.desc&include_adult=false&page=1`
+      `/discover/movie?with_genres=${movieId}&language=${lng}&sort_by=popularity.desc&include_adult=false&page=1`
     );
     return data;
   } catch (error) {
