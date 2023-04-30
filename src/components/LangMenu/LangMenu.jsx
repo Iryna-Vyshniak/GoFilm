@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import i18next from 'i18next';
+//import i18next from 'i18next';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
@@ -7,13 +7,13 @@ import { MenuItem } from '@mui/material';
 import { FcGlobe } from 'react-icons/fc';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { Btn, TitleLang } from './LangMenu.styled';
-import { useLocalStorage } from 'hooks/useLocaleStorage';
+//import { useLocalStorage } from 'hooks/useLocaleStorage';
 
 const ITEM_HEIGHT = 32;
 
 export const LangMenu = ({ languages, t }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
+  // const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
 
   const open = Boolean(anchorEl);
   const handleClick = e => {
@@ -24,8 +24,14 @@ export const LangMenu = ({ languages, t }) => {
   };
 
   const handleMenuItemClick = (e, idx) => {
-    setSelectedIndex(idx);
+    //setSelectedIndex(idx);
     setAnchorEl(null);
+  };
+
+  const handleLanguageChange = e => {
+    const langCode = e.target.value;
+    window.localStorage.setItem('i18nextLng', langCode);
+    window.location.reload();
   };
 
   return (
@@ -67,13 +73,16 @@ export const LangMenu = ({ languages, t }) => {
         {languages.map(({ code, name, country_code }, idx) => (
           <MenuItem
             key={country_code}
-            selected={idx === selectedIndex}
+            // selected={idx === selectedIndex}
             onClick={e => handleMenuItemClick(e, idx)}
           >
             <Btn
-              onClick={() => {
-                i18next.changeLanguage(code);
-              }}
+              /*  onClick={() => {
+                 i18next.changeLanguage(code); 
+              }} */
+              type="button"
+              onClick={handleLanguageChange}
+              value={code}
             >
               <span className={`fi fi-${country_code}`}></span>
               {name}
