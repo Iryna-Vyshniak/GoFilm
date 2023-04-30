@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { getGenresMovies } from 'services/themoviedbAPI';
 import { Genre, GenresBlock } from './Genres.styled';
 
-export const Genres = ({ data }) => {
+export const Genres = ({ data, lng }) => {
   const [genres, setGenres] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  console.log('Genres:', lng);
 
   // genres
   useEffect(() => {
@@ -18,7 +19,7 @@ export const Genres = ({ data }) => {
 
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
-        const genresData = await getGenresMovies(data);
+        const genresData = await getGenresMovies(data, lng);
         setGenres(genresData);
       } catch (error) {
         setError('Something went wrong, reload the page, it might help 🥹');
@@ -28,7 +29,7 @@ export const Genres = ({ data }) => {
     }
     getGenres();
     // return () => abortController.abort();
-  }, [data]);
+  }, [data, lng]);
 
   return (
     <>
