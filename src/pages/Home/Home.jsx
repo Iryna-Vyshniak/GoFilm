@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import i18next from 'i18next';
 import { HomeBlock } from './Home.styled';
 import { Title } from 'components/Title/Title';
@@ -25,7 +25,8 @@ import { useTranslation } from 'react-i18next';
 
 i18next.dir();
 
-const Home = ({ currentLanguage }) => {
+const Home = ({ lng }) => {
+  console.log('Home:', lng);
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
@@ -37,15 +38,15 @@ const Home = ({ currentLanguage }) => {
   const { t } = useTranslation();
 
   //console.log(page);
-
+  const location = useLocation();
   useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
         setError(false);
 
-        const data = await getPopularMovies(page, currentLanguage);
-        console.log(currentLanguage);
+        const data = await getPopularMovies(page, lng);
+        console.log(lng);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
@@ -54,7 +55,7 @@ const Home = ({ currentLanguage }) => {
         setIsLoading(false);
       }
     })();
-  }, [page, currentLanguage]);
+  }, [page, lng, location.search]);
 
   useEffect(() => {
     (async () => {
@@ -62,7 +63,7 @@ const Home = ({ currentLanguage }) => {
         setIsLoading(true);
         setError(false);
 
-        const data = await getTopRatedMovies();
+        const data = await getTopRatedMovies(lng);
         //console.log(data);
         setTopMovies(data.results);
       } catch (error) {
@@ -71,7 +72,7 @@ const Home = ({ currentLanguage }) => {
         setIsLoading(false);
       }
     })();
-  }, [page]);
+  }, [page, lng]);
 
   if (!movies) {
     return <div>Loading...</div>;
@@ -150,7 +151,7 @@ const Home = ({ currentLanguage }) => {
             </Grid2>
           </Grid2>
           <Title title={t('homePage.trending_title')} />
-          <MovieGallery movies={movies} t={t} />
+          <MovieGallery movies={movies} t={t} lng={lng} />
           <Pagination
             handlePageClick={handlePageClick}
             pages={totalPages}
