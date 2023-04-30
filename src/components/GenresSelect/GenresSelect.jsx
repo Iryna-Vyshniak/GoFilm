@@ -8,9 +8,9 @@ import { getGenresMovies } from 'services/themoviedbAPI';
 
 const animatedComponents = makeAnimated();
 
-export const GenresSelect = ({ onSelect, t }) => {
+export const GenresSelect = ({ onSelect, t, lng }) => {
+  console.log('GenresSelect:', lng);
   const [genres, setGenres] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -51,7 +51,7 @@ export const GenresSelect = ({ onSelect, t }) => {
 
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
-        const genresData = await getGenresMovies();
+        const genresData = await getGenresMovies(lng);
         //console.log(genresData);
         setGenres(genresData);
       } catch (error) {
@@ -62,7 +62,7 @@ export const GenresSelect = ({ onSelect, t }) => {
     }
     getGenres();
     // return () => abortController.abort();
-  }, []);
+  }, [lng]);
 
   const options = genres?.map(genre => ({
     value: genre.id,
