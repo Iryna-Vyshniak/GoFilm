@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-// import { I18nextProvider } from 'react-i18next';
 import 'services/i18next';
 
 import { App } from './components/App';
@@ -14,16 +13,27 @@ const loadingMarkup = (
   </div>
 );
 
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'uk',
+    name: 'Українська',
+    country_code: 'ua',
+  },
+];
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      {/*  <I18nextProvider> */}
       <BrowserRouter basename="/goit-react-hw-05-movies">
         <ThemeProvider theme={theme}>
-          <App />
+          <App languages={languages} />
         </ThemeProvider>
       </BrowserRouter>
-      {/* </I18nextProvider> */}
     </React.StrictMode>
   </Suspense>
 );
