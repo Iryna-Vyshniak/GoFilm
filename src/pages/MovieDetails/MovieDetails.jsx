@@ -35,12 +35,13 @@ import { ModalVideo } from 'components/Modal/Modal';
 import HeroPoster from 'assets/hero-poster.jpeg';
 import { useTranslation } from 'react-i18next';
 
-const MovieDetails = () => {
+const MovieDetails = ({ lng }) => {
+  console.log('MovieDetails:', lng);
+
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movieVideo, setMovieVideo] = useState('');
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const location = useLocation();
@@ -55,7 +56,7 @@ const MovieDetails = () => {
       try {
         setIsLoading(true);
         setError(false);
-        const data = await getMoviesDetailsById(movieId);
+        const data = await getMoviesDetailsById(movieId, lng);
         //console.log(data);
         setMovieDetails(data);
       } catch (error) {
@@ -91,7 +92,7 @@ const MovieDetails = () => {
         console.log(error.message);
       }
     })();
-  }, [movieId, t]);
+  }, [movieId, t, lng]);
 
   if (!movieId) {
     return;
