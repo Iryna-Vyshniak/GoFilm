@@ -26,8 +26,9 @@ export const MovieGalleryItem = ({
     genre_ids,
   },
   state,
+  lng,
 }) => {
-  //console.log(movie);
+  console.log('MovieGalleryItem:', lng);
   return (
     <MovieListItem>
       <Link to={`/movies/${id}`} state={state}>
@@ -67,7 +68,7 @@ export const MovieGalleryItem = ({
         )}
       </Link>
       <GenresBlock>
-        <Genres data={genre_ids?.slice(0, 1)} />
+        <Genres lng={lng} data={genre_ids?.slice(0, 1)} />
       </GenresBlock>
     </MovieListItem>
   );
