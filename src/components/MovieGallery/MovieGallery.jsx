@@ -3,9 +3,9 @@ import { MovieGalleryItem } from 'components/MovieGalleryItem/MovieGalleryItem';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-export const MovieGallery = ({ movies}) => {
+export const MovieGallery = ({ movies, lng }) => {
+  console.log('MovieGallery:', lng);
   const location = useLocation();
-  //console.log(movies);
   return (
     <MovieListStyled>
       {movies.map(movie => (
@@ -13,6 +13,7 @@ export const MovieGallery = ({ movies}) => {
           key={movie.id}
           movie={movie}
           state={{ from: location }}
+          lng={lng}
         />
       ))}
     </MovieListStyled>
