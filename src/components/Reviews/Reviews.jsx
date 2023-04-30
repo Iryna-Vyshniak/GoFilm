@@ -16,7 +16,8 @@ import {
 } from './Reviews.styled';
 import { useTranslation } from 'react-i18next';
 
-export const Reviews = () => {
+export const Reviews = ({ lng }) => {
+  console.log('Reviews:', lng);
   //const params = useParams();
   const { movieId } = useParams();
   //console.log(movieId);
@@ -30,7 +31,7 @@ export const Reviews = () => {
       try {
         setIsLoading(true);
         setError(false);
-        const data = await getMoviesReviews(movieId);
+        const data = await getMoviesReviews(movieId, lng);
         setMovieReviews(data);
       } catch (error) {
         setError(`{t('moviesPage.set_error')}`);
@@ -38,7 +39,7 @@ export const Reviews = () => {
         setIsLoading(false);
       }
     })();
-  }, [movieId]);
+  }, [movieId, lng]);
 
   if (!movieReviews) {
     return <div>{t('loading')}</div>;
