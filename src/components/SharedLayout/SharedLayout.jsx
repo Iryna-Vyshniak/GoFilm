@@ -20,28 +20,10 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { LangMenu } from 'components/LangMenu/LangMenu';
 
-// const languages = [
-//   {
-//     code: 'en',
-//     name: 'English',
-//     country_code: 'gb',
-//   },
-//   {
-//     code: 'uk',
-//     name: 'Українська',
-//     country_code: 'ua',
-//   },
-// ];
-
 export const SharedLayout = ({ currentLanguage, languages }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
-  // const currentLanguageCode = window.localStorage.getItem('i18nextLng') || 'en';
-  // console.log(currentLanguageCode);
 
-  // const currentLanguage = languages.find(
-  //   lang => lang.code === currentLanguageCode
-  // );
   const { t } = useTranslation();
 
   useEffect(() => {
