@@ -25,14 +25,28 @@ i18n
   .use(Backend)
   .init({
     supportedLngs: ['en', 'uk'],
+    locales: ['en', 'uk'],
+    //defaultLocale: 'en',
     fallbackLng: langs.EN,
     debug: true,
     resources,
     detection: {
-      order: ['path', 'localStorage', 'cookie', 'htmlTag', 'subdomain'],
+      order: [
+        'querystring',
+        'cookie',
+        'localStorage',
+        'sessionStorage',
+        'navigator',
+        'htmlTag',
+        'path',
+        'subdomain',
+      ],
       cashes: ['localStorage', 'cookie'],
+      htmlTag: document.documentElement,
     },
     backend: {
       loadPath: '../data/locales/{{lng}}/translation.json',
     },
   });
+
+export default i18n;
