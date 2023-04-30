@@ -17,10 +17,9 @@ import {
 import Avatar from 'assets/avatar.png';
 import { useTranslation } from 'react-i18next';
 
-const Cast = () => {
-  //const params = useParams();
+const Cast = ({ lng }) => {
+  console.log('Cast:', lng);
   const { movieId } = useParams();
-  //console.log(movieId);
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -31,7 +30,7 @@ const Cast = () => {
       try {
         setIsLoading(true);
         setError(false);
-        const data = await getMoviesCast(movieId);
+        const data = await getMoviesCast(movieId, lng);
         setCastList(data);
       } catch (error) {
         setError(`{t('moviesPage.set_error')}`);
@@ -39,7 +38,7 @@ const Cast = () => {
         setIsLoading(false);
       }
     })();
-  }, [movieId]);
+  }, [movieId, lng]);
 
   if (!castList) {
     return <div>{t('loading')}</div>;
