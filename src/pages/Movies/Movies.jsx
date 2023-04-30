@@ -50,7 +50,11 @@ import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 import { Title } from 'components/Title/Title';
 import { useTranslation } from 'react-i18next';
 
-const Movies = () => {
+const Movies = props => {
+  const { lng } = props;
+
+  console.log('Movies:', lng);
+
   const [movies, setMovies] = useState([]);
   const [actors, setActors] = useState([]);
 
@@ -61,7 +65,6 @@ const Movies = () => {
 
   const [data, setData] = useState(null);
 
-  //const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const { t } = useTranslation();
@@ -80,7 +83,7 @@ const Movies = () => {
         setIsLoading(true);
         setError(false);
         setData(null);
-        const data = await getMoviesByQuery(query, page);
+        const data = await getMoviesByQuery(query, page, lng);
         //console.log(data.results);
         setMovies(prevMovie => [...prevMovie, ...data.results]);
         setTotalPages(Math.floor(data.total_results / 20));
@@ -91,7 +94,7 @@ const Movies = () => {
         setIsLoading(false);
       }
     })();
-  }, [query, page]);
+  }, [query, page, lng]);
 
   // actors
   useEffect(() => {
@@ -133,12 +136,12 @@ const Movies = () => {
   };
 
   // get movies by genres
-  const fetchMovies = async movieId => {
+  const fetchMovies = async (movieId, lng) => {
     try {
       setIsLoading(true);
       setError(false);
       setMovies([]);
-      const moviesData = await getMoviesWithGenres(movieId);
+      const moviesData = await getMoviesWithGenres(movieId, lng);
       setData(moviesData.results);
     } catch (error) {
       setData(null);
@@ -167,7 +170,7 @@ const Movies = () => {
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar onSubmit={updateQueryString} t={t} />
-        <GenresSelect onSelect={fetchMovies} t={t} />
+        <GenresSelect onSelect={fetchMovies} t={t} lng={lng} />
 
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
         {!query && data === null && (
@@ -188,11 +191,11 @@ const Movies = () => {
         {!error && data && (
           <>
             <Title title={t('moviesPage.trend_list')} />
-            <MovieGallery movies={data} />
+            <MovieGallery movies={data} lng={lng} />
           </>
         )}
 
-        {!error && query && <MovieGallery movies={movies} />}
+        {!error && query && <MovieGallery movies={movies} lng={lng} />}
         {/* якщо при запиті зображення знайдені, запит не в стадії очікування та ще є сторінки з зображеннями - рендериться кнопка Load More*/}
         {movies.length > 0 && !isLoading && page <= totalPages && (
           <Btn onClick={onLoadMore}>{t('moviesPage.load_more')}</Btn>
