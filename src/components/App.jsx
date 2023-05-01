@@ -1,15 +1,14 @@
 import { lazy } from 'react';
 import { Routes, Route, useSearchParams } from 'react-router-dom';
-
-import { ToastContainer, Slide } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { RxThickArrowUp } from 'react-icons/rx';
-import { GlobalStyle } from './GlobalStyle';
-import { SharedLayout } from './SharedLayout/SharedLayout';
-import { PageNotFound } from './PageNotFound/PageNotFound';
 import ScrollToTop from 'react-scroll-up';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { RxThickArrowUp } from 'react-icons/rx';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { PageNotFound } from './PageNotFound/PageNotFound';
+import { GlobalStyle } from 'styles/GlobalStyle';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
