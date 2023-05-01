@@ -28,7 +28,7 @@ export const MovieGalleryItem = ({
   state,
   lng,
 }) => {
-  console.log('MovieGalleryItem:', lng);
+  //console.log('MovieGalleryItem:', lng);
   return (
     <MovieListItem>
       <Link to={`/movies/${id}`} state={state}>
