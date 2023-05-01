@@ -8,7 +8,8 @@ export const MovieListItem = styled.li`
   padding-bottom: ${({ theme }) => theme.space[3]}px;
 
   max-width: 100%;
-  width: 200px;
+  //width: 200px;
+  width: 260px;
   height: 100%;
 
   transform: scale(1);
@@ -28,8 +29,9 @@ export const MovieListItem = styled.li`
   img {
     display: block;
     min-height: 100%;
-    height: 320px;
-    max-width: 100%;
+    // height: 320px;
+    height: 420px;
+    width: 100%;
 
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
