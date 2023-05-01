@@ -136,7 +136,7 @@ const MovieDetails = ({ lng }) => {
             <>
               <BackdropContainer>
                 <GradientBlockTop></GradientBlockTop>
-                {poster_path ? (
+                {`https://image.tmdb.org/t/p/w500${poster_path}` ? (
                   <BackdropPoster>
                     <img
                       src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -207,12 +207,12 @@ const MovieDetails = ({ lng }) => {
                 )}
               </VotePlayVideoBox>
               {/* огляд фільму */}
-              <h2>Overview</h2>
+              <h2>{t('moviesPage.overview')}</h2>
               <p>{overview}</p>
               {/* продакшин компанії - логотипи */}
               {production_companies && production_companies.length > 0 && (
                 <>
-                  <h2>Production Companies</h2>
+                  <h2>{t('moviesPage.production_companies')}</h2>
                   <MovieList>
                     {production_companies?.map(
                       (production, idx) =>
@@ -233,19 +233,19 @@ const MovieDetails = ({ lng }) => {
               <WrapRelease>
                 {status && (
                   <div>
-                    <AccentText>Status: </AccentText>
+                    <AccentText>{t('moviesPage.status')}</AccentText>
                     <span>{status}</span>
                   </div>
                 )}
                 {release_date && (
                   <div>
-                    <AccentText>Release Date: </AccentText>
+                    <AccentText>{t('moviesPage.release_date')}</AccentText>
                     <span>{dayjs(release_date).format('MMM D, YYYY')}</span>
                   </div>
                 )}
                 {runtime !== 0 && (
                   <div>
-                    <AccentText>Runtime: </AccentText>
+                    <AccentText>{t('moviesPage.runtime')}</AccentText>
                     <span>{toHoursAndMinutes(runtime)}</span>
                   </div>
                 )}
