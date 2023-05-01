@@ -115,6 +115,7 @@ export const getGenresMovies = async lng => {
     throw new Error('Oops, there is no movie');
   }
 };
+
 export const getMoviesWithGenres = async (movieId, lng) => {
   try {
     const { data } = await axios.get(
