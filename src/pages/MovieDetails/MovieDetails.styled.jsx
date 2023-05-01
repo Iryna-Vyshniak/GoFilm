@@ -126,7 +126,8 @@ export const VotePlayVideoBox = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 20px;
   cursor: pointer;
 `;
 
@@ -185,7 +186,7 @@ export const WrapRelease = styled.div`
 export const CircleRating = styled.div`
   position: absolute;
   bottom: 8px;
-  right: 30px;
+  right: 60px;
 
   display: flex;
   align-items: center;
