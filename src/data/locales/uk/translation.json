@@ -28,6 +28,11 @@
     "character": "Персонаж:",
     "reviews": "Відгуки",
     "reviews_desription": "У нас немає рецензій на цей фільм",
-    "author": "Автор: "
+    "author": "Автор: ",
+    "overview": "Сюжет фільму",
+    "production_companies": "Кінокомпанії",
+    "status": "Статус: ",
+    "release_date": "Дата випуску: ",
+    "runtime": "Час перегляду: "
   }
 }
