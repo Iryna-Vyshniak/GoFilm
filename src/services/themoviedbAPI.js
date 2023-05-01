@@ -32,9 +32,10 @@ export const getTopRatedMovies = async lng => {
   }
 };
 
-export const getMoviesByQuery = async (query, page = 1, lng) => {
+export const getMoviesByQuery = async (query, page = 1, lng, controller) => {
   try {
     const { data } = await axios.get('/search/movie', {
+      signal: controller.signal,
       params: {
         query,
         page,

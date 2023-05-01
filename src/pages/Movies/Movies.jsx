@@ -69,20 +69,22 @@ const Movies = props => {
 
   // movies
   useEffect(() => {
-    if (!query) return;
+    if (query === '') return;
 
     // при новому запиті - запит відбувається з 1 сторінки та попередній масив зображень обнуляється
     if (page === 1) {
       setMovies([]);
     }
+    // add abortController
+    const controller = new AbortController();
 
     (async () => {
       try {
         setIsLoading(true);
-        setError(false);
         setData(null);
-        const data = await getMoviesByQuery(query, page, lng);
+        const data = await getMoviesByQuery(query, page, lng, controller);
         //console.log(data.results);
+        setError(false);
         setMovies(prevMovie => [...prevMovie, ...data.results]);
         setTotalPages(Math.floor(data.total_results / 20));
       } catch (error) {
@@ -92,6 +94,9 @@ const Movies = props => {
         setIsLoading(false);
       }
     })();
+    return () => {
+      controller.abort();
+    };
   }, [query, page, lng]);
 
   // actors
