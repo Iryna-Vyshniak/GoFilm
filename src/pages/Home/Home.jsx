@@ -20,7 +20,7 @@ import { Autoplay, EffectCoverflow } from 'swiper';
 
 import { CardFilm } from 'components/CardFilm/CardFilm';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { HeroHomePage } from 'components/HeroHomePage/HeroHomePage';
+import { HeroBanner } from 'components/HeroBanner/HeroBanner';
 import { useTranslation } from 'react-i18next';
 
 i18next.dir();
@@ -91,7 +91,7 @@ const Home = ({ lng }) => {
       {error && <ImageErrorView message="Oops, mistake... Please try again" />}
       {!error && topMovies.length !== 0 && (
         <>
-          <HeroHomePage movies={movies} />
+          <HeroBanner movies={movies} />
           <Grid2
             container
             spacing={1}

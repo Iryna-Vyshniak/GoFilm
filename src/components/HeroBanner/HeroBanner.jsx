@@ -5,10 +5,10 @@ import {
   GradientBlockTop,
   HeroContainer,
   SectionHero,
-} from './HeroHomePage.styled';
+} from './HeroBanner.styled';
 import HeroPoster from 'assets/heroBanner.jpg';
 
-export const HeroHomePage = ({ movies }) => {
+export const HeroBanner = ({ movies }) => {
   const poster_path = movies[Math.floor(Math.random() * 20)]?.poster_path;
   // const {poster_path} = movies[Math.floor(Math.random() * 20)];
   return (

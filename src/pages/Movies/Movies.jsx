@@ -153,7 +153,7 @@ const Movies = props => {
   // console.log(data);
   return (
     <>
-      {/* <HeroHomePage movies={movies} /> */}
+      {/* <HeroBanner movies={movies} /> */}
       <MoviesBlock>
         <SectionHero>
           <HeroContainer>
