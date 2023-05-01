@@ -36,7 +36,7 @@ export const MovieGalleryItem = ({
           <img
             src={
               poster_path
-                ? `https://image.tmdb.org/t/p/w300${poster_path}`
+                ? `https://image.tmdb.org/t/p/original${poster_path}`
                 : NoPoster
             }
             alt={original_title}

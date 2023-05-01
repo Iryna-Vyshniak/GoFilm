@@ -23,7 +23,7 @@ export const HeroBanner = ({ movies }) => {
           {poster_path ? (
             <BackdropImg>
               <img
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                src={`https://image.tmdb.org/t/p/original${poster_path}`}
                 alt="poster opacity"
                 width="1200"
               />

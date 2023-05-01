@@ -136,12 +136,12 @@ const MovieDetails = ({ lng }) => {
             <>
               <BackdropContainer>
                 <GradientBlockTop></GradientBlockTop>
-                {`https://image.tmdb.org/t/p/w500${poster_path}` && (
+                {`https://image.tmdb.org/t/p/original${poster_path}` && (
                   <BackdropPoster>
                     <img
                       src={
                         poster_path
-                          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                          ? `https://image.tmdb.org/t/p/original${poster_path}`
                           : HeroPoster
                       }
                       alt={original_title || original_name}
@@ -155,11 +155,11 @@ const MovieDetails = ({ lng }) => {
           )}
           <WrapperMovie>
             {/* постер фільму */}
-            {`https://image.tmdb.org/t/p/w500${poster_path}` && (
+            {`https://image.tmdb.org/t/p/original${poster_path}` && (
               <PosterMovie
                 src={
                   poster_path
-                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    ? `https://image.tmdb.org/t/p/original${poster_path}`
                     : NoPoster
                 }
                 alt={original_title || original_name}

@@ -19,7 +19,7 @@ import Avatar from 'assets/avatar.png';
 import { useTranslation } from 'react-i18next';
 
 const Cast = ({ lng }) => {
-  console.log('Cast:', lng);
+  //console.log('Cast:', lng);
   const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +53,7 @@ const Cast = ({ lng }) => {
       {error && !isLoading && (
         <span style={{ color: 'red' }}>{t('moviesPage.cast_desription')}</span>
       )}
-      {castList.length !== 0 ? (
+      {castList.length > 0 ? (
         <CastList>
           {castList.map(actor => (
             <CastItem key={actor.id}>
@@ -61,7 +61,7 @@ const Cast = ({ lng }) => {
                 <CastPhoto
                   src={
                     actor.profile_path
-                      ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                      ? `https://image.tmdb.org/t/p/original${actor.profile_path}`
                       : Avatar
                   }
                   alt={actor.name}

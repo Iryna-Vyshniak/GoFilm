@@ -19,7 +19,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 export const Reviews = ({ lng }) => {
-  console.log('Reviews:', lng);
+  // console.log('Reviews:', lng);
   //const params = useParams();
   const { movieId } = useParams();
   //console.log(movieId);
@@ -52,7 +52,7 @@ export const Reviews = ({ lng }) => {
       <Title title={t('moviesPage.reviews')} />
       {isLoading && <Loader />}
       {error && <ImageErrorView message={t('moviesPage.mistake')} />}
-      {movieReviews.length !== 0 ? (
+      {movieReviews.length > 0 ? (
         <ReviewsList>
           {movieReviews.map(review => (
             <ReviewItem key={review.id}>
@@ -60,9 +60,9 @@ export const Reviews = ({ lng }) => {
                 <ReviewPhotoThumb>
                   <ReviewPhoto
                     src={
-                      !review.avatar_path
-                        ? Avatar
-                        : `https://secure.gravatar.com/avatar${review.avatar_path}`
+                      review.avatar_path
+                        ? `https://image.tmdb.org/t/p/original${review.avatar_path}`
+                        : Avatar
                     }
                     alt={review.author}
                   />
