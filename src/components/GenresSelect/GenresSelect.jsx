@@ -9,7 +9,7 @@ import { getGenresMovies } from 'services/themoviedbAPI';
 const animatedComponents = makeAnimated();
 
 export const GenresSelect = ({ onSelect, t, lng }) => {
-  console.log('GenresSelect:', lng);
+  //console.log('GenresSelect:', lng);
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
