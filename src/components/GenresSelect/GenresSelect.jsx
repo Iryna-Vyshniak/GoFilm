@@ -1,7 +1,7 @@
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { getGenresMovies } from 'services/themoviedbAPI';
@@ -87,4 +87,10 @@ export const GenresSelect = ({ onSelect, t, lng }) => {
       )}
     </>
   );
+};
+
+GenresSelect.propTypes = {
+  lng: PropTypes.string.isRequired,
+  t: PropTypes.any.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };

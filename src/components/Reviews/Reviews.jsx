@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
 import { Title } from 'components/Title/Title';
@@ -81,4 +83,8 @@ export const Reviews = ({ lng }) => {
       )}
     </>
   );
+};
+
+Reviews.propTypes = {
+  lng: PropTypes.string.isRequired,
 };

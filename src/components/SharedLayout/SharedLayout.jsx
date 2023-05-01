@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BsFilm } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import {
   Container,
   Header,
@@ -65,4 +66,20 @@ export const SharedLayout = ({ currentLanguage, languages }) => {
       </ThemeProvider>
     </>
   );
+};
+
+SharedLayout.propTypes = {
+  currentLanguage: PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    country_code: PropTypes.string.isRequired,
+  }).isRequired,
+
+  languages: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      country_code: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

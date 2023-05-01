@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RxThickArrowUp } from 'react-icons/rx';
+import PropTypes from 'prop-types';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PageNotFound } from './PageNotFound/PageNotFound';
 import { GlobalStyle } from 'styles/GlobalStyle';
@@ -84,58 +85,12 @@ export const App = ({ languages }) => {
   );
 };
 
-// export const App = ({ languages }) => {
-//   const currentLanguageCode = window.localStorage.getItem('i18nextLng') || 'en';
-//   const currentLanguage = languages?.find(
-//     lang => lang.code === currentLanguageCode
-//   );
-//   const [searchParams] = useSearchParams({ language: currentLanguageCode });
-//   const lng = searchParams.get('language') ?? currentLanguageCode;
-//   const { i18n } = useTranslation();
-
-//   const [searchQuery, setSearchQuery] = useState('');
-//   const [currentPage, setCurrentPage] = useState(1);
-
-//   useEffect(() => {
-//     i18n.changeLanguage(lng);
-//     // Отримання параметрів запиту з адресного рядка
-//     const params = new URLSearchParams(window.location.search);
-//     const query = params.get('query') || '';
-//     const page = parseInt(params.get('page'), 10) || 1;
-
-//     setSearchQuery(query);
-//     setCurrentPage(page);
-//   }, [lng, i18n]);
-
-//   return (
-//     <>
-//       <Routes basename={`${currentLanguage.code}`}>
-//         <Route
-//           path="/"
-//           element={
-//             <SharedLayout
-//               currentLanguage={currentLanguage}
-//               languages={languages}
-//               lng={lng}
-//             />
-//           }
-//         >
-//           <Route path="/" element={<Home lng={lng} />} />
-//           {/*  <Route path="/movies" element={<Movies lng={lng} />} /> */}
-//           <Route
-//             path="/movies"
-//             element={
-//               <Movies
-//                 searchQuery={searchQuery}
-//                 currentPage={currentPage}
-//                 lng={lng}
-//               />
-//             }
-//           />
-//           <Route path="/movies/:movieId" element={<MovieDetails />}>
-//             <Route path="/movies/:movieId/cast" element={<Cast />} />
-//             <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-//           </Route>
-//           <Route path="*" element={<PageNotFound />} />
-//         </Route>
-//       </Routes>
+App.propTypes = {
+  languages: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      country_code: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};

@@ -172,7 +172,8 @@ const Movies = props => {
 
         {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
         {!query && data === null && (
-          <InitialStateGallery text={t('moviesPage.title')} />
+          <InitialStateGallery />
+          // <InitialStateGallery text={t('moviesPage.title')} />
         )}
 
         {isLoading && <Loader />}

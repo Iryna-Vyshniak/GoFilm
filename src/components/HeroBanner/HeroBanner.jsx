@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   BackdropImg,
   GradientBlockBottom,
@@ -37,4 +38,12 @@ export const HeroBanner = ({ movies }) => {
       </SectionHero>
     </>
   );
+};
+
+HeroBanner.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      poster_path: PropTypes.string.isRequired,
+    })
+  ),
 };

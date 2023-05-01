@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { getGenresMovies } from 'services/themoviedbAPI';
 import { Genre, GenresBlock } from './Genres.styled';
 
@@ -7,7 +8,7 @@ export const Genres = ({ data, lng }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log('Genres:', lng);
+  //console.log('Genres:', data);
 
   // genres
   useEffect(() => {
@@ -20,7 +21,7 @@ export const Genres = ({ data, lng }) => {
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
         const genresData = await getGenresMovies(lng);
-        console.log(lng);
+        // console.log(lng);
         setGenres(genresData);
       } catch (error) {
         setError('Something went wrong, reload the page, it might help 🥹');
@@ -47,4 +48,9 @@ export const Genres = ({ data, lng }) => {
       {error && !isLoading && console.log('Oops, mistake... Please try again')}
     </>
   );
+};
+
+Genres.propTypes = {
+  data: PropTypes.array.isRequired,
+  lng: PropTypes.string.isRequired,
 };

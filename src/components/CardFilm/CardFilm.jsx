@@ -61,4 +61,5 @@ CardFilm.propTypes = {
     first_air_date: PropTypes.string,
     vote_average: PropTypes.number,
   }).isRequired,
+  lng: PropTypes.string.isRequired,
 };

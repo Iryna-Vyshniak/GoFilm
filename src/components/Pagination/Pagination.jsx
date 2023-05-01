@@ -33,4 +33,5 @@ export default Pagination;
 Pagination.propTypes = {
   handlePageClick: PropTypes.func.isRequired,
   pages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
 };

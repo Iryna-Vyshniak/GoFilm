@@ -5,6 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getMoviesCast } from 'services/themoviedbAPI';
 import {
   CastItem,
@@ -88,3 +89,7 @@ const Cast = ({ lng }) => {
 };
 
 export default Cast;
+
+Cast.propTypes = {
+  lng: PropTypes.string.isRequired,
+};

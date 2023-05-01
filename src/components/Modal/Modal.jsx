@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
 import React from 'react';
 import ReactPlayer from 'react-player';
+import PropTypes from 'prop-types';
 import { MdOutlineClose } from 'react-icons/md';
 import { CloseBtn } from './Modal.styled';
 
@@ -28,6 +29,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
+  //console.log(movieVideo);
   return (
     <Modal
       isOpen={isOpen}
@@ -40,7 +42,6 @@ export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
       </CloseBtn>
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${movieVideo}`}
-       /*  url={`https://www.youtube.com/watch?v=${movieVideo}?showinfo=0&enablejsapi=1&origin=http://localhost:3000`} */
         muted={true}
         controls
         width="100%"
@@ -49,3 +50,11 @@ export const ModalVideo = ({ isOpen, onClose, movieVideo }) => {
     </Modal>
   );
 };
+
+ModalVideo.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  movieVideo: PropTypes.any.isRequired,
+};
+
+/*  url={`https://www.youtube.com/watch?v=${movieVideo}?showinfo=0&enablejsapi=1&origin=http://localhost:3000`} */

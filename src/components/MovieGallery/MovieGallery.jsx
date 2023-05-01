@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 export const MovieGallery = ({ movies, lng }) => {
-  console.log('MovieGallery:', lng);
+  // console.log('MovieGallery:', lng);
   const location = useLocation();
   return (
     <MovieListStyled>
@@ -26,4 +26,5 @@ MovieGallery.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
+  lng: PropTypes.string.isRequired,
 };

@@ -84,4 +84,5 @@ MovieGalleryItem.propTypes = {
     vote_average: PropTypes.number,
   }).isRequired,
   state: PropTypes.objectOf(PropTypes.object).isRequired,
+  lng: PropTypes.string.isRequired,
 };
