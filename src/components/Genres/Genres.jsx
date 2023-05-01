@@ -12,7 +12,7 @@ export const Genres = ({ data, lng }) => {
   // genres
   useEffect(() => {
     // const abortController = new AbortController();
-    async function getGenres() {
+    (async function getGenres() {
       try {
         setIsLoading(true);
         setError(null);
@@ -20,14 +20,14 @@ export const Genres = ({ data, lng }) => {
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
         const genresData = await getGenresMovies(data, lng);
+        console.log(lng);
         setGenres(genresData);
       } catch (error) {
         setError('Something went wrong, reload the page, it might help 🥹');
       } finally {
         setIsLoading(false);
       }
-    }
-    getGenres();
+    })();
     // return () => abortController.abort();
   }, [data, lng]);
 
