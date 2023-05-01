@@ -26,7 +26,7 @@ import { useTranslation } from 'react-i18next';
 i18next.dir();
 
 const Home = ({ lng }) => {
-  console.log('Home:', lng);
+  //console.log('Home:', lng);
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
@@ -34,7 +34,7 @@ const Home = ({ lng }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const page = Number(searchParams.get('page'));
+  const page = Number(searchParams.get('page') || 1);
   const { t } = useTranslation();
 
   //console.log(page);
@@ -46,7 +46,7 @@ const Home = ({ lng }) => {
         setError(false);
 
         const data = await getPopularMovies(page, lng);
-        console.log(lng);
+        //console.log(lng);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {

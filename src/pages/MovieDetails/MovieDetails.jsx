@@ -32,12 +32,12 @@ import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { ModalVideo } from 'components/Modal/Modal';
 
-import HeroPoster from 'assets/hero-poster.jpeg';
+import HeroPoster from 'assets/heroBanner.jpg';
+import NoPoster from 'assets/no-poster.jpg';
 import { useTranslation } from 'react-i18next';
 
 const MovieDetails = ({ lng }) => {
-  console.log('MovieDetails:', lng);
-
+  //console.log('MovieDetails:', lng);
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -121,7 +121,7 @@ const MovieDetails = ({ lng }) => {
     status,
     runtime,
     production_companies,
-    backdrop_path,
+    //backdrop_path,
   } = movieDetails;
 
   return (
@@ -132,21 +132,21 @@ const MovieDetails = ({ lng }) => {
       {!error && (
         <>
           {/* фонове зображення */}
-          {backdrop_path && (
+          {poster_path && (
             <>
               <BackdropContainer>
                 <GradientBlockTop></GradientBlockTop>
-                {`https://image.tmdb.org/t/p/w500${poster_path}` ? (
+                {`https://image.tmdb.org/t/p/w500${poster_path}` && (
                   <BackdropPoster>
                     <img
-                      src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                      alt="poster opacity"
+                      src={
+                        poster_path
+                          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                          : HeroPoster
+                      }
+                      alt={original_title || original_name}
                       width="1200"
                     />
-                  </BackdropPoster>
-                ) : (
-                  <BackdropPoster>
-                    <img src={HeroPoster} alt="poster opacity" width="1200" />
                   </BackdropPoster>
                 )}
                 <GradientBlockBottom></GradientBlockBottom>
@@ -157,9 +157,13 @@ const MovieDetails = ({ lng }) => {
             {/* постер фільму */}
             {`https://image.tmdb.org/t/p/w500${poster_path}` && (
               <PosterMovie
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                alt=""
-                width="300"
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : NoPoster
+                }
+                alt={original_title || original_name}
+                width="500"
               />
             )}
 
@@ -170,7 +174,7 @@ const MovieDetails = ({ lng }) => {
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
               {/* rating stars */}
-              {vote_average && vote_average !== 0 && (
+              {(vote_average || vote_average > 0) && (
                 <Rating
                   name="read-only"
                   defaultValue={(vote_average / 10) * 5}
@@ -189,43 +193,53 @@ const MovieDetails = ({ lng }) => {
               )}
 
               {/* рейтинг фільму */}
-              <VotePlayVideoBox>
-                {vote_average && vote_average !== 0 && (
-                  <CircleRating>
-                    <RatingProgressbar rating={vote_average?.toFixed(1)} />
-                  </CircleRating>
-                )}
-                {/* трейлер фільму */}
-                {movieVideo.length > 0 && (
-                  <Btn onClick={toggleModal}>
-                    <FaYoutube
-                      size="64px"
-                      color="red"
-                      style={{ marginLeft: '10px' }}
-                    />
-                  </Btn>
-                )}
-              </VotePlayVideoBox>
+              {(vote_average || (movieVideo && movieVideo?.length > 0)) && (
+                <VotePlayVideoBox>
+                  {(vote_average || vote_average > 0) && (
+                    <CircleRating>
+                      <RatingProgressbar rating={vote_average?.toFixed(1)} />
+                    </CircleRating>
+                  )}
+                  {/* трейлер фільму */}
+                  {movieVideo && movieVideo?.length > 0 && (
+                    <Btn onClick={toggleModal}>
+                      <FaYoutube
+                        size="64px"
+                        color="red"
+                        style={{ marginLeft: '50px' }}
+                      />
+                    </Btn>
+                  )}
+                </VotePlayVideoBox>
+              )}
+
               {/* огляд фільму */}
-              <h2>{t('moviesPage.overview')}</h2>
-              <p>{overview}</p>
+              {overview && (
+                <>
+                  <h2>{t('moviesPage.overview')}</h2>
+                  <p>{overview}</p>
+                </>
+              )}
+
               {/* продакшин компанії - логотипи */}
-              {production_companies && production_companies.length > 0 && (
+              {production_companies && production_companies?.length > 0 && (
                 <>
                   <h2>{t('moviesPage.production_companies')}</h2>
                   <MovieList>
-                    {production_companies?.map(
-                      (production, idx) =>
-                        production.logo_path !== null && (
-                          <li key={idx}>
-                            <ProductionLogo
-                              src={`https://image.tmdb.org/t/p/w500${production.logo_path}`}
-                              alt="company logo"
-                              width="120"
-                            />
-                          </li>
-                        )
-                    )}
+                    {production_companies
+                      ?.map(
+                        (production, idx) =>
+                          production.logo_path !== null && (
+                            <li key={idx}>
+                              <ProductionLogo
+                                src={`https://image.tmdb.org/t/p/w500${production.logo_path}`}
+                                alt="company logo"
+                                width="120"
+                              />
+                            </li>
+                          )
+                      )
+                      .slice(0, 2)}
                   </MovieList>
                 </>
               )}

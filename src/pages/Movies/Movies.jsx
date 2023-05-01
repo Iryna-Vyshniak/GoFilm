@@ -52,9 +52,7 @@ import { useTranslation } from 'react-i18next';
 
 const Movies = props => {
   const { lng } = props;
-
-  console.log('Movies:', lng);
-
+  //console.log('Movies:', lng);
   const [movies, setMovies] = useState([]);
   const [actors, setActors] = useState([]);
 

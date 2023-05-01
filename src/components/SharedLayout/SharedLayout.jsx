@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BsFilm } from 'react-icons/bs';
 import {
@@ -16,8 +18,6 @@ import {
 } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
 import { useDarkMode } from 'components/useDarkMode/useDarkMode';
 import Footer from 'components/Footer/Footer';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 import { LangMenu } from 'components/LangMenu/LangMenu';
 
 export const SharedLayout = ({ currentLanguage, languages }) => {

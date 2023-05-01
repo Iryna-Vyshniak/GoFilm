@@ -19,6 +19,7 @@ export const LangMenu = ({ languages, t }) => {
   const handleClick = e => {
     setAnchorEl(e.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
