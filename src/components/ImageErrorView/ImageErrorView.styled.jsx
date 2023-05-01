@@ -17,7 +17,7 @@ export const Text = styled.p`
   text-align: center;
   
   font-family: ${props => props.theme.fonts.heading}
-  font-size: ${props => props.theme.fontSizes.xl}
+  font-size: ${props => props.theme.fontSizes.s}
 `;
 
 export const Hero = styled.img`
