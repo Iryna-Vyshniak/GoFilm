@@ -72,7 +72,7 @@ const Home = ({ lng }) => {
         setIsLoading(false);
       }
     })();
-  }, [page, lng]);
+  }, [page, lng, location.search]);
 
   if (!movies) {
     return <Loader />;
@@ -89,7 +89,7 @@ const Home = ({ lng }) => {
       {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
       повідомленням помилки */}
       {error && <ImageErrorView message="Oops, mistake... Please try again" />}
-      {!error && topMovies.length !== 0 && (
+      {!error && topMovies.length > 0 && (
         <>
           <HeroBanner movies={movies} />
           <Grid2

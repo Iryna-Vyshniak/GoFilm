@@ -40,6 +40,5 @@ export const ReviewsAuthor = styled.p`
   font-weight: 700;
 `;
 export const ReviewContent = styled.p`
-  font-style: italic;
   font-weight: 400;
 `;

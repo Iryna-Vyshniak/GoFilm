@@ -28,7 +28,7 @@ i18n
     locales: ['en', 'uk'],
     //defaultLocale: 'en',
     fallbackLng: langs.EN,
-    debug: true,
+    debug: false,
     resources,
     detection: {
       order: [
