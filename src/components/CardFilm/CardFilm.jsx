@@ -14,6 +14,7 @@ import { Genres } from 'components/Genres/Genres';
 
 export const CardFilm = ({
   movie: { id, poster_path, original_title, vote_average, genre_ids },
+  lng,
 }) => {
   return (
     <MovieListItem>
@@ -44,7 +45,7 @@ export const CardFilm = ({
           </>
         )}
         <GenresBlock>
-          <Genres data={genre_ids?.slice(0, 2)} />
+          <Genres data={genre_ids?.slice(0, 2)} lng={lng} />
         </GenresBlock>
       </Link>
     </MovieListItem>

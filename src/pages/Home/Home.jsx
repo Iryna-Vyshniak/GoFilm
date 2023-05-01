@@ -143,7 +143,7 @@ const Home = ({ lng }) => {
                 {topMovies.map(movie => {
                   return (
                     <SwiperSlide key={movie.id}>
-                      <CardFilm movie={movie} />
+                      <CardFilm movie={movie} lng={lng} />
                     </SwiperSlide>
                   );
                 })}

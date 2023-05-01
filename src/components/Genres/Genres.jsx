@@ -19,7 +19,7 @@ export const Genres = ({ data, lng }) => {
 
         // const genresData = await getGenresMovies(abortController);
         // setError(null);
-        const genresData = await getGenresMovies(data, lng);
+        const genresData = await getGenresMovies(lng);
         console.log(lng);
         setGenres(genresData);
       } catch (error) {
@@ -29,7 +29,7 @@ export const Genres = ({ data, lng }) => {
       }
     })();
     // return () => abortController.abort();
-  }, [data, lng]);
+  }, [lng]);
 
   return (
     <>
