@@ -28,6 +28,11 @@
     "character": "Character: ",
     "reviews": "Reviews",
     "reviews_desription": "We don't have any reviews for this movie",
-    "author": "Author: "
+    "author": "Author: ",
+    "overview": "Overview",
+    "production_companies": "Production Companies",
+    "status": "Status: ",
+    "release_date": "Release Date: ",
+    "runtime": "Runtime: "
   }
 }
