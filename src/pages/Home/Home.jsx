@@ -75,7 +75,7 @@ const Home = ({ lng }) => {
   }, [page, lng]);
 
   if (!movies) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const handlePageClick = e => {
