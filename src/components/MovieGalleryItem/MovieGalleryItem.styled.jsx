@@ -5,15 +5,17 @@ export const MovieListItem = styled.li`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-bottom: ${({ theme }) => theme.space[3]}px;
+  padding: ${({ theme }) => theme.space[3]}px;
 
   max-width: 100%;
-  //width: 200px;
   width: 260px;
   height: 100%;
 
+  border: none;
   transform: scale(1);
   border-radius: 8px;
+
+  background-color: transparent;
 
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
@@ -29,7 +31,6 @@ export const MovieListItem = styled.li`
   img {
     display: block;
     min-height: 100%;
-    // height: 320px;
     height: 420px;
     width: 100%;
 
@@ -53,6 +54,8 @@ export const MoviePoster = styled.div`
 `;
 
 export const MovieTitle = styled.h2`
+  padding-top: ${({ theme }) => theme.space[3]}px;
+  padding-bottom: ${({ theme }) => theme.space[3]}px;
   padding-left: ${({ theme }) => theme.space[2]}px;
   padding-right: ${({ theme }) => theme.space[2]}px;
   max-width: 100%;
@@ -65,7 +68,8 @@ export const MovieTitle = styled.h2`
   text-shadow: ${({ theme }) => theme.textShadow};
   text-align: center;
 
-  font-size: ${props => props.theme.fontSizes.xs};
+  font-size: ${props => props.theme.fontSizes.m};
+  font-weight: 700;
 `;
 
 export const ReleaseDate = styled.p`
@@ -89,15 +93,15 @@ export const ReleaseDate = styled.p`
 
 export const CircleRating = styled.div`
   position: absolute;
-  bottom: 24px;
+  bottom: 44px;
   right: 10px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
 
   text-shadow: 0 0.3px 0.3px #000;
   border-radius: 50%;
@@ -120,6 +124,6 @@ export const Stars = styled.div`
 
 export const GenresBlock = styled.div`
   position: absolute;
-  bottom: 34px;
+  bottom: 48px;
   left: 10px;
 `;
