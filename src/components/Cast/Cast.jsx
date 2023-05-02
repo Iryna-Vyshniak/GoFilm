@@ -4,7 +4,7 @@ import { Title } from 'components/Title/Title';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getMoviesCast } from 'services/themoviedbAPI';
 import {
@@ -15,11 +15,12 @@ import {
   MovieHero,
   Wrap,
 } from './Cast.styled';
-import Avatar from 'assets/avatar.png';
+import Avatar from 'assets/avatar.jpg';
 import { useTranslation } from 'react-i18next';
 
 const Cast = ({ lng }) => {
   //console.log('Cast:', lng);
+  const location = useLocation();
   const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,27 +57,35 @@ const Cast = ({ lng }) => {
       {castList.length > 0 ? (
         <CastList>
           {castList.map(actor => (
-            <CastItem key={actor.id}>
-              <CastPhotoThumb>
-                <CastPhoto
-                  src={
-                    actor.profile_path
-                      ? `https://image.tmdb.org/t/p/original${actor.profile_path}`
-                      : Avatar
-                  }
-                  alt={actor.name}
-                  width="120"
-                />
-              </CastPhotoThumb>
+            <Link
+              to={`/actors/${actor.id}`}
+              state={{ from: location }}
+              key={actor.id}
+            >
+              <CastItem key={actor.id}>
+                <CastPhotoThumb>
+                  <CastPhoto
+                    src={
+                      actor.profile_path
+                        ? `https://image.tmdb.org/t/p/original${actor.profile_path}`
+                        : Avatar
+                    }
+                    alt={actor.name}
+                    width="120"
+                  />
+                </CastPhotoThumb>
 
-              <Wrap>
-                <p>{actor.name}</p>
-                <p>
-                  {t('moviesPage.character')}
-                  <MovieHero>{actor.character}</MovieHero>
-                </p>
-              </Wrap>
-            </CastItem>
+                <Wrap>
+                  <p>{actor.name}</p>
+                  {actor.character && (
+                    <p>
+                      {t('moviesPage.character')}
+                      <MovieHero>{actor.character}</MovieHero>
+                    </p>
+                  )}
+                </Wrap>
+              </CastItem>
+            </Link>
           ))}
         </CastList>
       ) : (
