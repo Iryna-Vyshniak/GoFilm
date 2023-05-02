@@ -159,3 +159,52 @@ export const getActorsPopular = async lng => {
 //     throw new Error('Oops, there is no movie');
 //   }
 // };
+export const getActorDetailInfo = async movieId => {
+  try {
+    const { data } = await axios.get(`/person/${movieId}`, {
+      params: {
+        id: movieId,
+        //language: lng,
+      },
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
+
+// export const getLanguages = async () => {
+//   try {
+//     const { data } = await axios.get(`/configuration/primary_translations`);
+//     return data;
+//   } catch (error) {
+//     throw new Error('Oops, there is no movie');
+//   }
+// };
+
+export const getActors = async (page = 1, query = '') => {
+  try {
+    const urlParam = query
+      ? `/search/person?page=${page}&query=${query}&include_adult=false`
+      : `/person/popular?page=1`;
+    const { data } = await axios.get(urlParam);
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
+
+export const getMoviesbyActors = async personId => {
+  try {
+    const { data } = await axios.get(`/person/${personId}/movie_credits`, {
+      params: {
+        page: 1,
+        // language: lng,
+      },
+    });
+    return data.cast;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
