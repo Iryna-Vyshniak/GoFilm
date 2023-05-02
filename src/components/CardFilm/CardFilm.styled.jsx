@@ -9,12 +9,13 @@ export const MovieListItem = styled.li`
   gap: 8px;
 
   margin: 0 auto;
-  padding-bottom: ${({ theme }) => theme.space[3]}px;
+  padding: ${({ theme }) => theme.space[3]}px;
 
   max-width: 100%;
-  width: 220px;
+  width: 360px;
   height: 100%;
 
+  border: none;
   transform: scale(1);
   border-radius: 8px;
 
@@ -56,6 +57,8 @@ export const MoviePoster = styled.div`
 `;
 
 export const MovieTitle = styled.h2`
+  padding-top: ${({ theme }) => theme.space[3]}px;
+  padding-bottom: ${({ theme }) => theme.space[3]}px;
   padding-left: ${({ theme }) => theme.space[2]}px;
   padding-right: ${({ theme }) => theme.space[2]}px;
   max-width: 100%;
@@ -68,7 +71,8 @@ export const MovieTitle = styled.h2`
   text-shadow: ${({ theme }) => theme.textShadow};
   text-align: center;
 
-  font-size: ${props => props.theme.fontSizes.xs};
+  font-size: ${props => props.theme.fontSizes.m};
+  font-weight: 700;
 `;
 
 export const CircleRating = styled.div`
@@ -80,16 +84,16 @@ export const CircleRating = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
 
   text-shadow: 0 0.3px 0.3px #000;
   border-radius: 50%;
-  padding: 2px;
+  padding: 4px;
 `;
 
 export const GenresBlock = styled.div`
   position: absolute;
   bottom: 48px;
-  right: 0;
+  right: 10px;
 `;
