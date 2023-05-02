@@ -15,7 +15,7 @@ export const RatingProgressbar = ({ rating }) => {
         pathColor: rating < 5 ? 'red' : rating < 7 ? 'orangered' : 'green',
         height: '100%',
         width: '100%',
-        textSize: '44px',
+        textSize: '48px',
         fontWeight: '700',
         strokeLinecap: 'butt',
         transition: 'stroke-dashoffset 0.5s ease 0s',
