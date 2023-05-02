@@ -14,7 +14,7 @@ export const CastItem = styled.li`
   flex-wrap: wrap;
 
   max-width: 100%;
-  width: 120px;
+  width: 180px;
   height: 100%;
 
   border-radius: 8px;
@@ -39,7 +39,7 @@ export const CastPhotoThumb = styled.div`
 export const CastPhoto = styled.img`
   display: block;
   min-height: 100%;
-  height: 160px;
+  height: 240px;
   width: 100%;
 
   border-top-left-radius: 8px;
