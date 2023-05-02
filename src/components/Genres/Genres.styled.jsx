@@ -11,7 +11,7 @@ export const Genre = styled.li`
   background-color: rgba(185, 228, 201, 0.973);
   color: rgb(0, 0, 0);
   text-shadow: 0 0.5px 0.5px #fff;
-  font-size: 12px;
+  font-size: ${props => props.theme.fontSizes.s};
   font-weight: bold;
   border-radius: 5px;
   padding: 0 6px;
