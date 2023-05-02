@@ -1,28 +1,6 @@
 import styled from 'styled-components';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 
-export const Wrapper = styled.div`
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 16px;
-
-  width: 100%;
-  max-width: 400px;
-
-  background-color: rgba(185, 228, 201, 0.4);
-  backdrop-filter: blur(2px);
-  color: #fff;
-  outline: 0;
-  border: 0;
-  border-radius: 30px;
-
-  box-shadow: 1px 1px 6px #f3d8a0, 1px 1px 6px #fff;
-
-  overflow: hidden;
-  text-transform: uppercase;
-`;
 
 export const SearchForm = styled.form`
   display: flex;
