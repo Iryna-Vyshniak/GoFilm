@@ -12,7 +12,7 @@ export const lightTheme = {
     'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 253, 245, 1) 100%)',
   backgroundHeaderFooter: '#b9e4c9',
   gradientBlock: 'rgba(255, 253, 245, 0.8)',
-  cardsTextColor: '#FD5523',
+  cardsTextColor: '#000',
   textShadow: '0 0.4px 0.4px #fff',
   buttonShadow: '-3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773)',
 };
