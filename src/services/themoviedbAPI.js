@@ -32,20 +32,33 @@ export const getTopRatedMovies = async lng => {
   }
 };
 
-export const getMoviesByQuery = async (query, page = 1, lng, controller) => {
+// export const getMoviesByQuery = async (query, page = 1, lng, controller) => {
+//   try {
+//     const { data } = await axios.get('/search/movie', {
+//       signal: controller.signal,
+//       params: {
+//         query,
+//         page,
+//         include_adult: false,
+//         language: lng,
+//       },
+//     });
+//     return data;
+//   } catch (error) {
+//     throw new Error('Oops, there is no movie with that name');
+//   }
+// };
+
+export const getMoviesByQuery = async (page = 1, query = '') => {
   try {
-    const { data } = await axios.get('/search/movie', {
-      signal: controller.signal,
-      params: {
-        query,
-        page,
-        include_adult: false,
-        language: lng,
-      },
-    });
+    const urlParam = query
+      ? `/search/movie?page=${page}&query=${query}&include_adult=false&language=en`
+      : `/movie/upcoming?page=${page}`;
+    const { data } = await axios.get(urlParam);
+    console.log(data);
     return data;
   } catch (error) {
-    throw new Error('Oops, there is no movie with that name');
+    throw new Error('Oops, there is no movie');
   }
 };
 
@@ -167,7 +180,6 @@ export const getActorDetailInfo = async movieId => {
         //language: lng,
       },
     });
-    console.log(data);
     return data;
   } catch (error) {
     throw new Error('Oops, there is no movie');
@@ -187,7 +199,7 @@ export const getActors = async (page = 1, query = '') => {
   try {
     const urlParam = query
       ? `/search/person?page=${page}&query=${query}&include_adult=false`
-      : `/person/popular?page=1`;
+      : `/person/popular?page=${page}`;
     const { data } = await axios.get(urlParam);
     return data;
   } catch (error) {
