@@ -12,9 +12,10 @@ import {
   ActorAvatar,
   ActorInfoContainer,
   MovieInfo,
-  NavLink,
   ActorInfoWrapper,
   MovieInfoTitle,
+  ActorContainer,
+  NavLink,
 } from './ActorDetailsPage.styled';
 import { useTranslation } from 'react-i18next';
 import { getActorDetailInfo } from 'services/themoviedbAPI';
@@ -62,7 +63,7 @@ const ActorDetailsInfoPage = ({ lng }) => {
       {isLoading && <Loader />}
       {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {!error && (
-        <>
+        <ActorContainer>
           <LinkToBack
             to={backLinkLocationRef.current}
             children={t('moviesPage.back_to_movies')}
@@ -137,7 +138,7 @@ const ActorDetailsInfoPage = ({ lng }) => {
               </Suspense>
             </ActorInfoContainer>
           )}
-        </>
+        </ActorContainer>
       )}
     </>
   );
