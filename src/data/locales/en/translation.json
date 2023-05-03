@@ -3,6 +3,7 @@
   "language": "Language",
   "home_link": "Home",
   "movie_link": "Movie",
+  "actor_link": "Actors",
   "loading": "Loading...",
   "homePage": {
     "top_title": "Top Rated Movies",
@@ -10,7 +11,6 @@
     "footer_slogan": "GoFilm - everything about movies, authors, actors and news of film industry"
   },
   "moviesPage": {
-    "toast_warn": "We already found movies. Please, enter another phrase",
     "mistake": "Oops, mistake! Please try again",
     "set_error": "Something went wrong, reload the page, it might help 🥹",
     "not_found": "I didn`t find movies. Please try again",
@@ -22,7 +22,7 @@
     "placeholder_search": "Search movies...",
     "placeholder_genres": "Select genres...",
     "additional_information": "Additional information",
-    "back_to_movies": "Back to Movies",
+    "back_to_movies": "Back",
     "cast": "Cast",
     "cast_desription": "Actor info not found",
     "character": "Character: ",
@@ -34,5 +34,8 @@
     "status": "Status: ",
     "release_date": "Release Date: ",
     "runtime": "Runtime: "
+  },
+  "actorsPage": {
+    "expected": "Expected Movies"
   }
 }
