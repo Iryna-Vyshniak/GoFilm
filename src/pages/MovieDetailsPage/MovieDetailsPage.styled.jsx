@@ -9,7 +9,7 @@ export const NavLink = styled(MovieLink)`
   text-decoration: none;
   color: ${props => props.theme.colors.black};
   text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${props => props.theme.fontSizes.s};
   font-weight: 500;
 
   &.active {
@@ -20,6 +20,10 @@ export const NavLink = styled(MovieLink)`
   :hover:not(.active),
   :focus-visible:not(.active) {
     color: #fd5523;
+  }
+
+  @media screen and (min-width: 480px) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
   }
 `;
 
@@ -57,9 +61,10 @@ export const MainTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]}px;
   text-align: center;
   color: ${props => props.theme.colors.accent};
-  text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
+  text-shadow: 0 0.4px 0.4px #fff, 0 0.4px 0.4px #4b1414;
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: 500;
+  letter-spacing: 1.5px;
 
   @media screen and (min-width: 480px) {
     font-size: ${({ theme }) => theme.fontSizes.l};
@@ -80,8 +85,8 @@ export const MovieInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 40px;
 
   height: auto;
   margin-top: 30px;
@@ -94,6 +99,12 @@ export const MovieInfo = styled.div`
     rgba(121, 9, 9, 0) 10%,
     rgb(134, 167, 147) 100%
   );
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+
+  @media screen and (min-width: 480px) {
+    justify-content: flex-start;
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 `;
 
 export const MovieInfoTitle = styled.h4`
