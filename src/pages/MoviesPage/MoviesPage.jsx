@@ -186,7 +186,10 @@ const MoviesPage = props => {
           </>
         )}
 
-        {!error && query && <MovieGallery movies={filteredMovies} lng={lng} />}
+        {!error && query && !isLoading && (
+          <MovieGallery movies={filteredMovies} lng={lng} />
+        )}
+
         {movies.length > 0 && !isLoading && page <= totalPages && (
           <Pagination
             pageCount={totalPages}
@@ -197,7 +200,7 @@ const MoviesPage = props => {
         )}
 
         {/* рендер галереї зображень за жанрами*/}
-        {!error && data && (
+        {!error && !isLoading && data && (
           <>
             <Title title={t('moviesPage.trend_list')} />
             <MovieGallery movies={data} lng={lng} />
