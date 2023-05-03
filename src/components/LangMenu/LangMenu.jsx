@@ -7,13 +7,13 @@ import { MenuItem } from '@mui/material';
 import { FcGlobe } from 'react-icons/fc';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { Btn, TitleLang } from './LangMenu.styled';
-import { useLocalStorage } from 'hooks/useLocaleStorage';
+//import { useLocalStorage } from 'hooks/useLocaleStorage';
 
 const ITEM_HEIGHT = 32;
 
 export const LangMenu = ({ languages, t }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
+  //const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
 
   const open = Boolean(anchorEl);
   const handleClick = e => {
@@ -25,7 +25,7 @@ export const LangMenu = ({ languages, t }) => {
   };
 
   const handleMenuItemClick = (e, idx) => {
-    setSelectedIndex(idx);
+    //setSelectedIndex(idx);
     setAnchorEl(null);
   };
 
@@ -74,7 +74,7 @@ export const LangMenu = ({ languages, t }) => {
         {languages.map(({ code, name, country_code }, idx) => (
           <MenuItem
             key={country_code}
-            selected={idx === selectedIndex}
+            //selected={idx === selectedIndex}
             onClick={e => handleMenuItemClick(e, idx)}
           >
             <Btn
