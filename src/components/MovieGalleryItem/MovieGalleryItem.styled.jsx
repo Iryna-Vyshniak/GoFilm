@@ -68,7 +68,7 @@ export const MovieTitle = styled.h2`
   text-shadow: ${({ theme }) => theme.textShadow};
   text-align: center;
 
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${props => props.theme.fontSizes.s};
   font-weight: 700;
 `;
 
