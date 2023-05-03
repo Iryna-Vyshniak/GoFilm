@@ -65,3 +65,27 @@ export const Wrap = styled.div`
 export const MovieHero = styled.span`
   color: ${props => props.theme.colors.accent};
 `;
+
+export const ActorsName = styled.h3`
+  margin-bottom: ${props => props.theme.space[4]}px;
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-weight: 500;
+
+  @media screen and (min-width: 480px) {
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
+`;
+
+export const ActorsCharacter = styled.p`
+  margin-bottom: ${props => props.theme.space[4]}px;
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-weight: 500;
+
+  @media screen and (min-width: 480px) {
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
+`;
