@@ -6,10 +6,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useRef, useState } from 'react';
 import { BtnReadMore } from './ScrollInfo.styled';
+import { useTranslation } from 'react-i18next';
 
 export default function ScrollInfo({ bio }) {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
+
+  const { t } = useTranslation();
 
   const handleClickOpen = scrollType => () => {
     setOpen(true);
@@ -32,7 +35,9 @@ export default function ScrollInfo({ bio }) {
 
   return (
     <>
-      <BtnReadMore onClick={handleClickOpen('body')}>Read more</BtnReadMore>
+      <BtnReadMore onClick={handleClickOpen('body')}>
+        {t('actorsPage.read_more')}
+      </BtnReadMore>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -40,7 +45,9 @@ export default function ScrollInfo({ bio }) {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">Biography</DialogTitle>
+        <DialogTitle id="scroll-dialog-title">
+          {t('actorsPage.biography')}
+        </DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
             id="scroll-dialog-description"
@@ -51,7 +58,7 @@ export default function ScrollInfo({ bio }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}> {t('actorsPage.cancel')}</Button>
         </DialogActions>
       </Dialog>
     </>

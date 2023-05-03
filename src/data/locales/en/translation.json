@@ -42,6 +42,9 @@
     "bio": "Biography, Movies and Facts",
     "date_of_birth": "Date of birth: ",
     "place_of_birth": "Place of birth: ",
-    "popularity": "Popularity: "
+    "popularity": "Popularity: ",
+    "read_more": "Read More",
+    "biography": "Biography",
+    "cancel": "OK"
   }
 }
