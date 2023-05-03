@@ -36,6 +36,7 @@
     "runtime": "Runtime: "
   },
   "actorsPage": {
-    "expected": "Expected Movies"
+    "expected": "Expected Movies",
+    "placeholder_search": "Search actors..."
   }
 }

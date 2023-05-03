@@ -16,7 +16,7 @@ export const ActorsSearch = ({ value, onChange, t }) => {
         debounceTimeout={500}
         onChange={onChange}
         autoFocus
-        placeholder="Search actors..."
+        placeholder={t('actorsPage.placeholder_search')}
       />
       <SearchFormBtn type="submit">
         <Icon size="24" />

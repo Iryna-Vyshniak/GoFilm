@@ -36,6 +36,7 @@
     "runtime": "Час перегляду: "
   },
   "actorsPage": {
-    "expected": "Незабаром"
+    "expected": "Незабаром",
+    "placeholder_search": "Пошук акторів..."
   }
 }
