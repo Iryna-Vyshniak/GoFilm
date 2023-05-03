@@ -51,6 +51,15 @@ img {
 a {
 text-decoration: none;
 }
+/* AppBar */
+.css-hyum1k-MuiToolbar-root {
+    width: 100%;
+}
+
+.css-hyum1k-MuiToolbar-root {
+    justify-content: space-between;
+}
+
 
 /* SWIPER */
 
