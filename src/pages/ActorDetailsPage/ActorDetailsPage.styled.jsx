@@ -4,10 +4,10 @@ import { NavLink as MovieLink } from 'react-router-dom';
 export const NavLink = styled(MovieLink)`
   position: relative;
   z-index: 9;
-  padding: 8px 16px;
+  padding: 10px;
   border-radius: 4px;
   text-decoration: none;
-  color: ${props => props.theme.colors.black};
+  color: ${({ theme }) => theme.text};
   text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
   font-size: ${props => props.theme.fontSizes.m};
   font-weight: 500;
@@ -31,9 +31,20 @@ export const ActorInfoContainer = styled.div`
   gap: 16px;
 
   margin-bottom: 20px;
-  padding: 0 16px;
+  padding-top: ${({ theme }) => theme.space[6]}px;
+  padding-bottom: ${({ theme }) => theme.space[3]}px;
+  padding-left: ${({ theme }) => theme.space[4]}px;
+  padding-right: ${({ theme }) => theme.space[4]}px;
   font-weight: 500;
 `;
+
+export const ActorContainer = styled.div`
+  padding-top: ${({ theme }) => theme.space[6]}px;
+  padding-bottom: ${({ theme }) => theme.space[3]}px;
+  padding-left: ${({ theme }) => theme.space[4]}px;
+  padding-right: ${({ theme }) => theme.space[4]}px;
+`;
+
 export const ActorInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,7 +101,7 @@ export const ActorsInfoBirth = styled.p`
   & > span {
     margin-right: 5px;
     color: ${props => props.theme.colors.primary};
-    text-shadow: 0 1px 1px #fff, 0px 0.4px 0.4px #000;
+    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
   }
 
   @media screen and (min-width: 480px) {
@@ -105,7 +116,7 @@ export const ActorsInfoDepartment = styled.p`
   & > span {
     margin-right: 5px;
     color: ${props => props.theme.colors.primary};
-    text-shadow: 0 1px 1px #fff, 0px 0.4px 0.4px #000;
+    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
   }
 
   @media screen and (min-width: 480px) {
@@ -120,7 +131,7 @@ export const ActorsPlaceOfBirth = styled.p`
   & > span {
     margin-right: 5px;
     color: ${props => props.theme.colors.primary};
-    text-shadow: 0 1px 1px #fff, 0px 0.4px 0.4px #000;
+    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
   }
 
   @media screen and (min-width: 480px) {
@@ -135,7 +146,7 @@ export const ActorsPopularity = styled.div`
   & > span {
     margin-right: 5px;
     color: ${props => props.theme.colors.primary};
-    text-shadow: 0 1px 1px #fff, 0px 0.4px 0.4px #000;
+    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
   }
 
   @media screen and (min-width: 480px) {
