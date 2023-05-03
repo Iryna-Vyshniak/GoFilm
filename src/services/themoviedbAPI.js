@@ -56,7 +56,6 @@ export const getMoviesByQuery = async (page = 1, query = '', lng) => {
       ? `/search/movie?page=${page}&query=${query}&language=${lng}`
       : `/movie/upcoming?page=${page}&language=${lng}`;
     const { data } = await axios.get(urlParam);
-    console.log(data);
     return data;
   } catch (error) {
     throw new Error('Oops, there is no movie');
@@ -165,14 +164,7 @@ export const getActorsPopular = async lng => {
     throw new Error('Oops, there is no movie');
   }
 };
-// export const getLanguages = async () => {
-//   try {
-//     const { data } = await axios.get(`/configuration/primary_translations`);
-//     return data;
-//   } catch (error) {
-//     throw new Error('Oops, there is no movie');
-//   }
-// };
+
 export const getActorDetailInfo = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`/person/${movieId}`, {
@@ -186,15 +178,6 @@ export const getActorDetailInfo = async (movieId, lng) => {
     throw new Error('Oops, there is no movie');
   }
 };
-
-// export const getLanguages = async () => {
-//   try {
-//     const { data } = await axios.get(`/configuration/primary_translations`);
-//     return data;
-//   } catch (error) {
-//     throw new Error('Oops, there is no movie');
-//   }
-// };
 
 export const getActors = async (page = 1, query = '', lng) => {
   try {
@@ -221,3 +204,12 @@ export const getMoviesbyActors = async (personId, lng) => {
     throw new Error('Oops, there is no movie');
   }
 };
+
+// export const getLanguages = async () => {
+//   try {
+//     const { data } = await axios.get(`/configuration/primary_translations`);
+//     return data;
+//   } catch (error) {
+//     throw new Error('Oops, there is no movie');
+//   }
+// };
