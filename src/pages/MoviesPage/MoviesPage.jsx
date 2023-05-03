@@ -181,7 +181,7 @@ const MoviesPage = props => {
 
         {!error && !isLoading && !query && (
           <>
-            <Title title="Expected Movies" />
+            <Title title={t('actorsPage.expected')} />
             <MovieGallery movies={movies} lng={lng} />
           </>
         )}
