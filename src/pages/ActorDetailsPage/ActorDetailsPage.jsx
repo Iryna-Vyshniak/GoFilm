@@ -67,7 +67,7 @@ const ActorDetailsInfoPage = ({ lng }) => {
             to={backLinkLocationRef.current}
             children={t('moviesPage.back_to_movies')}
           />
-          <Title title="Biography, Movies and Facts" />
+          <Title title={t('actorsPage.bio')} />
 
           {actorsData && (
             <ActorInfoContainer key={actorsData.id}>
@@ -92,19 +92,19 @@ const ActorDetailsInfoPage = ({ lng }) => {
                   )}
                   {actorsData.birthday && (
                     <ActorsInfoBirth>
-                      <span>Date of birth: </span>
+                      <span>{t('actorsPage.date_of_birth')}</span>
                       {actorsData.birthday}
                     </ActorsInfoBirth>
                   )}
                   {actorsData.place_of_birth && (
                     <ActorsPlaceOfBirth>
-                      <span>Place of birth: </span>
+                      <span>{t('actorsPage.place_of_birth')}</span>
                       {actorsData.place_of_birth}
                     </ActorsPlaceOfBirth>
                   )}
                   {actorsData.popularity && (
                     <ActorsPopularity>
-                      <span>Popularity: </span>
+                      <span>{t('actorsPage.popularity')}</span>
                       {actorsData.popularity?.toFixed(1)}
                     </ActorsPopularity>
                   )}
@@ -128,7 +128,7 @@ const ActorDetailsInfoPage = ({ lng }) => {
                 </MovieInfoTitle>
                 <nav>
                   <NavLink to="actors-movies" state={{ from: location }}>
-                    Movies
+                    {t('movie_link')}
                   </NavLink>
                 </nav>
               </MovieInfo>

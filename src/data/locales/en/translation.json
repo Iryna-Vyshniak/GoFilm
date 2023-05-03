@@ -38,6 +38,10 @@
   "actorsPage": {
     "expected": "Expected Movies",
     "placeholder_search": "Search actors...",
-    "actors_rating": "Actors Rating: "
+    "actors_rating": "Actors Rating: ",
+    "bio": "Biography, Movies and Facts",
+    "date_of_birth": "Date of birth: ",
+    "place_of_birth": "Place of birth: ",
+    "popularity": "Popularity: "
   }
 }

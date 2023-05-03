@@ -38,6 +38,10 @@
   "actorsPage": {
     "expected": "Незабаром",
     "placeholder_search": "Пошук акторів...",
-    "actors_rating": "Рейтинг: "
+    "actors_rating": "Рейтинг: ",
+    "bio": "Біографія, Фільми та Факти",
+    "date_of_birth": "Дата народження: ",
+    "place_of_birth": "Місце народження: ",
+    "popularity": "Популярність: "
   }
 }
