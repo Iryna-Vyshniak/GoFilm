@@ -50,7 +50,7 @@ export const SharedLayout = ({ currentLanguage, languages }) => {
             <nav>
               <Link to="/">{t('home_link')}</Link>
               <Link to="/movies">{t('movie_link')}</Link>
-              <Link to="/actors">Actors</Link>
+              <Link to="/actors">{t('actor_link')}</Link>
             </nav>
             <LangThemeBlock>
               <LangMenu t={t} languages={languages} />
