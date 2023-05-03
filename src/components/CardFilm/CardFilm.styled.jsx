@@ -12,7 +12,7 @@ export const MovieListItem = styled.li`
   padding: ${({ theme }) => theme.space[3]}px;
 
   max-width: 100%;
-  width: 360px;
+  width: 260px;
   height: 100%;
 
   border: none;
