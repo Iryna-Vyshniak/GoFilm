@@ -71,11 +71,17 @@ export const Link = styled(NavLink)`
   border-radius: 4px;
   text-decoration: none;
   color: ${({ theme }) => theme.text};
+  font-size: ${props => props.theme.fontSizes.s};
+
   font-weight: 500;
 
   &.active {
     color: white;
     background-color: #fd5523;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
   }
 `;
 export const LangThemeBlock = styled.div`
