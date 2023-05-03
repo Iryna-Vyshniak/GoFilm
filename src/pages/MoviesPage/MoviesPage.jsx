@@ -59,6 +59,7 @@ const MoviesPage = props => {
   const [totalPages, setTotalPages] = useState(null);
 
   const [data, setData] = useState(null);
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
@@ -72,6 +73,7 @@ const MoviesPage = props => {
 
   const page = Number(params.page || 1);
   let { query } = params;
+
   //console.log(params);
 
   const location = useLocation();
@@ -123,34 +125,43 @@ const MoviesPage = props => {
     })();
   }, [lng]);
 
+  // get movies by genres
+  useEffect(() => {
+    if (!selectedGenre) return;
+
+    const fetchMovies = async (movieId, lng) => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        setMovies([]);
+        const moviesData = await getMoviesWithGenres(movieId, lng);
+        setData(moviesData.results);
+      } catch (error) {
+        setData(null);
+        setError(<ImageErrorView message={t('moviesPage.mistake')} />);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchMovies(selectedGenre, lng);
+  }, [lng, selectedGenre, t]);
+
   if (!actors) {
     return <div>{t('loading')}</div>;
   }
 
   const handleSearchChange = e => {
-    query = e.target.value;
+    const inputValue = e.target.value;
+    query = inputValue;
     setSearchParams({ page: 1, query: query });
-    //console.log(params);
-  };
 
-  // get movies by genres
-  const fetchMovies = async (movieId, lng) => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      setMovies([]);
-      const moviesData = await getMoviesWithGenres(movieId, lng);
-      setData(moviesData.results);
-    } catch (error) {
-      setData(null);
-      setError(<ImageErrorView message={t('moviesPage.mistake')} />);
-    } finally {
-      setIsLoading(false);
+    // clear selected genre when input is changed
+    if (selectedGenre) {
+      setSelectedGenre(null);
     }
   };
 
   // console.log(movies);
-  // console.log(data);
   return (
     <>
       {/* <HeroBanner movies={movies} /> */}
@@ -168,7 +179,7 @@ const MoviesPage = props => {
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar value={query} onChange={handleSearchChange} t={t} />
-        <GenresSelect onSelect={fetchMovies} t={t} lng={lng} />
+        <GenresSelect onSelect={setSelectedGenre} t={t} lng={lng} />
 
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з повідомленням помилки */}
@@ -179,7 +190,7 @@ const MoviesPage = props => {
           <ImageErrorView message={t('moviesPage.not_found')} />
         )}
 
-        {!error && !isLoading && !query && (
+        {!error && !isLoading && !query && selectedGenre === null && (
           <>
             <Title title={t('actorsPage.expected')} />
             <MovieGallery movies={movies} lng={lng} />
