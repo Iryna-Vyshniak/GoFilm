@@ -3,6 +3,7 @@ import axios from 'axios';
 axios.defaults.baseURL = `https://api.themoviedb.org/3`;
 axios.defaults.params = {
   api_key: `80849c20aa63241eb028c4e7b7d0f3a8`,
+  include_adult: false,
   // language: 'en' / 'uk',
 };
 
@@ -49,11 +50,11 @@ export const getTopRatedMovies = async lng => {
 //   }
 // };
 
-export const getMoviesByQuery = async (page = 1, query = '') => {
+export const getMoviesByQuery = async (page = 1, query = '', lng) => {
   try {
     const urlParam = query
-      ? `/search/movie?page=${page}&query=${query}&include_adult=false&language=en`
-      : `/movie/upcoming?page=${page}`;
+      ? `/search/movie?page=${page}&query=${query}&language=${lng}`
+      : `/movie/upcoming?page=${page}&language=${lng}`;
     const { data } = await axios.get(urlParam);
     console.log(data);
     return data;
@@ -133,7 +134,7 @@ export const getGenresMovies = async lng => {
 export const getMoviesWithGenres = async (movieId, lng) => {
   try {
     const { data } = await axios.get(
-      `/discover/movie?with_genres=${movieId}&sort_by=popularity.desc&include_adult=false&page=1&language=${lng}`
+      `/discover/movie?with_genres=${movieId}&sort_by=popularity.desc&page=1&language=${lng}`
     );
     return data;
   } catch (error) {
@@ -172,12 +173,12 @@ export const getActorsPopular = async lng => {
 //     throw new Error('Oops, there is no movie');
 //   }
 // };
-export const getActorDetailInfo = async movieId => {
+export const getActorDetailInfo = async (movieId, lng) => {
   try {
     const { data } = await axios.get(`/person/${movieId}`, {
       params: {
         id: movieId,
-        //language: lng,
+        language: lng,
       },
     });
     return data;
@@ -195,11 +196,11 @@ export const getActorDetailInfo = async movieId => {
 //   }
 // };
 
-export const getActors = async (page = 1, query = '') => {
+export const getActors = async (page = 1, query = '', lng) => {
   try {
     const urlParam = query
-      ? `/search/person?page=${page}&query=${query}&include_adult=false`
-      : `/person/popular?page=${page}`;
+      ? `/search/person?page=${page}&query=${query}&language=${lng}`
+      : `/person/popular?page=${page}&language=${lng}`;
     const { data } = await axios.get(urlParam);
     return data;
   } catch (error) {
@@ -207,12 +208,12 @@ export const getActors = async (page = 1, query = '') => {
   }
 };
 
-export const getMoviesbyActors = async personId => {
+export const getMoviesbyActors = async (personId, lng) => {
   try {
     const { data } = await axios.get(`/person/${personId}/movie_credits`, {
       params: {
         page: 1,
-        // language: lng,
+        language: lng,
       },
     });
     return data.cast;
