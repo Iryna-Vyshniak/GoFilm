@@ -37,6 +37,7 @@
   },
   "actorsPage": {
     "expected": "Незабаром",
-    "placeholder_search": "Пошук акторів..."
+    "placeholder_search": "Пошук акторів...",
+    "actors_rating": "Рейтинг: "
   }
 }

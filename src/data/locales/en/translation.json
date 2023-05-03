@@ -37,6 +37,7 @@
   },
   "actorsPage": {
     "expected": "Expected Movies",
-    "placeholder_search": "Search actors..."
+    "placeholder_search": "Search actors...",
+    "actors_rating": "Actors Rating: "
   }
 }

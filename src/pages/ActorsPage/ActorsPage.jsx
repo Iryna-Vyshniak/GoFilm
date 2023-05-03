@@ -128,7 +128,8 @@ const ActorsPage = ({ lng }) => {
                       </>
                     )}
                     <ActorsRating>
-                      Actors Rating: {(popularity / 5).toFixed(0)}%
+                      {t('actorsPage.actors_rating')}
+                      {(popularity / 5).toFixed(0)}%
                     </ActorsRating>
                   </ActorListItem>
                 </Link>
