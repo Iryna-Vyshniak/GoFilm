@@ -20,6 +20,7 @@ export const MovieGalleryItem = ({
   movie: {
     id,
     poster_path,
+    title,
     original_title,
     release_date,
     vote_average,
@@ -43,7 +44,7 @@ export const MovieGalleryItem = ({
             width="200"
           />
         </MoviePoster>
-        <MovieTitle>{original_title}</MovieTitle>
+        <MovieTitle>{title}</MovieTitle>
         {release_date && <ReleaseDate>{parseInt(release_date)}</ReleaseDate>}
         {vote_average !== 0 && (
           <Stars>
