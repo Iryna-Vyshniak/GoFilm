@@ -8,6 +8,8 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getMoviesCast } from 'services/themoviedbAPI';
 import {
+  ActorsCharacter,
+  ActorsName,
   CastItem,
   CastList,
   CastPhoto,
@@ -76,12 +78,12 @@ const Cast = ({ lng }) => {
                 </CastPhotoThumb>
 
                 <Wrap>
-                  <p>{actor.name}</p>
+                  <ActorsName>{actor.name}</ActorsName>
                   {actor.character && (
-                    <p>
+                    <ActorsCharacter>
                       {t('moviesPage.character')}
                       <MovieHero>{actor.character}</MovieHero>
-                    </p>
+                    </ActorsCharacter>
                   )}
                 </Wrap>
               </CastItem>
