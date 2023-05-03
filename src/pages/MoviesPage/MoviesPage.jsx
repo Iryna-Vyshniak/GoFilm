@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { notifyOptions } from 'utils/notify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -19,7 +16,6 @@ import {
   BackdropImg,
   BgBlockActors,
   BlockInfoActors,
-  Btn,
   GradientBlockBottom,
   GradientBlockTop,
   HeroContainer,
@@ -30,9 +26,9 @@ import {
   SectionHero,
   SmallText,
   TitleList,
-} from './Movies.styled';
+} from './MoviesPage.styled';
 
-import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
+//import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import {
   getActorsPopular,
@@ -49,64 +45,74 @@ import ActorsBg from 'assets/actors-bg.png';
 import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 import { Title } from 'components/Title/Title';
 import { useTranslation } from 'react-i18next';
+import Pagination from 'components/Pagination/Pagination';
 
-const Movies = props => {
+const MoviesPage = props => {
   const { lng } = props;
   //console.log('Movies:', lng);
-  const [movies, setMovies] = useState([]);
-  const [actors, setActors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [page, setPage] = useState(1);
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [actors, setActors] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   const [data, setData] = useState(null);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') ?? '';
+  const [searchParams, setSearchParams] = useSearchParams({
+    page: 1,
+    query: '',
+  });
+
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
+
+  const page = Number(params.page || 1);
+  let { query } = params;
+  //console.log(params);
+
+  const location = useLocation();
   const { t } = useTranslation();
 
   // movies
   useEffect(() => {
-    if (query === '') return;
-
-    // при новому запиті - запит відбувається з 1 сторінки та попередній масив зображень обнуляється
-    if (page === 1) {
-      setMovies([]);
-    }
-    // add abortController
-    const controller = new AbortController();
-
     (async () => {
       try {
-        setIsLoading(true);
         setData(null);
-        const data = await getMoviesByQuery(query, page, lng, controller);
+        const data = await getMoviesByQuery(page, query, lng);
         //console.log(data.results);
-        setError(false);
-        setMovies(prevMovie => [...prevMovie, ...data.results]);
-        setTotalPages(Math.floor(data.total_results / 20));
+
+        setMovies(data.results);
+        setTotalPages(data.total_results);
       } catch (error) {
         setError(error);
-        setMovies([]);
       } finally {
         setIsLoading(false);
       }
     })();
-    return () => {
-      controller.abort();
-    };
-  }, [query, page, lng]);
+    // return () => {
+    //   controller.abort();
+    // };
+  }, [page, query, location.search, lng]);
+
+  useEffect(() => {
+    const filtered = movies?.filter(movie =>
+      movie?.title?.toLowerCase().includes(query?.toLowerCase())
+    );
+    setFilteredMovies(filtered);
+  }, [movies, query]);
 
   // actors
   useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
-        setError(false);
+        setError(null);
 
-        const dataActors = await getActorsPopular();
+        const dataActors = await getActorsPopular(lng);
         //console.log(data);
         setActors(dataActors);
       } catch (error) {
@@ -115,34 +121,23 @@ const Movies = props => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [lng]);
 
   if (!actors) {
     return <div>{t('loading')}</div>;
   }
 
-  const updateQueryString = inputValue => {
-    if (inputValue === query) {
-      return toast.warn(
-        `We already found movies for ${inputValue.toUpperCase()}.
-         Please, enter another phrase`,
-        notifyOptions
-      );
-    }
-    setPage(1);
-    setMovies([]);
-    setSearchParams(inputValue !== '' ? { query: inputValue } : {});
-  };
-
-  const onLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
+  const handleSearchChange = e => {
+    query = e.target.value;
+    setSearchParams({ page: 1, query: query });
+    //console.log(params);
   };
 
   // get movies by genres
   const fetchMovies = async (movieId, lng) => {
     try {
       setIsLoading(true);
-      setError(false);
+      setError(null);
       setMovies([]);
       const moviesData = await getMoviesWithGenres(movieId, lng);
       setData(moviesData.results);
@@ -172,18 +167,11 @@ const Movies = props => {
           </HeroContainer>
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
-        <Searchbar onSubmit={updateQueryString} t={t} />
+        <Searchbar value={query} onChange={handleSearchChange} t={t} />
         <GenresSelect onSelect={fetchMovies} t={t} lng={lng} />
 
-        {/* стартове дефолтне зображення в галереї до рендеру фільмів */}
-        {!query && data === null && (
-          <InitialStateGallery />
-          // <InitialStateGallery text={t('moviesPage.title')} />
-        )}
-
         {isLoading && <Loader />}
-        {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
-      повідомленням помилки */}
+        {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з повідомленням помилки */}
         {error && <ImageErrorView message={t('moviesPage.mistake')} />}
 
         {/* якщо при запиті зображення не знайдені - рендериться дефолтне зображення з повідомленням */}
@@ -191,7 +179,24 @@ const Movies = props => {
           <ImageErrorView message={t('moviesPage.not_found')} />
         )}
 
-        {/* рендер галереї зображень */}
+        {!error && !isLoading && !query && (
+          <>
+            <Title title="Expected Movies" />
+            <MovieGallery movies={movies} lng={lng} />
+          </>
+        )}
+
+        {!error && query && <MovieGallery movies={filteredMovies} lng={lng} />}
+        {movies.length > 0 && !isLoading && page <= totalPages && (
+          <Pagination
+            pageCount={totalPages}
+            setSearchParams={setSearchParams}
+            params={params}
+            currentPage={page - 1}
+          />
+        )}
+
+        {/* рендер галереї зображень за жанрами*/}
         {!error && data && (
           <>
             <Title title={t('moviesPage.trend_list')} />
@@ -199,11 +204,6 @@ const Movies = props => {
           </>
         )}
 
-        {!error && query && <MovieGallery movies={movies} lng={lng} />}
-        {/* якщо при запиті зображення знайдені, запит не в стадії очікування та ще є сторінки з зображеннями - рендериться кнопка Load More*/}
-        {movies.length > 0 && !isLoading && page <= totalPages && (
-          <Btn onClick={onLoadMore}>{t('moviesPage.load_more')}</Btn>
-        )}
         {/* якщо запит успішний  - рендериться галерея зображень акторів*/}
         {actors && (
           <>
@@ -270,7 +270,11 @@ const Movies = props => {
                   {actors.map(({ id, profile_path, name, known_for }) => {
                     return (
                       <SwiperSlide key={id}>
-                        <Link to="/" style={{ margin: `0 auto` }}>
+                        <Link
+                          to={`/actors/${id}`}
+                          state={{ from: location }}
+                          key={id}
+                        >
                           <AvatarWrap>
                             <Poster
                               src={
@@ -302,4 +306,4 @@ const Movies = props => {
   );
 };
 
-export default Movies;
+export default MoviesPage;

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import i18next from 'i18next';
-import { HomeBlock } from './Home.styled';
+import { HomeBlock } from './HomePage.styled';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
@@ -25,16 +25,20 @@ import { useTranslation } from 'react-i18next';
 
 i18next.dir();
 
-const Home = ({ lng }) => {
+const HomePage = ({ lng }) => {
   //console.log('Home:', lng);
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
 
-  const page = Number(searchParams.get('page') || 1);
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
+  const page = Number(params.page || 1);
   const { t } = useTranslation();
 
   //console.log(page);
@@ -78,11 +82,6 @@ const Home = ({ lng }) => {
     return <Loader />;
   }
 
-  const handlePageClick = e => {
-    //console.log(e.selected);
-    setSearchParams({ page: e.selected + 1 });
-  };
-
   return (
     <HomeBlock>
       {isLoading && <Loader />}
@@ -116,10 +115,10 @@ const Home = ({ lng }) => {
                   disableOnInteraction: false,
                 }}
                 coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
+                  depth: 50,
                   modifier: 1,
+                  rotate: 35,
+                  stretch: 0,
                   slideShadows: true,
                 }}
                 breakpoints={{
@@ -153,9 +152,10 @@ const Home = ({ lng }) => {
           <Title title={t('homePage.trending_title')} />
           <MovieGallery movies={movies} t={t} lng={lng} />
           <Pagination
-            handlePageClick={handlePageClick}
-            pages={totalPages}
-            currentPage={page}
+            pageCount={totalPages}
+            setSearchParams={setSearchParams}
+            params={params}
+            currentPage={page - 1}
           />
         </>
       )}
@@ -163,4 +163,4 @@ const Home = ({ lng }) => {
   );
 };
 
-export default Home;
+export default HomePage;

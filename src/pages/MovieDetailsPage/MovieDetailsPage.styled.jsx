@@ -1,27 +1,6 @@
 import styled from 'styled-components';
 import { NavLink as MovieLink } from 'react-router-dom';
 
-/* export const BackdropImage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.1;
-  overflow: hidden;
-
-  -webkit-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75), -20px 20px 65px #fff;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-`; */
-
 export const NavLink = styled(MovieLink)`
   position: relative;
   z-index: 9;
@@ -74,7 +53,7 @@ export const WrapperDetails = styled.div`
   font-weight: 500;
 `;
 
-export const MainTitle = styled.h1`
+export const MainTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]}px;
   text-align: center;
   color: ${props => props.theme.colors.accent};
@@ -150,7 +129,7 @@ export const ProductionLogo = styled.img`
 
 export const PosterMovie = styled.img`
   max-width: 100%;
-  width: 50vw;
+  width: 45%;
   height: auto;
 
   border-radius: 8px;

@@ -24,7 +24,7 @@ import {
   WrapRelease,
   WrapperDetails,
   WrapperMovie,
-} from './MovieDetails.styled';
+} from './MovieDetailsPage.styled';
 
 import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
 import { Loader } from 'components/Loader/Loader';
@@ -36,7 +36,7 @@ import HeroPoster from 'assets/heroBanner.jpg';
 import NoPoster from 'assets/no-poster.jpg';
 import { useTranslation } from 'react-i18next';
 
-const MovieDetails = ({ lng }) => {
+const MovieDetailsPage = ({ lng }) => {
   //console.log('MovieDetails:', lng);
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,8 @@ const MovieDetails = ({ lng }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+
   //const params = useParams();
   const { movieId } = useParams();
   //console.log(movieId);
@@ -113,7 +114,7 @@ const MovieDetails = ({ lng }) => {
   const {
     poster_path,
     original_title,
-    original_name,
+    title,
     release_date,
     vote_average,
     genres,
@@ -144,7 +145,7 @@ const MovieDetails = ({ lng }) => {
                           ? `https://image.tmdb.org/t/p/original${poster_path}`
                           : HeroPoster
                       }
-                      alt={original_title || original_name}
+                      alt={title || original_title}
                       width="1200"
                     />
                   </BackdropPoster>
@@ -162,7 +163,7 @@ const MovieDetails = ({ lng }) => {
                     ? `https://image.tmdb.org/t/p/original${poster_path}`
                     : NoPoster
                 }
-                alt={original_title || original_name}
+                alt={title || original_title}
                 width="500"
               />
             )}
@@ -170,7 +171,7 @@ const MovieDetails = ({ lng }) => {
             <WrapperDetails>
               {/* назва фільму */}
               <MainTitle>
-                {original_title || original_name}
+                {title || original_title}
                 {release_date && <span> ({parseInt(release_date)})</span>}
               </MainTitle>
               {/* rating stars */}
@@ -313,4 +314,4 @@ const MovieDetails = ({ lng }) => {
   );
 };
 
-export default MovieDetails;
+export default MovieDetailsPage;

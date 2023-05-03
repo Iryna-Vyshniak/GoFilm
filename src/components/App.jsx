@@ -11,9 +11,11 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { PageNotFound } from './PageNotFound/PageNotFound';
 import { GlobalStyle } from 'styles/GlobalStyle';
 
-const Home = lazy(() => import('pages/Home/Home'));
-const Movies = lazy(() => import('pages/Movies/Movies'));
-const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const Movies = lazy(() => import('pages/MoviesPage/MoviesPage'));
+const MovieDetailsPage = lazy(() =>
+  import('pages/MovieDetailsPage/MovieDetailsPage')
+);
 const Cast = lazy(() => import('./Cast/Cast'));
 // if doesn`t have default export
 const Reviews = lazy(() =>
@@ -21,6 +23,12 @@ const Reviews = lazy(() =>
     ...module,
     default: module.Reviews,
   }))
+);
+
+const ActorsPage = lazy(() => import('pages/ActorsPage/ActorsPage'));
+const ActorsMovies = lazy(() => import('./ActorsMovies/ActorsMovies'));
+const ActorDetailsPage = lazy(() =>
+  import('pages/ActorDetailsPage/ActorDetailsPage')
 );
 
 export const App = ({ languages }) => {
@@ -45,17 +53,30 @@ export const App = ({ languages }) => {
             <SharedLayout
               currentLanguage={currentLanguage}
               languages={languages}
-              lng={lng}
+              /* lng={lng} */
             />
           }
         >
-          <Route path="/" element={<Home lng={lng} />} />
+          <Route index element={<HomePage lng={lng} />} />
           <Route path="/movies" element={<Movies lng={lng} />} />
-          <Route path="/movies/:movieId" element={<MovieDetails lng={lng} />}>
+          <Route
+            path="/movies/:movieId"
+            element={<MovieDetailsPage lng={lng} />}
+          >
             <Route path="/movies/:movieId/cast" element={<Cast lng={lng} />} />
             <Route
               path="/movies/:movieId/reviews"
               element={<Reviews lng={lng} />}
+            />
+          </Route>
+          <Route path="/actors" element={<ActorsPage lng={lng} />} />
+          <Route
+            path="/actors/:personId"
+            element={<ActorDetailsPage lng={lng} />}
+          >
+            <Route
+              path="/actors/:personId/actors-movies"
+              element={<ActorsMovies lng={lng} />}
             />
           </Route>
           <Route path="*" element={<PageNotFound />} />
