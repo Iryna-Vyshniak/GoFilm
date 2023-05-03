@@ -1,0 +1,126 @@
+import React, { useState } from 'react';
+import {
+  AppBar,
+  LangThemeBlock,
+  Link,
+  Logo,
+  Nav,
+  NavBlock,
+} from './Header.styled';
+import { BsFilm } from 'react-icons/bs';
+import { LangMenu } from 'components/LangMenu/LangMenu';
+import { ToggleDarkLightMode } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
+import { useTranslation } from 'react-i18next';
+import {
+  Box,
+  Divider,
+  IconButton,
+  Drawer,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { green } from '@mui/material/colors';
+
+const primary = green[200];
+
+export const Header = ({ languages, theme = 'light', toggleTheme }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const { t } = useTranslation();
+
+  const mobileMenu = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography
+        color="primary"
+        variant="h6"
+        component="div"
+        sx={{ flexGrow: 1, my: 2 }}
+      >
+        <Logo to="/">
+          <span role="img" aria-label="film icon">
+            <BsFilm size="20px" />
+          </span>
+          GoFilm
+        </Logo>
+      </Typography>
+      <Divider />
+      <Nav>
+        <Link to="/">{t('home_link')}</Link>
+        <Link to="/movies">{t('movie_link')}</Link>
+        <Link to="/actors">{t('actor_link')}</Link>
+      </Nav>
+    </Box>
+  );
+  return (
+    <Box component={'header'}>
+      <AppBar component={'nav'} sx={{ bgcolor: '#B9E4C9' }} elevation={6}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            sx={{
+              mr: 2,
+              display: { sm: 'none' },
+            }}
+            onClick={handleDrawerToggle}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            color={'goldenrod'}
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, my: 2 }}
+          >
+            <Logo to="/">
+              <span role="img" aria-label="film icon">
+                <BsFilm size="20px" />
+              </span>
+              GoFilm
+            </Logo>
+          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <NavBlock>
+              <Link to="/">{t('home_link')}</Link>
+              <Link to="/movies">{t('movie_link')}</Link>
+              <Link to="/actors">{t('actor_link')}</Link>
+            </NavBlock>
+          </Box>
+          <LangThemeBlock>
+            <LangMenu t={t} languages={languages} />
+            <ToggleDarkLightMode
+              theme={theme}
+              toggleTheme={() => toggleTheme()}
+            />
+          </LangThemeBlock>
+        </Toolbar>
+      </AppBar>
+      <Box component="nav">
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: '280px',
+              backgroundColor: primary,
+            },
+          }}
+        >
+          {mobileMenu}
+        </Drawer>
+      </Box>
+      <Box>
+        <Toolbar />
+      </Box>
+    </Box>
+  );
+};
