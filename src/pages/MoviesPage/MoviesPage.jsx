@@ -35,7 +35,7 @@ import {
   getMoviesByQuery,
   getMoviesWithGenres,
 } from 'services/themoviedbAPI';
-import { MovieGallery } from 'components/MovieGallery/MovieGallery';
+import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
 
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';

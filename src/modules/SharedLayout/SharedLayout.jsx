@@ -11,8 +11,8 @@ import {
   darkTheme,
 } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
 import { useDarkMode } from 'components/useDarkMode/useDarkMode';
-import Footer from 'components/Footer/Footer';
-import { Header } from 'components/Header/Header';
+import Footer from './Footer/Footer';
+import { Header } from './Header/Header';
 
 export const SharedLayout = ({ currentLanguage, languages }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();

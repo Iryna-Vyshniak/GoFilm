@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { HomeBlock } from './HomePage.styled';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
-import { MovieGallery } from 'components/MovieGallery/MovieGallery';
+import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { getPopularMovies, getTopRatedMovies } from 'services/themoviedbAPI';

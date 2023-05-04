@@ -21,8 +21,8 @@ import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
 import { LinkToBack } from 'components/LinkToBack/LinkToBack';
 import NoPoster from 'assets/no-poster.jpg';
-import { ActorsSearch } from 'components/ActorsSearch/ActorsSearch';
 import Pagination from 'components/Pagination/Pagination';
+import { Searchbar } from 'components/Searchbar/Searchbar';
 
 //  /actors
 const ActorsPage = ({ lng }) => {
@@ -92,7 +92,7 @@ const ActorsPage = ({ lng }) => {
         to={backLinkLocationRef.current}
         children={t('moviesPage.back_to_movies')}
       />
-      <ActorsSearch value={query} onChange={handleSearchChange} t={t} />
+      <Searchbar value={query} onChange={handleSearchChange} t={t} />
       {isLoading && <Loader />}
       {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
       повідомленням помилки */}

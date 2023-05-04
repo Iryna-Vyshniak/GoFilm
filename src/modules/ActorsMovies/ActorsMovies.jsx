@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { ActorsMoviesItem } from 'components/ActorsMoviesItem/ActorsMoviesItem';
+import { ActorsMoviesItem } from 'modules/ActorsMoviesItem/ActorsMoviesItem';
 import { ActorMoviesList, MovieListItem } from './ActorsMovies.styled';
 
 //  /actors/:id/

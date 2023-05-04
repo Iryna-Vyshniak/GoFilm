@@ -1,5 +1,5 @@
 import { MovieListStyled } from './MovieGallery.styled';
-import { MovieGalleryItem } from 'components/MovieGalleryItem/MovieGalleryItem';
+import { MovieGalleryItem } from 'modules/MovieGalleryItem/MovieGalleryItem';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 

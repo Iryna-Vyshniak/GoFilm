@@ -1,5 +1,4 @@
-import { lazy } from 'react';
-import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import ScrollToTop from 'react-scroll-up';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,29 +6,9 @@ import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RxThickArrowUp } from 'react-icons/rx';
 import PropTypes from 'prop-types';
-import { SharedLayout } from './SharedLayout/SharedLayout';
-import { PageNotFound } from './PageNotFound/PageNotFound';
+
 import { GlobalStyle } from 'styles/GlobalStyle';
-
-const HomePage = lazy(() => import('pages/HomePage/HomePage'));
-const Movies = lazy(() => import('pages/MoviesPage/MoviesPage'));
-const MovieDetailsPage = lazy(() =>
-  import('pages/MovieDetailsPage/MovieDetailsPage')
-);
-const Cast = lazy(() => import('./Cast/Cast'));
-// if doesn`t have default export
-const Reviews = lazy(() =>
-  import('./Reviews/Reviews').then(module => ({
-    ...module,
-    default: module.Reviews,
-  }))
-);
-
-const ActorsPage = lazy(() => import('pages/ActorsPage/ActorsPage'));
-const ActorsMovies = lazy(() => import('./ActorsMovies/ActorsMovies'));
-const ActorDetailsPage = lazy(() =>
-  import('pages/ActorDetailsPage/ActorDetailsPage')
-);
+import UserRoutes from './UserRoutes';
 
 export const App = ({ languages }) => {
   const currentLanguageCode = window.localStorage.getItem('i18nextLng') || 'en';
@@ -46,42 +25,11 @@ export const App = ({ languages }) => {
 
   return (
     <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <SharedLayout
-              currentLanguage={currentLanguage}
-              languages={languages}
-              /* lng={lng} */
-            />
-          }
-        >
-          <Route index element={<HomePage lng={lng} />} />
-          <Route path="/movies" element={<Movies lng={lng} />} />
-          <Route
-            path="/movies/:movieId"
-            element={<MovieDetailsPage lng={lng} />}
-          >
-            <Route path="/movies/:movieId/cast" element={<Cast lng={lng} />} />
-            <Route
-              path="/movies/:movieId/reviews"
-              element={<Reviews lng={lng} />}
-            />
-          </Route>
-          <Route path="/actors" element={<ActorsPage lng={lng} />} />
-          <Route
-            path="/actors/:personId"
-            element={<ActorDetailsPage lng={lng} />}
-          >
-            <Route
-              path="/actors/:personId/actors-movies"
-              element={<ActorsMovies lng={lng} />}
-            />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
+      <UserRoutes
+        currentLanguage={currentLanguage}
+        languages={languages}
+        lng={lng}
+      />
 
       <ScrollToTop
         showUnder={120}
