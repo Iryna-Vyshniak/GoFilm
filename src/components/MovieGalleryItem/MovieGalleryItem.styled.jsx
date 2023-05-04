@@ -93,7 +93,7 @@ export const ReleaseDate = styled.p`
 
 export const CircleRating = styled.div`
   position: absolute;
-  bottom: 44px;
+  bottom: 38px;
   right: 10px;
 
   display: flex;
