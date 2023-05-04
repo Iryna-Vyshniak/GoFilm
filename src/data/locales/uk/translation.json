@@ -19,7 +19,7 @@
     "persons_list": "Популярні актори, режисери, продюсери",
     "load_more": "Показати ще",
     "description_persons_list": "Цей список оновлюється щодня",
-    "placeholder_search": "Пошук фільмів...",
+    "placeholder_search": "Пошук...",
     "placeholder_genres": "Обрати за жанрами...",
     "additional_information": "Додаткова інформація",
     "back_to_movies": "Назад",
@@ -37,7 +37,6 @@
   },
   "actorsPage": {
     "expected": "Незабаром",
-    "placeholder_search": "Пошук акторів...",
     "actors_rating": "Рейтинг: ",
     "bio": "Біографія, Фільми та Факти",
     "date_of_birth": "Дата народження: ",

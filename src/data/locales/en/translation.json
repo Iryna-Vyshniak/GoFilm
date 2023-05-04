@@ -19,7 +19,7 @@
     "persons_list": "List of popular persons",
     "load_more": "Load More",
     "description_persons_list": "This list updates daily",
-    "placeholder_search": "Search movies...",
+    "placeholder_search": "Search...",
     "placeholder_genres": "Select genres...",
     "additional_information": "Additional information",
     "back_to_movies": "Back",
@@ -37,7 +37,6 @@
   },
   "actorsPage": {
     "expected": "Expected Movies",
-    "placeholder_search": "Search actors...",
     "actors_rating": "Actors Rating: ",
     "bio": "Biography, Movies and Facts",
     "date_of_birth": "Date of birth: ",
