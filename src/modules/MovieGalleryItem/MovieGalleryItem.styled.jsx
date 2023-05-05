@@ -80,11 +80,11 @@ export const ReleaseDate = styled.p`
   padding-left: ${({ theme }) => theme.space[2]}px;
   padding-right: ${({ theme }) => theme.space[2]}px;
 
-  background-color: rgba(185, 228, 201, 0.773);
+  background-color: #fff;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-  color: rgba(255, 0, 0, 1);
+  color: rgba(255, 66, 8, 1);
   text-shadow: 0 0.4px 0.4px #000;
 
   border-radius: 8px;
