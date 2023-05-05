@@ -4,13 +4,13 @@ import ReactPaginate from 'react-paginate';
 export const Paginate = styled(ReactPaginate)`
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
   margin: 30px 0;
   font-size: 14px;
 
   .selected {
     border: 1px solid #ffffff;
-    border-radius: 8px;
+    border-radius: 50%;
     background: #ecf0f3;
     box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
     text-shadow: 0.0625rem 0.0625rem 0.0625rem #fff;
@@ -18,14 +18,17 @@ export const Paginate = styled(ReactPaginate)`
   }
 
   a {
-    display: inline-block;
-    padding: 3px 0 2px 0;
-    vertical-align: middle;
-    width: 38px;
-    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px;
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
     text-align: center;
 
-    border-radius: 8px;
     border: none;
     outline: none;
 
