@@ -9,12 +9,12 @@ export const NavLink = styled(MovieLink)`
   text-decoration: none;
   color: ${props => props.theme.colors.black};
   text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
-  font-size: ${props => props.theme.fontSizes.s};
+  font-size: 12px;
   font-weight: 500;
 
   &.active {
     color: #fff;
-    background-color: #fd5523;
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   }
 
   :hover:not(.active),
@@ -23,30 +23,43 @@ export const NavLink = styled(MovieLink)`
   }
 
   @media screen and (min-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.m};
+    font-size: 14px;
   }
 `;
 
 export const WrapperMovie = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 16px;
 
   padding: 0 16px;
   font-weight: 500;
-
-  h1,
-  h2 {
-    color: #fd5523;
-  }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 16px;
   }
 `;
+
+export const WrapperPicVote = styled.div`
+  position: relative;
+  max-width: 100%;
+
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const PosterMovie = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+`;
+
 export const WrapperDetails = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,13 +68,17 @@ export const WrapperDetails = styled.div`
 
   padding: 16px;
   font-weight: 500;
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+    font-size: ${({ theme }) => theme.fontSizes.s};
+  }
 `;
 
 export const MainTitle = styled.h2`
   margin-bottom: ${props => props.theme.space[4]}px;
   text-align: center;
-  color: ${props => props.theme.colors.accent};
-  text-shadow: 0 0.4px 0.4px #fff, 0 0.4px 0.4px #4b1414;
+  color: ${({ theme }) => theme.text};
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: 500;
   letter-spacing: 1.5px;
@@ -74,7 +91,7 @@ export const MainTitle = styled.h2`
 export const MovieList = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   list-style: none;
   gap: 40px;
   margin: 0;
@@ -107,13 +124,13 @@ export const MovieInfo = styled.div`
   }
 `;
 
-export const MovieInfoTitle = styled.h4`
+export const MovieInfoTitle = styled.h3`
   margin-bottom: 30px;
-  color: orangered;
+  color: ${({ theme }) => theme.text};
+  font-size: ${({ theme }) => theme.fontSizes.m};
 `;
 
 export const VotePlayVideoBox = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,62 +146,55 @@ export const Btn = styled.button`
 `;
 
 export const AccentText = styled.span`
-  color: #fd5523;
+  color: rgba(255, 66, 8, 1);
   font-weight: 700;
 `;
 
 export const ProductionLogo = styled.img`
-  width: 15vw;
+  width: 15%;
   height: auto;
 `;
 
-export const PosterMovie = styled.img`
-  max-width: 100%;
-  width: 45%;
-  height: auto;
-
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-`;
 export const Genres = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 16px;
 `;
 
 export const Genre = styled.li`
-  background-color: #b9e4c9;
-  color: #fd5523;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  color: rgb(0, 0, 0);
   text-shadow: 0 0.4px 0.4px #fff;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 8px;
-  padding: 2px 8px;
+  font-size: ${props => props.theme.fontSizes.xs};
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 6px;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${props => props.theme.fontSizes.s};
+  }
 `;
 
 export const WrapRelease = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
 `;
 
 export const CircleRating = styled.div`
   position: absolute;
-  bottom: 8px;
-  right: 60px;
+  top: 20px;
+  left: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-right: 50px;
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
 
   text-shadow: 0 0.3px 0.3px #000;
   border-radius: 50%;
