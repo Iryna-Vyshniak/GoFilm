@@ -12,18 +12,17 @@ export const Link = styled(StyledLink)`
   padding-top: ${props => props.theme.space[3]}px;
   padding-bottom: ${props => props.theme.space[3]}px;
 
-  width: 150px;
+  width: 100px;
 
   border: none;
   border-radius: ${props => props.theme.radii.normal};
 
   font-size: 12px;
-  color: ${props => props.theme.colors.accent};
-  text-shadow: 0 0.4px 0.4px #fff;
+  color: ${props => props.theme.colors.white};
   text-transform: uppercase;
   text-align: center;
 
-  background-color: ${props => props.theme.colors.secondary};
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
@@ -33,5 +32,9 @@ export const Link = styled(StyledLink)`
   &:hover,
   &:focus {
     transform: scale(0.9);
+  }
+
+  svg {
+    margin-right: 10px;
   }
 `;
