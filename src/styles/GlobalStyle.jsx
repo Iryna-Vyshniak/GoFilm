@@ -58,6 +58,12 @@ text-decoration: none;
 
 .css-hyum1k-MuiToolbar-root {
     justify-content: space-between;
+
+    .MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeStart MuiIconButton-sizeMedium css-6iz4mj-MuiButtonBase-root-MuiIconButton-root {
+    align-items: center;
+    justify-content: space-between;
+    
+    }
 }
 
 
@@ -141,7 +147,7 @@ div.react-select__control {
   box-shadow: none;
   background-color: transparent;
   border-radius: 30px;
-  box-shadow: 1px 1px 2px #f3d8a0, inset -1px -1px 1px #fff;
+  box-shadow: inset 0 -1px 1px #fff;
   font-size: 14px;
   text-align: center;
 
@@ -154,7 +160,7 @@ div.react-select__control {
     .react-select__input-container {
       margin: 0 10px;
       padding: 0 10px;
-      color: #fd5523;
+      color: #fff;
       font-size: 14px;
     }
   }
@@ -162,7 +168,7 @@ div.react-select__control {
   .react-select__indicators {
     cursor: pointer;
     svg {
-    fill: #37966f;
+    fill: #fff;
     }
     
   }
