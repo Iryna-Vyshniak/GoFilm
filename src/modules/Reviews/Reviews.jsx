@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
-import { Title } from 'components/Title/Title';
 import { getMoviesReviews } from 'services/themoviedbAPI';
 import Avatar from 'assets/avatar.png';
 import {
@@ -49,7 +48,6 @@ export const Reviews = ({ lng }) => {
 
   return (
     <>
-      <Title title={t('moviesPage.reviews')} />
       {isLoading && <Loader />}
       {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {movieReviews.length > 0 ? (
