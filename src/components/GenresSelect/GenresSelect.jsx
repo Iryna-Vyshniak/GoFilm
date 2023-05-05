@@ -5,14 +5,17 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { getGenresMovies } from 'services/themoviedbAPI';
+import { useTranslation } from 'react-i18next';
 
 const animatedComponents = makeAnimated();
 
-export const GenresSelect = ({ onSelect, t, lng }) => {
-  //console.log('GenresSelect:', lng);
+export const GenresSelect = ({ onSelect, t }) => {
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   const customStyles = {
     option: (defaultStyles, state) => ({
@@ -90,7 +93,6 @@ export const GenresSelect = ({ onSelect, t, lng }) => {
 };
 
 GenresSelect.propTypes = {
-  lng: PropTypes.string.isRequired,
   t: PropTypes.any.isRequired,
   onSelect: PropTypes.func.isRequired,
 };

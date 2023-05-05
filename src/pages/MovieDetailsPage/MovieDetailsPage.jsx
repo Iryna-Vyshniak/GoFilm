@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
-import { LinkToBack } from 'components/LinkToBack/LinkToBack';
+import { useTranslation } from 'react-i18next';
 import { FaYoutube } from 'react-icons/fa';
 import { Rating } from '@mui/material';
 import {
@@ -33,13 +33,11 @@ import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { ModalVideo } from 'components/Modal/Modal';
-
+import { LinkToBack } from 'components/LinkToBack/LinkToBack';
 import HeroPoster from 'assets/heroBanner.jpg';
 import NoPoster from 'assets/no-poster.jpg';
-import { useTranslation } from 'react-i18next';
 
-const MovieDetailsPage = ({ lng }) => {
-  //console.log('MovieDetails:', lng);
+const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -54,13 +52,16 @@ const MovieDetailsPage = ({ lng }) => {
   //console.log(movieId);
   const { t } = useTranslation();
 
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
+
   useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
         setError(false);
         const data = await getMoviesDetailsById(movieId, lng);
-        // console.log(data);
+
         setMovieDetails(data);
       } catch (error) {
         <ImageErrorView message={t('moviesPage.set_error')} />;
@@ -72,7 +73,7 @@ const MovieDetailsPage = ({ lng }) => {
     (async () => {
       try {
         const data = await getVideosMovies(movieId, t);
-        //console.log(data);
+
         if (data.length === 0) {
           return setMovieVideo(data);
         }
@@ -86,11 +87,6 @@ const MovieDetailsPage = ({ lng }) => {
             movie.name === 'official trailer'
         );
         setMovieVideo(trailer.key);
-        //console.log(trailer.key);
-
-        /*   const trailer = data[0].key;
-        console.log(trailer);
-        setMovieVideo(trailer); */
       } catch (error) {
         console.log(error.message);
       }
@@ -124,7 +120,6 @@ const MovieDetailsPage = ({ lng }) => {
     status,
     runtime,
     production_companies,
-    //backdrop_path,
   } = movieDetails;
 
   return (

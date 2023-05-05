@@ -25,7 +25,7 @@ import { green } from '@mui/material/colors';
 
 const primary = green[200];
 
-export const Header = ({ languages, theme = 'light', toggleTheme }) => {
+export const Header = ({ theme = 'light', toggleTheme }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -89,7 +89,7 @@ export const Header = ({ languages, theme = 'light', toggleTheme }) => {
             </NavBlock>
           </Box>
           <LangThemeBlock>
-            <LangMenu t={t} languages={languages} />
+            <LangMenu t={t} />
             <ToggleDarkLightMode
               theme={theme}
               toggleTheme={() => toggleTheme()}

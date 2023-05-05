@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import PropTypes from 'prop-types';
 
 import { Container } from './SharedLayout.styled';
 import {
@@ -14,15 +13,17 @@ import { useDarkMode } from 'components/useDarkMode/useDarkMode';
 import Footer from './Footer/Footer';
 import { Header } from './Header/Header';
 
-export const SharedLayout = ({ currentLanguage, languages }) => {
+export const SharedLayout = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
     document.title = t('title');
-  }, [currentLanguage, t]);
+  }, [lng, t]);
 
   /* перевіряємо, чи змонтувався компонент
 Якщо цього ще не сталося -відобразимо порожній div: */
@@ -33,11 +34,7 @@ export const SharedLayout = ({ currentLanguage, languages }) => {
     <>
       <ThemeProvider theme={themeMode}>
         <Container>
-          <Header
-            languages={languages}
-            toggleTheme={toggleTheme}
-            theme={theme}
-          />
+          <Header toggleTheme={toggleTheme} theme={theme} />
           <main>
             <Suspense fallback={<div>{t('loading')}</div>}>
               <Outlet />
@@ -48,20 +45,4 @@ export const SharedLayout = ({ currentLanguage, languages }) => {
       </ThemeProvider>
     </>
   );
-};
-
-SharedLayout.propTypes = {
-  currentLanguage: PropTypes.shape({
-    code: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    country_code: PropTypes.string.isRequired,
-  }).isRequired,
-
-  languages: PropTypes.arrayOf(
-    PropTypes.shape({
-      code: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      country_code: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
 };

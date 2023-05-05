@@ -12,7 +12,6 @@ import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressba
 
 export const ActorsMoviesItem = ({
   movie: { poster_path, title, original_title, vote_average, genre_ids },
-  lng,
 }) => {
   return (
     <>
@@ -44,7 +43,7 @@ export const ActorsMoviesItem = ({
           </>
         )}
         <GenresBlock>
-          <Genres data={genre_ids?.slice(0, 2)} lng={lng} />
+          <Genres data={genre_ids?.slice(0, 2)} />
         </GenresBlock>
       </CardWrapper>
     </>

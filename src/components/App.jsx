@@ -1,35 +1,24 @@
-import { useSearchParams } from 'react-router-dom';
 import ScrollToTop from 'react-scroll-up';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RxThickArrowUp } from 'react-icons/rx';
-import PropTypes from 'prop-types';
 
 import { GlobalStyle } from 'styles/GlobalStyle';
 import UserRoutes from './UserRoutes';
 
-export const App = ({ languages }) => {
-  const currentLanguageCode = window.localStorage.getItem('i18nextLng') || 'en';
-  const currentLanguage = languages?.find(
-    lang => lang.code === currentLanguageCode
-  );
-  const [searchParams] = useSearchParams({ language: currentLanguageCode });
-  const lng = searchParams.get('language') ?? currentLanguageCode;
+export const App = () => {
   const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
-    i18n.changeLanguage(lng);
+    i18n.changeLanguage();
   }, [lng, i18n]);
 
   return (
     <>
-      <UserRoutes
-        currentLanguage={currentLanguage}
-        languages={languages}
-        lng={lng}
-      />
+      <UserRoutes />
 
       <ScrollToTop
         showUnder={120}
@@ -53,14 +42,4 @@ export const App = ({ languages }) => {
       <GlobalStyle />
     </>
   );
-};
-
-App.propTypes = {
-  languages: PropTypes.arrayOf(
-    PropTypes.shape({
-      code: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      country_code: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
 };

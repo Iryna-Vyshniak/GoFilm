@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getGenresMovies } from 'services/themoviedbAPI';
 import { Genre, GenresBlock } from './Genres.styled';
+import { useTranslation } from 'react-i18next';
 
-export const Genres = ({ data, lng }) => {
+export const Genres = ({ data }) => {
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  //console.log('Genres:', data);
-
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
   // genres
   useEffect(() => {
     // const abortController = new AbortController();
@@ -52,5 +52,4 @@ export const Genres = ({ data, lng }) => {
 
 Genres.propTypes = {
   data: PropTypes.array.isRequired,
-  lng: PropTypes.string.isRequired,
 };

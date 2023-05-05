@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import i18next from 'i18next';
 import { HomeBlock } from './HomePage.styled';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
@@ -23,16 +22,16 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import { HeroBanner } from 'components/HeroBanner/HeroBanner';
 import { useTranslation } from 'react-i18next';
 
-i18next.dir();
-
-const HomePage = ({ lng }) => {
-  //console.log('Home:', lng);
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),

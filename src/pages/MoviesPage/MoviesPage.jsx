@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -44,12 +45,9 @@ import HeroPoster from 'assets/hero-poster.jpeg';
 import ActorsBg from 'assets/actors-bg.png';
 import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 import { Title } from 'components/Title/Title';
-import { useTranslation } from 'react-i18next';
 import Pagination from 'components/Pagination/Pagination';
 
-const MoviesPage = props => {
-  const { lng } = props;
-  //console.log('Movies:', lng);
+const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -65,6 +63,9 @@ const MoviesPage = props => {
     page: 1,
     query: '',
   });
+
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),

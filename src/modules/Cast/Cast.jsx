@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
@@ -19,14 +18,15 @@ import {
 } from './Cast.styled';
 import Avatar from 'assets/avatar.jpg';
 
-const Cast = ({ lng }) => {
-  //console.log('Cast:', lng);
+const Cast = () => {
   const location = useLocation();
   const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
     (async () => {
@@ -98,7 +98,3 @@ const Cast = ({ lng }) => {
 };
 
 export default Cast;
-
-Cast.propTypes = {
-  lng: PropTypes.string.isRequired,
-};

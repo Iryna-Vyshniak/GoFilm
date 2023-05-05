@@ -8,10 +8,11 @@ import { GoGlobe } from 'react-icons/go';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { Btn, TitleLang } from './LangMenu.styled';
 import { useLocalStorage } from 'hooks/useLocaleStorage';
+import { languages } from 'utils/languages';
 
 const ITEM_HEIGHT = 32;
 
-export const LangMenu = ({ languages, t }) => {
+export const LangMenu = ({ t }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
 

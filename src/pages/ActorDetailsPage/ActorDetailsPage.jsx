@@ -1,5 +1,6 @@
 import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   ActorInfoMain,
   ActorsDetalis,
@@ -17,7 +18,6 @@ import {
   ActorContainer,
   NavLink,
 } from './ActorDetailsPage.styled';
-import { useTranslation } from 'react-i18next';
 import { getActorDetailInfo } from 'services/themoviedbAPI';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
@@ -27,7 +27,7 @@ import { Title } from 'components/Title/Title';
 import NoPoster from 'assets/no-poster.jpg';
 import ScrollInfo from 'components/ScrollInfo/ScrollInfo';
 
-const ActorDetailsInfoPage = ({ lng }) => {
+const ActorDetailsInfoPage = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/actors');
   const { personId } = useParams();
@@ -37,6 +37,9 @@ const ActorDetailsInfoPage = ({ lng }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const { t } = useTranslation();
+
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
     (async () => {

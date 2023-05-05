@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
@@ -17,15 +16,14 @@ import {
 } from './Reviews.styled';
 import { useTranslation } from 'react-i18next';
 
-export const Reviews = ({ lng }) => {
-  // console.log('Reviews:', lng);
-  //const params = useParams();
+export const Reviews = () => {
   const { movieId } = useParams();
-  //console.log(movieId);
   const [movieReviews, setMovieReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
     (async () => {
@@ -81,8 +79,4 @@ export const Reviews = ({ lng }) => {
       )}
     </>
   );
-};
-
-Reviews.propTypes = {
-  lng: PropTypes.string.isRequired,
 };

@@ -9,7 +9,7 @@ import { ActorsMoviesItem } from 'modules/ActorsMoviesItem/ActorsMoviesItem';
 import { ActorMoviesList, MovieListItem } from './ActorsMovies.styled';
 
 //  /actors/:id/
-const ActorsMovies = ({ lng }) => {
+const ActorsMovies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -19,6 +19,8 @@ const ActorsMovies = ({ lng }) => {
   //console.log(personId);
 
   const location = useLocation();
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   useEffect(() => {
     (async () => {
@@ -56,7 +58,7 @@ const ActorsMovies = ({ lng }) => {
           {movies.map(movie => (
             <MovieListItem key={movie.id}>
               <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                <ActorsMoviesItem key={movie.id} movie={movie} lng={lng} />
+                <ActorsMoviesItem key={movie.id} movie={movie} />
               </Link>
             </MovieListItem>
           ))}

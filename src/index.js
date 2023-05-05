@@ -6,7 +6,7 @@ import 'services/i18next';
 import { ThemeProvider } from 'styled-components';
 import { App } from './components/App';
 import { theme } from 'styles/theme';
-import { languages } from 'utils/languages';
+
 import { Loader } from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
       <BrowserRouter basename="/goit-react-hw-05-movies">
         <ThemeProvider theme={theme}>
-          <App languages={languages} />
+          <App />
         </ThemeProvider>
       </BrowserRouter>
     </React.StrictMode>

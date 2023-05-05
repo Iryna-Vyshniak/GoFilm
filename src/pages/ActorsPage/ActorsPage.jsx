@@ -25,7 +25,7 @@ import Pagination from 'components/Pagination/Pagination';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 
 //  /actors
-const ActorsPage = ({ lng }) => {
+const ActorsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [actors, setActors] = useState([]);
@@ -43,7 +43,9 @@ const ActorsPage = ({ lng }) => {
   );
   const page = Number(params.page || 1);
   let { query } = params;
-  //console.log(params);
+
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
@@ -54,7 +56,6 @@ const ActorsPage = ({ lng }) => {
     (async () => {
       try {
         const dataActors = await getActors(page, query, lng);
-        //console.log(dataActors);
 
         if (dataActors.results.length === 0) {
           toast.error("Sorry, that's all actors we found", notifyOptions);
@@ -79,7 +80,6 @@ const ActorsPage = ({ lng }) => {
   const handleSearchChange = e => {
     query = e.target.value;
     setSearchParams({ page: 1, query: query });
-    //console.log(params);
   };
 
   if (error) {

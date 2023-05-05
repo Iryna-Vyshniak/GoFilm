@@ -27,9 +27,7 @@ export const MovieGalleryItem = ({
     genre_ids,
   },
   state,
-  lng,
 }) => {
-  //console.log('MovieGalleryItem:', lng);
   return (
     <MovieListItem>
       <Link to={`/movies/${id}`} state={state}>
@@ -69,7 +67,7 @@ export const MovieGalleryItem = ({
         )}
       </Link>
       <GenresBlock>
-        <Genres lng={lng} data={genre_ids?.slice(0, 1)} />
+        <Genres data={genre_ids?.slice(0, 1)} />
       </GenresBlock>
     </MovieListItem>
   );
@@ -85,5 +83,4 @@ MovieGalleryItem.propTypes = {
     vote_average: PropTypes.number,
   }).isRequired,
   state: PropTypes.objectOf(PropTypes.object).isRequired,
-  lng: PropTypes.string.isRequired,
 };

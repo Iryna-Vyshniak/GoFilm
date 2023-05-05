@@ -24,27 +24,19 @@ const ActorDetailsPage = lazy(() =>
   import('pages/ActorDetailsPage/ActorDetailsPage')
 );
 
-const UserRoutes = ({ currentLanguage, languages, lng }) => {
+const UserRoutes = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <SharedLayout
-            currentLanguage={currentLanguage}
-            languages={languages}
-          />
-        }
-      >
-        <Route index element={<HomePage lng={lng} />} />
-        <Route path="movies" element={<Movies lng={lng} />} />
-        <Route path="movies/:movieId" element={<MovieDetailsPage lng={lng} />}>
-          <Route path="cast" element={<Cast lng={lng} />} />
-          <Route path="reviews" element={<Reviews lng={lng} />} />
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="actors" element={<ActorsPage lng={lng} />} />
-        <Route path="actors/:personId" element={<ActorDetailsPage lng={lng} />}>
-          <Route path="actors-movies" element={<ActorsMovies lng={lng} />} />
+        <Route path="actors" element={<ActorsPage />} />
+        <Route path="actors/:personId" element={<ActorDetailsPage />}>
+          <Route path="actors-movies" element={<ActorsMovies />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Route>
