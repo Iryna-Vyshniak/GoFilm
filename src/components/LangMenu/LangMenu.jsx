@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
 import { MenuItem } from '@mui/material';
-import { FcGlobe } from 'react-icons/fc';
+import { GoGlobe } from 'react-icons/go';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { Btn, TitleLang } from './LangMenu.styled';
 import { useLocalStorage } from 'hooks/useLocaleStorage';
@@ -45,7 +45,7 @@ export const LangMenu = ({ languages, t }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <FcGlobe />
+        <GoGlobe color="#FD5523" />
       </IconButton>
       <Menu
         id="fade-menu"
