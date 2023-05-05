@@ -19,21 +19,21 @@ export const GenresSelect = ({ onSelect, t, lng }) => {
       ...defaultStyles,
       fontSize: '14px',
       color: state.isSelected ? '#212529' : '#fd5523',
-      backgroundColor: state.isSelected
-        ? 'rgba(185, 228, 201, 0.773)'
+      background: state.isSelected
+        ? 'linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)'
         : '#FFFBE6',
     }),
 
     control: defaultStyles => ({
       ...defaultStyles,
-      backgroundColor: 'rgba(185, 228, 201, 0.773)',
+      background: 'linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)',
       border: 'none',
       boxShadow: 'none',
     }),
     singleValue: defaultStyles => ({
       ...defaultStyles,
       color: '#FFF',
-      backgroundColor: '#fd5523',
+      background: 'linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)',
       borderRadius: '30px',
       maxWidth: '45%',
       padding: '5px 10px',
