@@ -95,14 +95,14 @@ const HomePage = ({ lng }) => {
             container
             spacing={1}
             rowSpacing={1}
+            mb={6}
             component="section"
             display="flex"
             justifyContent="center"
             alignItems="center"
-            marginBottom="30px"
           >
             <Title title={t('homePage.top_title')} />
-            <Grid2 container spacing={1} padding="8px">
+            <Grid2 container spacing={1} padding="8px" mb={5}>
               <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
