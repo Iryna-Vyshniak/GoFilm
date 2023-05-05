@@ -24,7 +24,7 @@ export const RatingProgressbar = ({ rating }) => {
         pathTransitionDuration: 0.5,
         textColor: 'rgb(255, 0, 0)',
         trailColor: '#fff',
-        backgroundColor: 'rgba(185, 228, 201, 0.773)',
+        backgroundColor: '#fff',
       })}
     />
   );
