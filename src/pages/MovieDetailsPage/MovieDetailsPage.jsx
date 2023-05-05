@@ -16,6 +16,7 @@ import {
   GradientBlockTop,
   MainTitle,
   MovieInfo,
+  MovieInfoTitle,
   MovieList,
   NavLink,
   PosterMovie,
@@ -24,6 +25,7 @@ import {
   WrapRelease,
   WrapperDetails,
   WrapperMovie,
+  WrapperPicVote,
 } from './MovieDetailsPage.styled';
 
 import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
@@ -58,7 +60,7 @@ const MovieDetailsPage = ({ lng }) => {
         setIsLoading(true);
         setError(false);
         const data = await getMoviesDetailsById(movieId, lng);
-        //console.log(data);
+        // console.log(data);
         setMovieDetails(data);
       } catch (error) {
         <ImageErrorView message={t('moviesPage.set_error')} />;
@@ -155,19 +157,25 @@ const MovieDetailsPage = ({ lng }) => {
             </>
           )}
           <WrapperMovie>
-            {/* постер фільму */}
-            {`https://image.tmdb.org/t/p/original${poster_path}` && (
-              <PosterMovie
-                src={
-                  poster_path
-                    ? `https://image.tmdb.org/t/p/original${poster_path}`
-                    : NoPoster
-                }
-                alt={title || original_title}
-                width="500"
-              />
-            )}
-
+            <WrapperPicVote>
+              {/* постер фільму */}
+              {`https://image.tmdb.org/t/p/original${poster_path}` && (
+                <PosterMovie
+                  src={
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/original${poster_path}`
+                      : NoPoster
+                  }
+                  alt={title || original_title}
+                  width="500"
+                />
+              )}
+              {(vote_average || vote_average > 0) && (
+                <CircleRating>
+                  <RatingProgressbar rating={vote_average?.toFixed(1)} />
+                </CircleRating>
+              )}
+            </WrapperPicVote>
             <WrapperDetails>
               {/* назва фільму */}
               <MainTitle>
@@ -196,19 +204,10 @@ const MovieDetailsPage = ({ lng }) => {
               {/* рейтинг фільму */}
               {(vote_average || (movieVideo && movieVideo?.length > 0)) && (
                 <VotePlayVideoBox>
-                  {(vote_average || vote_average > 0) && (
-                    <CircleRating>
-                      <RatingProgressbar rating={vote_average?.toFixed(1)} />
-                    </CircleRating>
-                  )}
                   {/* трейлер фільму */}
-                  {movieVideo && movieVideo?.length > 0 && (
+                  {movieVideo && movieVideo.length > 0 && (
                     <Btn onClick={toggleModal}>
-                      <FaYoutube
-                        size="64px"
-                        color="red"
-                        style={{ marginLeft: '50px' }}
-                      />
+                      <FaYoutube size="64px" color="red" />
                     </Btn>
                   )}
                 </VotePlayVideoBox>
@@ -223,7 +222,7 @@ const MovieDetailsPage = ({ lng }) => {
               )}
 
               {/* продакшин компанії - логотипи */}
-              {production_companies && production_companies?.length > 0 && (
+              {production_companies && !production_companies.length && (
                 <>
                   <h2>{t('moviesPage.production_companies')}</h2>
                   <MovieList>
@@ -269,7 +268,9 @@ const MovieDetailsPage = ({ lng }) => {
           </WrapperMovie>
           {/* внутрішня маршрутизація на кастинг та огляд фільму */}
           <MovieInfo>
-            <h1>{t('moviesPage.additional_information')}</h1>
+            <MovieInfoTitle>
+              {t('moviesPage.additional_information')}
+            </MovieInfoTitle>
             <LinkToBack
               to={backLinkLocationRef.current}
               children={t('moviesPage.back_to_movies')}
