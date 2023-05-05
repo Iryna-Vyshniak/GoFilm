@@ -1,6 +1,4 @@
 import ScrollToTop from 'react-scroll-up';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RxThickArrowUp } from 'react-icons/rx';
@@ -9,13 +7,6 @@ import { GlobalStyle } from 'styles/GlobalStyle';
 import UserRoutes from './UserRoutes';
 
 export const App = () => {
-  const { i18n } = useTranslation();
-  const lng = i18n.language;
-
-  useEffect(() => {
-    i18n.changeLanguage();
-  }, [lng, i18n]);
-
   return (
     <>
       <UserRoutes />
