@@ -4,17 +4,17 @@ import { ReactComponent as SunIcon } from 'assets/sun.svg';
 import { ToggleContainer } from './ToggleDarkLightMode.styled';
 
 export const lightTheme = {
-  body: '#fffdf5',
+  body: '#FFF',
   text: '#000',
   toggleBorder: '#FFF',
-  gradient: 'linear-gradient(#fff, #79D7ED)',
+  gradient: 'linear-gradient(#FFF, #79D7ED)',
   gradientHeroBanner:
-    'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 253, 245, 1) 100%)',
+    'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 255, 255, 1) 100%)',
   backgroundHeaderFooter: '#b9e4c9',
-  gradientBlock: 'rgba(255, 253, 245, 0.8)',
+  gradientBlock: 'rgba(255, 255, 255, 0.8)',
   cardsTextColor: '#000',
-  textShadow: '0 0.4px 0.4px #fff',
-  buttonShadow: '-3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773)',
+  textShadow: '0 0.4px 0.4px #FFF',
+  buttonShadow: '-3px -3px 7px #FFF, 3px 3px 7px rgba(185, 228, 201, 0.773)',
 };
 
 export const darkTheme = {
@@ -30,9 +30,9 @@ export const darkTheme = {
     'linear-gradient(180deg, rgba(185,228,201,1) 0%, rgba(121,186,144,0.9996790952709209) 34%, rgba(14,41,8,1) 100%)',
 
   gradientBlock: 'none',
-  cardsTextColor: '#fff',
+  cardsTextColor: '#FFF',
   textShadow: '0 0.4px 0.4px #000',
-  buttonShadow: '-1px -1px 1px #ffffff, 1px 1px 1px rgba(185, 228, 201, 0.773)',
+  buttonShadow: '-1px -1px 1px #FFF, 1px 1px 1px rgba(185, 228, 201, 0.773)',
 };
 
 export const ToggleDarkLightMode = ({ theme, toggleTheme }) => {
