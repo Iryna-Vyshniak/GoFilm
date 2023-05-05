@@ -1,11 +1,11 @@
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { Loader } from 'components/Loader/Loader';
-import { Title } from 'components/Title/Title';
-import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+
+import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
+import { Loader } from 'components/Loader/Loader';
 import { getMoviesCast } from 'services/themoviedbAPI';
 import {
   ActorsCharacter,
@@ -18,7 +18,6 @@ import {
   Wrap,
 } from './Cast.styled';
 import Avatar from 'assets/avatar.jpg';
-import { useTranslation } from 'react-i18next';
 
 const Cast = ({ lng }) => {
   //console.log('Cast:', lng);
@@ -50,7 +49,6 @@ const Cast = ({ lng }) => {
 
   return (
     <>
-      <Title title={t('moviesPage.cast')} />
       {isLoading && <Loader />}
       {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {error && !isLoading && (
