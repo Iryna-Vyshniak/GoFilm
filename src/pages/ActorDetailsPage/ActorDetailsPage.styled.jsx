@@ -14,7 +14,7 @@ export const NavLink = styled(MovieLink)`
 
   &.active {
     color: #fff;
-    background-color: #fd5523;
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   }
 
   :hover:not(.active),
@@ -100,8 +100,7 @@ export const ActorsInfoBirth = styled.p`
 
   & > span {
     margin-right: 5px;
-    color: ${props => props.theme.colors.primary};
-    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
+    color: ${props => props.theme.colors.accent};
   }
 
   @media screen and (min-width: 480px) {
@@ -115,8 +114,7 @@ export const ActorsInfoDepartment = styled.p`
 
   & > span {
     margin-right: 5px;
-    color: ${props => props.theme.colors.primary};
-    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
+    color: ${props => props.theme.colors.accent};
   }
 
   @media screen and (min-width: 480px) {
@@ -130,8 +128,7 @@ export const ActorsPlaceOfBirth = styled.p`
 
   & > span {
     margin-right: 5px;
-    color: ${props => props.theme.colors.primary};
-    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
+    color: ${props => props.theme.colors.accent};
   }
 
   @media screen and (min-width: 480px) {
@@ -145,8 +142,7 @@ export const ActorsPopularity = styled.div`
 
   & > span {
     margin-right: 5px;
-    color: ${props => props.theme.colors.primary};
-    text-shadow: 0 0.4px 0.4px #fff, 0px 0.4px 0.4px #000;
+    color: ${props => props.theme.colors.accent};
   }
 
   @media screen and (min-width: 480px) {
