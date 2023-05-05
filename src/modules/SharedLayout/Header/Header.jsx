@@ -4,10 +4,11 @@ import {
   LangThemeBlock,
   Link,
   Logo,
+  LogoText,
   Nav,
   NavBlock,
 } from './Header.styled';
-import { BsFilm } from 'react-icons/bs';
+import Logotype from 'assets/logo.png';
 import { LangMenu } from 'components/LangMenu/LangMenu';
 import { ToggleDarkLightMode } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
 import { useTranslation } from 'react-i18next';
@@ -42,10 +43,8 @@ export const Header = ({ languages, theme = 'light', toggleTheme }) => {
         sx={{ flexGrow: 1, my: 2 }}
       >
         <Logo to="/">
-          <span role="img" aria-label="film icon">
-            <BsFilm size="20px" />
-          </span>
-          GoFilm
+          <img src={Logotype} alt="logo" width="60px" />
+          <span>GoFilm</span>
         </Logo>
       </Typography>
       <Divider />
@@ -57,8 +56,12 @@ export const Header = ({ languages, theme = 'light', toggleTheme }) => {
     </Box>
   );
   return (
-    <Box component={'header'}>
-      <AppBar component={'nav'} sx={{ bgcolor: '#B9E4C9' }} elevation={6}>
+    <Box component={'header'} sx={{ position: 'relative' }}>
+      <AppBar
+        component={'nav'}
+        sx={{ bgcolor: '#B9E4C9', position: 'relative' }}
+        elevation={6}
+      >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
@@ -72,17 +75,10 @@ export const Header = ({ languages, theme = 'light', toggleTheme }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            color={'goldenrod'}
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, my: 2 }}
-          >
+          <Typography variant="h6" component="div" sx={{ my: 2 }}>
             <Logo to="/">
-              <span role="img" aria-label="film icon">
-                <BsFilm size="20px" />
-              </span>
-              GoFilm
+              <img src={Logotype} alt="logo" width="60px" />
+              <LogoText>GoFilm</LogoText>
             </Logo>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
