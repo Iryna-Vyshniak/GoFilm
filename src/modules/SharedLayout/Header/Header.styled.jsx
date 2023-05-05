@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { AppBar as HeaderBlock } from '@mui/material';
 
 export const AppBar = styled(HeaderBlock)`
+  position: fixed;
   padding-top: ${({ theme }) => theme.space[3]}px;
   padding-bottom: ${({ theme }) => theme.space[3]}px;
   padding-left: ${({ theme }) => theme.space[4]}px;
@@ -17,6 +18,9 @@ export const AppBar = styled(HeaderBlock)`
 `;
 
 export const Logo = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
   color: #fff;
   text-shadow: 0 1px 1px #fd5523, 0 0.7px 0.7px #000, 0 -0.3px 0.3px #4b1414;
@@ -25,16 +29,11 @@ export const Logo = styled(NavLink)`
   letter-spacing: 1.4px;
   text-transform: uppercase;
   font-weight: 700;
-
-  svg {
-    fill: ${props => props.theme.colors.accent};
-    stroke: ${props => props.theme.colors.white};
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    margin-right: 10px;
-    :hover {
-      transform: scale(1.2);
-    }
+`;
+export const LogoText = styled.span`
+  display: none;
+  @media only screen and (min-width: 480px) {
+    display: inline-block;
   }
 `;
 
@@ -49,7 +48,7 @@ export const Link = styled(NavLink)`
 
   &.active {
     color: white;
-    background-color: #fd5523;
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   }
 `;
 export const LangThemeBlock = styled.div`
