@@ -5,6 +5,8 @@ export const CastList = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
+  padding-top: ${({ theme }) => theme.space[5]}px;
+  padding-bottom: ${({ theme }) => theme.space[5]}px;
   text-align: center;
 `;
 
