@@ -7,7 +7,7 @@ export const lightTheme = {
   body: '#fffdf5',
   text: '#000',
   toggleBorder: '#FFF',
-  gradient: 'linear-gradient(#39598A, #79D7ED)',
+  gradient: 'linear-gradient(#fff, #79D7ED)',
   gradientHeroBanner:
     'linear-gradient(180deg, rgba(55, 150, 111, 0)0%, rgba(185, 228, 201, 0) 10%, rgba(255, 253, 245, 1) 100%)',
   backgroundHeaderFooter: '#b9e4c9',
@@ -18,16 +18,16 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  body: '#19281f',
+  body: 'rgba(3, 4, 3, 1)',
   text: '#FAFAFA',
   textFooter: '',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
   gradientHeroBanner:
-    'linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(121,9,9,0) 10%, #19281f 100%)',
+    'linear-gradient(180deg, rgba(55,150,111, 0) 0%, rgba(27,56,45, 0.2) 20%, rgba(3,4,3,1) 100%)',
 
   backgroundHeaderFooter:
-    'linear-gradient(180deg, rgba(55,150,111,0.2) 0%, rgba(55,150,111,0.3) 10%, #19281f 100%)',
+    'linear-gradient(180deg, rgba(185,228,201,1) 0%, rgba(121,186,144,0.9996790952709209) 34%, rgba(14,41,8,1) 100%)',
 
   gradientBlock: 'none',
   cardsTextColor: '#fff',
