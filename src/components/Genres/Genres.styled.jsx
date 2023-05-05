@@ -12,10 +12,9 @@ export const GenresBlock = styled.ul`
   }
 `;
 export const Genre = styled.li`
-  box-shadow: 1px 1px 2px #fff, 1px 1px 2px #fff;
-  background-color: rgba(185, 228, 201, 0.973);
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   color: rgb(0, 0, 0);
-  text-shadow: 0 0.5px 0.5px #fff;
+  text-shadow: 0 0.4px 0.4px #fff;
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: bold;
   border-radius: 5px;
