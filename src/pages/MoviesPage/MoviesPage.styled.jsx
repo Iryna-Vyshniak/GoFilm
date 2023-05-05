@@ -204,11 +204,12 @@ export const TitleList = styled.h2`
   backdrop-filter: blur(0.7125rem);
 
   text-align: center;
-  color: ${props => props.theme.colors.accent};
-  text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
+  color: ${({ theme }) => theme.text};
+
   font-size: ${({ theme }) => theme.fontSizes.m};
   font-family: ${props => props.theme.fonts.heading};
   font-weight: 700;
+  text-transform: uppercase;
 
   @media screen and (min-width: 480px) {
     font-size: ${({ theme }) => theme.fontSizes.l};
