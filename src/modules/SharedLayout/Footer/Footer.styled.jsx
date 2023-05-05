@@ -105,7 +105,7 @@ export const Btn = styled.a`
   height: 34px;
   border-radius: 50%;
   background: transparent;
-  box-shadow: -3px -3px 7px #ffffff, 3px 3px 7px rgba(185, 228, 201, 0.773);
+  box-shadow: 0 -1px 1px #ffffff, 0 1px 1px rgba(185, 228, 201, 0.773);
 
   :hover {
     background: #ecf0f3;
@@ -126,7 +126,6 @@ export const LinkToSupport = styled.a`
   justify-content: center;
   gap: 8px;
   color: #fd5523;
-  text-shadow: 0 0.4px 0.4px #fff;
   font-weight: 500;
   :hover {
     border-radius: 4px;
