@@ -8,6 +8,7 @@ export const MainTitle = styled.h1`
   font-family: ${props => props.theme.fonts.heading};
   font-weight: 700;
   letter-spacing: 1.5px;
+  text-align: center;
 
   @media screen and (min-width: 480px) {
     font-size: ${({ theme }) => theme.fontSizes.l};
