@@ -38,7 +38,8 @@ export const App = ({ languages }) => {
           alignItems: 'center',
           justifyContent: 'center',
           bottom: 35,
-          backgroundColor: 'rgba(185, 228, 201, 0.8)',
+          background:
+            'linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%)',
           width: '42px',
           height: '42px',
           padding: '8px',
