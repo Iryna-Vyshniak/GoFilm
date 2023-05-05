@@ -47,7 +47,7 @@ export const GradientBlockBottom = styled.div`
 
 export const SectionHero = styled.section`
   position: relative;
-  margin-top: -30px;
+  margin-top: -70px;
   margin-bottom: 30px;
   padding-top: 84px;
   padding-bottom: 84px;
