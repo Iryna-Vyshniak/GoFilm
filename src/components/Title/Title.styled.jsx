@@ -9,6 +9,7 @@ export const MainTitle = styled.h1`
   font-weight: 700;
   letter-spacing: 1.5px;
   text-align: center;
+  text-transform: uppercase;
 
   @media screen and (min-width: 480px) {
     font-size: ${({ theme }) => theme.fontSizes.l};
