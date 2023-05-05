@@ -10,7 +10,7 @@ export const ToggleContainer = styled.button`
   padding: 0.5rem;
 
   background: ${({ theme }) => theme.gradient};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  border: 1px solid ${({ theme }) => theme.toggleBorder};
   border-radius: 8px;
   cursor: pointer;
 
