@@ -5,7 +5,6 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from 'react-icons/fa';
-import PropTypes from 'prop-types';
 import {
   Btn,
   ContentWrapper,
