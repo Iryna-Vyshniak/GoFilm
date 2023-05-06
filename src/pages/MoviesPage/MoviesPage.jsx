@@ -16,7 +16,6 @@ import {
   BackdropActors,
   BgBlockActors,
   BlockInfoActors,
-  GradientBlockBottom,
   GradientBlockBottomActors,
   GradientBlockTop,
   Known,
