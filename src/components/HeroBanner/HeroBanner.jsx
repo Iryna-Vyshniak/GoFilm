@@ -17,9 +17,6 @@ export const HeroBanner = ({ movies }) => {
       <SectionHero>
         <HeroContainer>
           <GradientBlockTop></GradientBlockTop>
-          {/*  <BackdropImg>
-            <img src={HeroPoster} alt="poster opacity" width="1200" />
-          </BackdropImg> */}
           {poster_path ? (
             <BackdropImg>
               <img
