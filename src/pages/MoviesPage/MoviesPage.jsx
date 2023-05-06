@@ -14,7 +14,6 @@ import {
   ActorName,
   AvatarWrap,
   BackdropActors,
-  //BackdropImg,
   BgBlockActors,
   BlockInfoActors,
   GradientBlockBottom,
@@ -31,6 +30,7 @@ import {
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import {
   getActorsPopular,
+  getGenresMovies,
   getMoviesByQuery,
   getMoviesWithGenres,
 } from 'services/themoviedbAPI';
@@ -56,6 +56,7 @@ const MoviesPage = () => {
 
   const [data, setData] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [genres, setGenres] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
@@ -73,8 +74,6 @@ const MoviesPage = () => {
   const page = Number(params.page || 1);
   let { query } = params;
 
-  //console.log(params);
-
   const location = useLocation();
   const { t } = useTranslation();
 
@@ -85,7 +84,6 @@ const MoviesPage = () => {
         setData(null);
         const data = await getMoviesByQuery(page, query, lng);
         //console.log(data.results);
-
         setMovies(data.results);
         setTotalPages(data.total_results);
       } catch (error) {
@@ -94,9 +92,6 @@ const MoviesPage = () => {
         setIsLoading(false);
       }
     })();
-    // return () => {
-    //   controller.abort();
-    // };
   }, [page, query, location.search, lng]);
 
   useEffect(() => {
@@ -145,6 +140,23 @@ const MoviesPage = () => {
     fetchMovies(selectedGenre, lng);
   }, [lng, selectedGenre, t]);
 
+  // get genres
+  useEffect(() => {
+    async function getGenres() {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const genresData = await getGenresMovies(lng);
+        setGenres(genresData);
+      } catch (error) {
+        setError(`{t('moviesPage.set_error')}`);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getGenres();
+  }, [lng]);
+
   if (!actors) {
     return <div>{t('loading')}</div>;
   }
@@ -169,8 +181,12 @@ const MoviesPage = () => {
           <MoviesBanner />
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
-        <Searchbar value={query} onChange={handleSearchChange} t={t} />
-        <GenresSelect onSelect={setSelectedGenre} t={t} lng={lng} />
+        <Searchbar value={query} onChange={handleSearchChange} />
+        <GenresSelect
+          onSelect={setSelectedGenre}
+          genres={genres}
+          isLoading={isLoading}
+        />
 
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з повідомленням помилки */}
@@ -184,12 +200,12 @@ const MoviesPage = () => {
         {!error && !isLoading && !query && selectedGenre === null && (
           <>
             <Title title={t('actorsPage.expected')} />
-            <MovieGallery movies={movies} lng={lng} />
+            <MovieGallery movies={movies} />
           </>
         )}
 
         {!error && query && !isLoading && (
-          <MovieGallery movies={filteredMovies} lng={lng} />
+          <MovieGallery movies={filteredMovies} />
         )}
 
         {movies.length > 0 && !isLoading && page <= totalPages && (

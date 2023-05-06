@@ -1,21 +1,12 @@
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { getGenresMovies } from 'services/themoviedbAPI';
 import { useTranslation } from 'react-i18next';
 
 const animatedComponents = makeAnimated();
 
-export const GenresSelect = ({ onSelect, t }) => {
-  const [genres, setGenres] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const { i18n } = useTranslation();
-  const lng = i18n.language;
+export const GenresSelect = ({ onSelect, genres, isLoading }) => {
+  const { t } = useTranslation();
 
   const customStyles = {
     option: (defaultStyles, state) => ({
@@ -44,29 +35,6 @@ export const GenresSelect = ({ onSelect, t }) => {
     }),
   };
 
-  // genres
-  useEffect(() => {
-    // const abortController = new AbortController();
-    async function getGenres() {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        // const genresData = await getGenresMovies(abortController);
-        // setError(null);
-        const genresData = await getGenresMovies(lng);
-        //console.log(genresData);
-        setGenres(genresData);
-      } catch (error) {
-        setError(`{t('moviesPage.set_error')}`);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getGenres();
-    // return () => abortController.abort();
-  }, [lng]);
-
   const options = genres?.map(genre => ({
     value: genre.id,
     label: genre.name,
@@ -85,14 +53,12 @@ export const GenresSelect = ({ onSelect, t }) => {
         className="react-select-container"
         classNamePrefix="react-select"
       />
-      {error && !isLoading && (
-        <ImageErrorView message={t('moviesPage.mistake')} />
-      )}
     </>
   );
 };
 
 GenresSelect.propTypes = {
-  t: PropTypes.any.isRequired,
+  genres: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   onSelect: PropTypes.func.isRequired,
 };
