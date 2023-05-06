@@ -46,13 +46,16 @@ const settings = {
   dots: false,
   fade: true,
   infinite: true,
-  speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
   initialSlide: 1,
   adaptiveHeight: true,
   nextArrow: <SampleNextArrow />,
   prevArrow: <SamplePrevArrow />,
+  autoplay: true,
+  speed: 2000,
+  autoplaySpeed: 5500,
+  cssEase: 'linear',
 };
 
 export const MoviesBanner = () => {
