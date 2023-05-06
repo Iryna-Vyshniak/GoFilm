@@ -15,7 +15,6 @@ export const Searchbar = ({ value, onChange, t }) => {
         value={value}
         debounceTimeout={500}
         onChange={onChange}
-        autoFocus
         placeholder={t('moviesPage.placeholder_search')}
       />
       <SearchFormBtn type="submit">
