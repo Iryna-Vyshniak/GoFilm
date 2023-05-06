@@ -11,11 +11,13 @@ import {
 } from './CardFilm.styled';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { Genres } from 'components/Genres/Genres';
+import { useTranslation } from 'react-i18next';
 
 export const CardFilm = ({
   movie: { id, poster_path, original_title, vote_average, genre_ids },
-  lng,
 }) => {
+  const { i18n } = useTranslation();
+  const lng = i18n.language;
   return (
     <MovieListItem>
       <Link to={`/movies/${id}`}>
@@ -39,7 +41,7 @@ export const CardFilm = ({
               name="read-only"
               defaultValue={(vote_average / 10) * 5}
               precision={0.5}
-              size="large"
+              size="middle"
               readOnly
             />
           </>
@@ -61,5 +63,4 @@ CardFilm.propTypes = {
     first_air_date: PropTypes.string,
     vote_average: PropTypes.number,
   }).isRequired,
-  lng: PropTypes.string.isRequired,
 };
