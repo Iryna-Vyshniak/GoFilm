@@ -20,5 +20,5 @@ export const Genres = ({ data, genres }) => {
 
 Genres.propTypes = {
   data: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.array,
 };
