@@ -67,6 +67,7 @@ export const MoviesBanner = () => {
   const { i18n } = useTranslation();
   const lng = i18n.language;
 
+  // get Now Playing Movies
   useEffect(() => {
     (async () => {
       try {
@@ -74,7 +75,6 @@ export const MoviesBanner = () => {
         setError(false);
 
         const data = await getNowPlayingMovies(lng);
-        //console.log(data);
         setMovies(data.results);
       } catch (error) {
         console.log(error.message);

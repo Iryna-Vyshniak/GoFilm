@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { MovieListStyled } from './MovieGallery.styled';
 import { MovieGalleryItem } from 'modules/MovieGalleryItem/MovieGalleryItem';
 
-export const MovieGallery = ({ movies }) => {
+export const MovieGallery = ({ movies, genres }) => {
   const location = useLocation();
   return (
     <MovieListStyled>
@@ -11,6 +11,7 @@ export const MovieGallery = ({ movies }) => {
         <MovieGalleryItem
           key={movie.id}
           movie={movie}
+          genres={genres}
           state={{ from: location }}
         />
       ))}
@@ -24,4 +25,5 @@ MovieGallery.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
+  genres: PropTypes.array.isRequired,
 };

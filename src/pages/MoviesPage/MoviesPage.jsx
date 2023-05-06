@@ -200,12 +200,12 @@ const MoviesPage = () => {
         {!error && !isLoading && !query && selectedGenre === null && (
           <>
             <Title title={t('actorsPage.expected')} />
-            <MovieGallery movies={movies} />
+            <MovieGallery movies={movies} genres={genres} />
           </>
         )}
 
         {!error && query && !isLoading && (
-          <MovieGallery movies={filteredMovies} />
+          <MovieGallery movies={filteredMovies} genres={genres} />
         )}
 
         {movies.length > 0 && !isLoading && page <= totalPages && (
@@ -221,7 +221,7 @@ const MoviesPage = () => {
         {!error && !isLoading && data && (
           <>
             <Title title={t('moviesPage.trend_list')} />
-            <MovieGallery movies={data} lng={lng} />
+            <MovieGallery movies={data} genres={genres} />
           </>
         )}
 

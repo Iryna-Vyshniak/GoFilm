@@ -6,7 +6,11 @@ import Pagination from 'components/Pagination/Pagination';
 import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { getPopularMovies, getTopRatedMovies } from 'services/themoviedbAPI';
+import {
+  getGenresMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+} from 'services/themoviedbAPI';
 // import { langs } from 'services/i18next';
 
 // CAROUSEL SWIPER IMPORT
@@ -25,6 +29,7 @@ import { useTranslation } from 'react-i18next';
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -40,8 +45,9 @@ const HomePage = () => {
   const page = Number(params.page || 1);
   const { t } = useTranslation();
 
-  //console.log(page);
   const location = useLocation();
+
+  // get popular movies
   useEffect(() => {
     (async () => {
       try {
@@ -49,7 +55,6 @@ const HomePage = () => {
         setError(false);
 
         const data = await getPopularMovies(page, lng);
-        //console.log(lng);
         setMovies(data.results);
         setTotalPages(data.total_pages);
       } catch (error) {
@@ -60,6 +65,7 @@ const HomePage = () => {
     })();
   }, [page, lng, location.search]);
 
+  // get top rated movies
   useEffect(() => {
     (async () => {
       try {
@@ -67,7 +73,6 @@ const HomePage = () => {
         setError(false);
 
         const data = await getTopRatedMovies(lng);
-        //console.log(data);
         setTopMovies(data.results);
       } catch (error) {
         console.log(error.message);
@@ -77,6 +82,23 @@ const HomePage = () => {
     })();
   }, [page, lng, location.search]);
 
+  // get genres
+  useEffect(() => {
+    (async function getGenres() {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const genresData = await getGenresMovies(lng);
+        setGenres(genresData);
+      } catch (error) {
+        setError('Something went wrong, reload the page, it might help 🥹');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [lng]);
+
   if (!movies) {
     return <Loader />;
   }
@@ -84,8 +106,6 @@ const HomePage = () => {
   return (
     <HomeBlock>
       {isLoading && <Loader />}
-      {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
-      повідомленням помилки */}
       {error && <ImageErrorView message="Oops, mistake... Please try again" />}
       {!error && topMovies.length > 0 && (
         <>
@@ -144,7 +164,7 @@ const HomePage = () => {
             </Grid2>
           </Grid2>
           <Title title={t('homePage.trending_title')} />
-          <MovieGallery movies={movies} />
+          <MovieGallery movies={movies} genres={genres} />
           <Pagination
             pageCount={totalPages}
             setSearchParams={setSearchParams}
