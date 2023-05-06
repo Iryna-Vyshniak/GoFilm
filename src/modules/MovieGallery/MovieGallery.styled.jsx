@@ -22,5 +22,4 @@ export const MovieListStyled = styled.ul`
   gap: 20px;
 
   margin: 0 auto;
-  margin-bottom: 50px;
 `;
