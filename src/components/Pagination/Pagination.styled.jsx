@@ -5,7 +5,7 @@ export const Paginate = styled(ReactPaginate)`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 0 auto;
+  margin: 10px 0;
   font-size: 14px;
 
   .selected {
