@@ -15,7 +15,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-cards';
 import 'swiper/css/effect-coverflow';
-import { Autoplay, EffectCoverflow } from 'swiper';
+import { EffectCoverflow, Navigation } from 'swiper';
 
 import { CardFilm } from 'components/CardFilm/CardFilm';
 import Grid2 from '@mui/material/Unstable_Grid2';
@@ -106,19 +106,14 @@ const HomePage = () => {
                 effect={'coverflow'}
                 grabCursor={true}
                 centeredSlides={true}
-                modules={[Autoplay, EffectCoverflow]}
+                modules={[EffectCoverflow, Navigation]}
                 loop={true}
-                navigation
-                autoplay={{
-                  delay: 1900,
-                  disableOnInteraction: false,
-                }}
+                slidesPerView={'auto'}
                 coverflowEffect={{
-                  depth: 50,
-                  modifier: 1,
-                  rotate: 35,
+                  rotate: 0,
                   stretch: 0,
-                  slideShadows: true,
+                  depth: 100,
+                  modifier: 2.5,
                 }}
                 breakpoints={{
                   // when window width is >= 320px
@@ -141,7 +136,7 @@ const HomePage = () => {
                 {topMovies.map(movie => {
                   return (
                     <SwiperSlide key={movie.id}>
-                      <CardFilm movie={movie} lng={lng} />
+                      <CardFilm movie={movie} />
                     </SwiperSlide>
                   );
                 })}
@@ -149,7 +144,7 @@ const HomePage = () => {
             </Grid2>
           </Grid2>
           <Title title={t('homePage.trending_title')} />
-          <MovieGallery movies={movies} t={t} lng={lng} />
+          <MovieGallery movies={movies} t={t} />
           <Pagination
             pageCount={totalPages}
             setSearchParams={setSearchParams}
