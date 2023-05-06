@@ -7,7 +7,7 @@ import {
   CircleRating,
 } from './ActorsMoviesItem.styled';
 import NoPoster from 'assets/no-poster.jpg';
-import { Rating } from '@mui/material';
+import { Rating, Tooltip } from '@mui/material';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 
 export const ActorsMoviesItem = ({
@@ -27,7 +27,23 @@ export const ActorsMoviesItem = ({
             width={300}
           />
         </MoviePoster>
-        <MovieTitle>{title}</MovieTitle>
+        <Tooltip
+          title="Click for watch more"
+          describeChild
+          PopperProps={{
+            sx: {
+              '& .MuiTooltip-tooltip': {
+                bgcolor: '#B9E4C9',
+                color: '#000',
+                width: '250px',
+                textAlign: 'center',
+              },
+            },
+          }}
+        >
+          <MovieTitle>{title}</MovieTitle>
+        </Tooltip>
+
         {vote_average !== 0 && (
           <>
             <CircleRating>
