@@ -92,10 +92,7 @@ export const MoviesBanner = () => {
         <Slider {...settings}>
           {movies.map(
             ({ id, poster_path, title, vote_average, overview }, idx) => (
-              <BackdropContainer
-                key={`${id}-${idx}`}
-                className="styles.swiperslide"
-              >
+              <BackdropContainer key={id} className="styles.swiperslide">
                 <GradientBlockTop></GradientBlockTop>
                 {`https://image.tmdb.org/t/p/original${poster_path}` && (
                   <BackdropPoster>
