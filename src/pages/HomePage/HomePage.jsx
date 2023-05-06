@@ -144,7 +144,7 @@ const HomePage = () => {
             </Grid2>
           </Grid2>
           <Title title={t('homePage.trending_title')} />
-          <MovieGallery movies={movies} t={t} />
+          <MovieGallery movies={movies} />
           <Pagination
             pageCount={totalPages}
             setSearchParams={setSearchParams}
