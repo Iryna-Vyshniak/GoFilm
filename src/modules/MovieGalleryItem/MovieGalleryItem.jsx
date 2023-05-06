@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
 
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import NoPoster from 'assets/no-poster.jpg';
@@ -42,7 +43,23 @@ export const MovieGalleryItem = ({
             width="200"
           />
         </MoviePoster>
-        <MovieTitle>{title}</MovieTitle>
+        <Tooltip
+          title="Click for watch more"
+          describeChild
+          PopperProps={{
+            sx: {
+              '& .MuiTooltip-tooltip': {
+                bgcolor: '#B9E4C9',
+                color: '#000',
+                width: '250px',
+                textAlign: 'center',
+              },
+            },
+          }}
+        >
+          <MovieTitle>{title}</MovieTitle>
+        </Tooltip>
+
         {release_date && <ReleaseDate>{parseInt(release_date)}</ReleaseDate>}
         {vote_average !== 0 && (
           <Stars>
