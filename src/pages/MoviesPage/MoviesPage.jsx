@@ -14,12 +14,11 @@ import {
   ActorName,
   AvatarWrap,
   BackdropActors,
-  BackdropImg,
+  //BackdropImg,
   BgBlockActors,
   BlockInfoActors,
   GradientBlockBottom,
   GradientBlockTop,
-  HeroContainer,
   Known,
   MoviesBlock,
   Poster,
@@ -29,7 +28,6 @@ import {
   TitleList,
 } from './MoviesPage.styled';
 
-//import { InitialStateGallery } from 'components/InitialStateGallery/InitialStateGallery';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import {
   getActorsPopular,
@@ -41,11 +39,11 @@ import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
 import { Loader } from 'components/Loader/Loader';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import NoPoster from 'assets/no-poster.jpg';
-import HeroPoster from 'assets/hero-poster.jpeg';
 import ActorsBg from 'assets/actors-bg.png';
 import { GenresSelect } from 'components/GenresSelect/GenresSelect';
 import { Title } from 'components/Title/Title';
 import Pagination from 'components/Pagination/Pagination';
+import { MoviesBanner } from 'components/MoviesBanner/MoviesBanner';
 
 const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -165,18 +163,10 @@ const MoviesPage = () => {
   // console.log(movies);
   return (
     <>
-      {/* <HeroBanner movies={movies} /> */}
       <MoviesBlock>
         <SectionHero>
-          <HeroContainer>
-            <GradientBlockTop></GradientBlockTop>
-
-            <BackdropImg>
-              <img src={HeroPoster} alt="poster opacity" width="1200" />
-            </BackdropImg>
-
-            <GradientBlockBottom></GradientBlockBottom>
-          </HeroContainer>
+          <GradientBlockTop></GradientBlockTop>
+          <MoviesBanner />
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar value={query} onChange={handleSearchChange} t={t} />
