@@ -4,11 +4,10 @@ import { AppBar as HeaderBlock } from '@mui/material';
 
 export const AppBar = styled(HeaderBlock)`
   position: fixed;
-  padding-top: ${({ theme }) => theme.space[3]}px;
   padding-bottom: ${({ theme }) => theme.space[3]}px;
   padding-left: ${({ theme }) => theme.space[4]}px;
   padding-right: ${({ theme }) => theme.space[4]}px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 
   background: ${({ theme }) => theme.backgroundHeaderFooter};
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
