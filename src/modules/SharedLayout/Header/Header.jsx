@@ -56,7 +56,7 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
     </Box>
   );
   return (
-    <Box component={'header'} sx={{ position: 'relative' }}>
+    <Box component={'header'} sx={{ position: 'relative', height: '44px' }}>
       <AppBar
         component={'nav'}
         sx={{ bgcolor: '#B9E4C9', position: 'relative' }}
