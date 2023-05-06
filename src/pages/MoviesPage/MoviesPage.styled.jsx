@@ -10,6 +10,7 @@ export const MoviesBlock = styled.div`
   padding-bottom: ${({ theme }) => theme.space[5]}px;
   padding-left: ${({ theme }) => theme.space[4]}px;
   padding-right: ${({ theme }) => theme.space[4]}px;
+  margin-bottom: 64px;
   font-size: ${({ theme }) => theme.fontSizes.s};
   text-align: center;
 
@@ -60,6 +61,7 @@ export const AvatarWrap = styled.div`
 
   overflow: hidden;
 `;
+
 export const Poster = styled.img`
   display: block;
   width: 100%;
@@ -124,16 +126,6 @@ export const GradientBlockTop = styled.div`
   background: ${({ theme }) => theme.gradientBlock};
 `;
 
-export const GradientBlockBottom = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 450px;
-
-  background: ${({ theme }) => theme.gradientHeroBanner};
-`;
-
 export const SectionHero = styled.section`
   position: relative;
 
@@ -142,8 +134,6 @@ export const SectionHero = styled.section`
 
   padding-top: 84px;
   padding-bottom: 84px;
-
-  background-color: rgba(0, 0, 0, 1);
 `;
 
 export const SectionActors = styled.section`
@@ -171,7 +161,7 @@ export const HeroContainer = styled.section`
   padding: 0;
 
   width: 100%;
-  height: 450px;
+  height: 750px;
 
   padding-left: 15px;
   padding-right: 15px;
@@ -225,4 +215,14 @@ export const SmallText = styled.p`
   font-size: ${props => props.theme.fontSizes.s};
   font-style: italic;
   opacity: 0.5;
+`;
+
+export const GradientBlockBottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 550px;
+
+  background: ${({ theme }) => theme.gradientHeroBanner};
 `;
