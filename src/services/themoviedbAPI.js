@@ -205,6 +205,20 @@ export const getMoviesbyActors = async (personId, lng) => {
   }
 };
 
+export const getNowPlayingMovies = async lng => {
+  try {
+    const { data } = await axios.get(`/movie/now_playing`, {
+      params: {
+        page: 1,
+        language: lng,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movie');
+  }
+};
+
 // export const getLanguages = async () => {
 //   try {
 //     const { data } = await axios.get(`/configuration/primary_translations`);
