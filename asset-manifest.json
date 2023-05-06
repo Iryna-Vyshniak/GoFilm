@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.9150f9f1.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.07eeaede.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.36d0849a.js",
     "static/css/997.1d99de61.chunk.css": "/goit-react-hw-05-movies/static/css/997.1d99de61.chunk.css",
-    "static/js/997.8736f211.chunk.js": "/goit-react-hw-05-movies/static/js/997.8736f211.chunk.js",
+    "static/js/997.21c7bec3.chunk.js": "/goit-react-hw-05-movies/static/js/997.21c7bec3.chunk.js",
     "static/css/587.80271e6f.chunk.css": "/goit-react-hw-05-movies/static/css/587.80271e6f.chunk.css",
     "static/js/587.bc341b39.chunk.js": "/goit-react-hw-05-movies/static/js/587.bc341b39.chunk.js",
     "static/css/656.f5c713ef.chunk.css": "/goit-react-hw-05-movies/static/css/656.f5c713ef.chunk.css",
@@ -302,9 +302,9 @@
     "static/media/bd.svg": "/goit-react-hw-05-movies/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/id.svg": "/goit-react-hw-05-movies/static/media/id.f624e2c8444a7794b357.svg",
     "main.9150f9f1.css.map": "/goit-react-hw-05-movies/static/css/main.9150f9f1.css.map",
-    "main.07eeaede.js.map": "/goit-react-hw-05-movies/static/js/main.07eeaede.js.map",
+    "main.36d0849a.js.map": "/goit-react-hw-05-movies/static/js/main.36d0849a.js.map",
     "997.1d99de61.chunk.css.map": "/goit-react-hw-05-movies/static/css/997.1d99de61.chunk.css.map",
-    "997.8736f211.chunk.js.map": "/goit-react-hw-05-movies/static/js/997.8736f211.chunk.js.map",
+    "997.21c7bec3.chunk.js.map": "/goit-react-hw-05-movies/static/js/997.21c7bec3.chunk.js.map",
     "587.80271e6f.chunk.css.map": "/goit-react-hw-05-movies/static/css/587.80271e6f.chunk.css.map",
     "587.bc341b39.chunk.js.map": "/goit-react-hw-05-movies/static/js/587.bc341b39.chunk.js.map",
     "656.f5c713ef.chunk.css.map": "/goit-react-hw-05-movies/static/css/656.f5c713ef.chunk.css.map",
@@ -328,6 +328,6 @@
   },
   "entrypoints": [
     "static/css/main.9150f9f1.css",
-    "static/js/main.07eeaede.js"
+    "static/js/main.36d0849a.js"
   ]
 }
