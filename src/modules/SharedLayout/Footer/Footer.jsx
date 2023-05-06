@@ -22,8 +22,10 @@ import Save from 'assets/save@2x.png';
 import Action from 'assets/action@2x.png';
 import Hope from 'assets/hope@2x.png';
 import World from 'assets/world@2x.png';
+import { useTranslation } from 'react-i18next';
 
-const Footer = ({ t }) => {
+const Footer = () => {
+  const { t } = useTranslation();
   return (
     <FooterBlock>
       <ContentWrapper>
@@ -97,7 +99,3 @@ const Footer = ({ t }) => {
 };
 
 export default Footer;
-
-Footer.propTypes = {
-  t: PropTypes.any.isRequired,
-};

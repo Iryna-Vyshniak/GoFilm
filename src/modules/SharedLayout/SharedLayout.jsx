@@ -40,7 +40,7 @@ export const SharedLayout = () => {
               <Outlet />
             </Suspense>
           </main>
-          <Footer t={t} />
+          <Footer />
         </Container>
       </ThemeProvider>
     </>
