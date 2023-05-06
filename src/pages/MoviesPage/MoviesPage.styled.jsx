@@ -226,3 +226,12 @@ export const GradientBlockBottom = styled.div`
 
   background: ${({ theme }) => theme.gradientHeroBanner};
 `;
+export const GradientBlockBottomActors = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+
+  background: ${({ theme }) => theme.gradientHeroBanner};
+`;

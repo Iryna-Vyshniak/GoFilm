@@ -17,6 +17,7 @@ import {
   BgBlockActors,
   BlockInfoActors,
   GradientBlockBottom,
+  GradientBlockBottomActors,
   GradientBlockTop,
   Known,
   MoviesBlock,
@@ -244,7 +245,7 @@ const MoviesPage = () => {
                   <img src={ActorsBg} alt="poster opacity" width="1200" />
                 </BgBlockActors>
 
-                <GradientBlockBottom></GradientBlockBottom>
+                <GradientBlockBottomActors></GradientBlockBottomActors>
               </BackdropActors>
             </SectionActors>
             <Grid2
