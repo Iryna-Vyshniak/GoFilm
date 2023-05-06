@@ -25,5 +25,5 @@ MovieGallery.propTypes = {
       id: PropTypes.number.isRequired,
     })
   ),
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.array,
 };
