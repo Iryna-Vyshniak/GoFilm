@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   Icon,
   SearchForm,
@@ -7,7 +8,8 @@ import {
 
 import PropTypes from 'prop-types';
 
-export const Searchbar = ({ value, onChange, t }) => {
+export const Searchbar = ({ value, onChange }) => {
+  const { t } = useTranslation();
   return (
     <SearchForm>
       <SearchFormInput
