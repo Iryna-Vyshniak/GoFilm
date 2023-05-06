@@ -217,21 +217,12 @@ export const SmallText = styled.p`
   opacity: 0.5;
 `;
 
-export const GradientBlockBottom = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 550px;
-
-  background: ${({ theme }) => theme.gradientHeroBanner};
-`;
 export const GradientBlockBottomActors = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 450px;
+  height: 350px;
 
   background: ${({ theme }) => theme.gradientHeroBanner};
 `;
