@@ -2,10 +2,10 @@
 
 ### 🎞️ Filmoteka React
 
-### 🎞️ Individual Learning Project
+### Individual Learning Project
 
-🎞️ Application for searching and storage movies, everything about movies,
-authors, actors and news of film industry.
+Application for searching and storage movies, everything about movies, authors,
+actors and news of film industry.
 
 Welcome to my first React Project! I'm working on this project to gain more
 knowledge and practice my React skills.
@@ -30,6 +30,7 @@ Add asynchronous loading of JS code for application routes using React.lazy()
 and Suspense.
 
 Add Dark Mode Toggle with React and ThemeProvider.
+
 <div align="center">
   <img src="https://ik.imagekit.io/irinavn2011/2.png?updatedAt=1684446503190" width="1200" height="auto"/>
 </div>
