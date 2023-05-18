@@ -30,3 +30,6 @@ Add asynchronous loading of JS code for application routes using React.lazy()
 and Suspense.
 
 Add Dark Mode Toggle with React and ThemeProvider.
+<div align="center">
+  <img src="https://ik.imagekit.io/irinavn2011/2.png?updatedAt=1684446503190" width="1200" height="auto"/>
+</div>
