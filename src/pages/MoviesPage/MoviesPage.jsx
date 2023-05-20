@@ -301,7 +301,7 @@ const MoviesPage = () => {
                               src={
                                 profile_path
                                   ? `https://image.tmdb.org/t/p/w300${profile_path}`
-                                  : `https://image.tmdb.org/t/p/w300${NoPoster}`
+                                  : NoPoster
                               }
                               alt={name}
                             />
