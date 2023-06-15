@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/GoFilm/static/css/main.03c7a927.css",
-    "main.js": "/GoFilm/static/js/main.a6f1b0a2.js",
+    "main.js": "/GoFilm/static/js/main.81d021c3.js",
     "static/css/997.1d99de61.chunk.css": "/GoFilm/static/css/997.1d99de61.chunk.css",
     "static/js/997.4eda28a0.chunk.js": "/GoFilm/static/js/997.4eda28a0.chunk.js",
     "static/js/636.fe292ee8.chunk.js": "/GoFilm/static/js/636.fe292ee8.chunk.js",
@@ -306,7 +306,7 @@
     "static/media/bd.svg": "/GoFilm/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/id.svg": "/GoFilm/static/media/id.f624e2c8444a7794b357.svg",
     "main.03c7a927.css.map": "/GoFilm/static/css/main.03c7a927.css.map",
-    "main.a6f1b0a2.js.map": "/GoFilm/static/js/main.a6f1b0a2.js.map",
+    "main.81d021c3.js.map": "/GoFilm/static/js/main.81d021c3.js.map",
     "997.1d99de61.chunk.css.map": "/GoFilm/static/css/997.1d99de61.chunk.css.map",
     "997.4eda28a0.chunk.js.map": "/GoFilm/static/js/997.4eda28a0.chunk.js.map",
     "636.fe292ee8.chunk.js.map": "/GoFilm/static/js/636.fe292ee8.chunk.js.map",
@@ -333,6 +333,6 @@
   },
   "entrypoints": [
     "static/css/main.03c7a927.css",
-    "static/js/main.a6f1b0a2.js"
+    "static/js/main.81d021c3.js"
   ]
 }
