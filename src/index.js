@@ -12,7 +12,7 @@ import { Loader } from 'components/Loader/Loader';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Suspense fallback={<Loader />}>
     <React.StrictMode>
-      <BrowserRouter basename="/goit-react-hw-05-movies">
+      <BrowserRouter basename="/GoFilm">
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
