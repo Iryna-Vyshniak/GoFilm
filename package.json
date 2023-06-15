@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-05-movies",
+  "name": "GoFilm",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Iryna-Vyshniak.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://Iryna-Vyshniak.github.io/GoFilm/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
