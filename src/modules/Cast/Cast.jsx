@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
 import { getMoviesCast } from 'services/themoviedbAPI';
+
+import Avatar from 'assets/avatar.jpg';
+
 import {
   ActorsCharacter,
   ActorsName,
@@ -14,9 +17,8 @@ import {
   CastPhoto,
   CastPhotoThumb,
   MovieHero,
-  Wrap,
+  Wrap
 } from './Cast.styled';
-import Avatar from 'assets/avatar.jpg';
 
 const Cast = () => {
   const location = useLocation();
@@ -36,7 +38,7 @@ const Cast = () => {
         const data = await getMoviesCast(movieId, lng);
         setCastList(data);
       } catch (error) {
-        setError(`{t('moviesPage.set_error')}`);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -57,11 +59,7 @@ const Cast = () => {
       {castList.length > 0 ? (
         <CastList>
           {castList.map(actor => (
-            <Link
-              to={`/actors/${actor.id}`}
-              state={{ from: location }}
-              key={actor.id}
-            >
+            <Link to={`/actors/${actor.id}`} state={{ from: location }} key={actor.id}>
               <CastItem key={actor.id}>
                 <CastPhotoThumb>
                   <CastPhoto

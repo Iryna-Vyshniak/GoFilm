@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -24,12 +23,12 @@ export const RatingProgressbar = ({ rating }) => {
         pathTransitionDuration: 0.5,
         textColor: 'rgb(255, 0, 0)',
         trailColor: '#fff',
-        backgroundColor: '#fff',
+        backgroundColor: '#fff'
       })}
     />
   );
 };
 
 RatingProgressbar.propTypes = {
-  rating: PropTypes.string,
+  rating: PropTypes.string
 };

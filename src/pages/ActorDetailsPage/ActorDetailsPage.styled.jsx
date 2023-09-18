@@ -8,7 +8,9 @@ export const NavLink = styled(MovieLink)`
   border-radius: 4px;
   text-decoration: none;
   color: ${({ theme }) => theme.text};
-  text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
+  text-shadow:
+    0 0.4px 0.4px #fff,
+    inset 40px 40px 40px #fff;
   font-size: ${props => props.theme.fontSizes.m};
   font-weight: 500;
 

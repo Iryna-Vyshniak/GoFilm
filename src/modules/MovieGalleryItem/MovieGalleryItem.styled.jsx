@@ -17,8 +17,10 @@ export const MovieListItem = styled.li`
 
   background-color: transparent;
 
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
   backdrop-filter: blur(3.5px);
   transition: box-shadow 250ms linear;
@@ -81,8 +83,10 @@ export const ReleaseDate = styled.p`
   padding-right: ${({ theme }) => theme.space[2]}px;
 
   background-color: #fff;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
   color: rgba(255, 66, 8, 1);
   text-shadow: 0 0.4px 0.4px #000;

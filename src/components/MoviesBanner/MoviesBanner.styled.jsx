@@ -13,7 +13,7 @@ export const BackdropContainer = styled.section`
 
   padding-left: 15px;
   padding-right: 15px;
-  background-image: ;
+  background-image:;
 `;
 
 export const GradientBlockTop = styled.div`
@@ -121,7 +121,9 @@ export const NavLink = styled(MovieLink)`
 
   text-decoration: none;
   color: ${({ theme }) => theme.text};
-  text-shadow: 0 0.4px 0.4px #fff, inset 40px 40px 40px #fff;
+  text-shadow:
+    0 0.4px 0.4px #fff,
+    inset 40px 40px 40px #fff;
   font-size: 12px;
   font-weight: 500;
   background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);

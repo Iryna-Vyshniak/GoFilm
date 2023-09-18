@@ -8,5 +8,5 @@ export const notifyOptions = {
   pauseOnHover: true,
   draggable: true,
   theme: 'colored',
-  toastId: customId,
+  toastId: customId
 };

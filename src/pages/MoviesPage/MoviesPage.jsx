@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// CAROUSEL SWIPER IMPORT
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -9,6 +9,25 @@ import 'swiper/css/scrollbar';
 import { Autoplay, Scrollbar } from 'swiper';
 
 import Grid2 from '@mui/material/Unstable_Grid2';
+
+import { Searchbar } from 'components/Searchbar/Searchbar';
+import { Loader } from 'components/Loader/Loader';
+import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
+import { GenresSelect } from 'components/GenresSelect/GenresSelect';
+import { Title } from 'components/Title/Title';
+import Pagination from 'components/Pagination/Pagination';
+import { MoviesBanner } from 'components/MoviesBanner/MoviesBanner';
+
+import {
+  getActorsPopular,
+  getGenresMovies,
+  getMoviesByQuery,
+  getMoviesWithGenres
+} from 'services/themoviedbAPI';
+import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
+
+import NoPoster from 'assets/no-poster.jpg';
+import ActorsBg from 'assets/actors-bg.png';
 
 import {
   ActorName,
@@ -24,26 +43,8 @@ import {
   SectionActors,
   SectionHero,
   SmallText,
-  TitleList,
+  TitleList
 } from './MoviesPage.styled';
-
-import { Searchbar } from 'components/Searchbar/Searchbar';
-import {
-  getActorsPopular,
-  getGenresMovies,
-  getMoviesByQuery,
-  getMoviesWithGenres,
-} from 'services/themoviedbAPI';
-import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
-
-import { Loader } from 'components/Loader/Loader';
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import NoPoster from 'assets/no-poster.jpg';
-import ActorsBg from 'assets/actors-bg.png';
-import { GenresSelect } from 'components/GenresSelect/GenresSelect';
-import { Title } from 'components/Title/Title';
-import Pagination from 'components/Pagination/Pagination';
-import { MoviesBanner } from 'components/MoviesBanner/MoviesBanner';
 
 const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,22 +61,18 @@ const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
-    query: '',
+    query: ''
   });
 
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const lng = i18n.language;
 
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]
-  );
+  const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
 
   const page = Number(params.page || 1);
   let { query } = params;
 
   const location = useLocation();
-  const { t } = useTranslation();
 
   // movies
   useEffect(() => {
@@ -83,7 +80,6 @@ const MoviesPage = () => {
       try {
         setData(null);
         const data = await getMoviesByQuery(page, query, lng);
-        //console.log(data.results);
         setMovies(data.results);
         setTotalPages(data.total_results);
       } catch (error) {
@@ -109,7 +105,6 @@ const MoviesPage = () => {
         setError(null);
 
         const dataActors = await getActorsPopular(lng);
-        //console.log(data);
         setActors(dataActors);
       } catch (error) {
         setError(error);
@@ -149,7 +144,7 @@ const MoviesPage = () => {
         const genresData = await getGenresMovies(lng);
         setGenres(genresData);
       } catch (error) {
-        setError(`{t('moviesPage.set_error')}`);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -172,7 +167,6 @@ const MoviesPage = () => {
     }
   };
 
-  // console.log(movies);
   return (
     <>
       <MoviesBlock>
@@ -182,11 +176,7 @@ const MoviesPage = () => {
         </SectionHero>
         {/* ПОШУК ФІЛЬМІВ */}
         <Searchbar value={query} onChange={handleSearchChange} />
-        <GenresSelect
-          onSelect={setSelectedGenre}
-          genres={genres}
-          isLoading={isLoading}
-        />
+        <GenresSelect onSelect={setSelectedGenre} genres={genres} isLoading={isLoading} />
 
         {isLoading && <Loader />}
         {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з повідомленням помилки */}
@@ -204,9 +194,7 @@ const MoviesPage = () => {
           </>
         )}
 
-        {!error && query && !isLoading && (
-          <MovieGallery movies={filteredMovies} genres={genres} />
-        )}
+        {!error && query && !isLoading && <MovieGallery movies={filteredMovies} genres={genres} />}
 
         {movies.length > 0 && !isLoading && page <= totalPages && (
           <Pagination
@@ -261,41 +249,37 @@ const MoviesPage = () => {
                   centeredSlides={true}
                   spaceBetween={30}
                   scrollbar={{
-                    hide: true,
+                    hide: true
                   }}
                   modules={[Autoplay, Scrollbar]}
                   className="mySwiper"
                   loop={true}
                   autoplay={{
                     delay: 2000,
-                    disableOnInteraction: false,
+                    disableOnInteraction: false
                   }}
                   breakpoints={{
                     // when window width is >= 320px
                     320: {
                       slidesPerView: 2,
-                      spaceBetween: 0,
+                      spaceBetween: 0
                     },
                     // when window width is >= 640px
                     640: {
                       slidesPerView: 6,
-                      spaceBetween: 20,
+                      spaceBetween: 20
                     },
                     // when window width is >= 1040px
                     1040: {
                       slidesPerView: 8,
-                      spaceBetween: 50,
-                    },
+                      spaceBetween: 50
+                    }
                   }}
                 >
                   {actors.map(({ id, profile_path, name, known_for }) => {
                     return (
                       <SwiperSlide key={id}>
-                        <Link
-                          to={`/actors/${id}`}
-                          state={{ from: location }}
-                          key={id}
-                        >
+                        <Link to={`/actors/${id}`} state={{ from: location }} key={id}>
                           <AvatarWrap>
                             <Poster
                               src={

@@ -1,27 +1,14 @@
-import React, { useState } from 'react';
-import {
-  AppBar,
-  LangThemeBlock,
-  Link,
-  Logo,
-  LogoText,
-  Nav,
-  NavBlock,
-} from './Header.styled';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Box, Divider, IconButton, Drawer, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { green } from '@mui/material/colors';
+
 import Logotype from 'assets/logo.png';
 import { LangMenu } from 'components/LangMenu/LangMenu';
 import { ToggleDarkLightMode } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
-import { useTranslation } from 'react-i18next';
-import {
-  Box,
-  Divider,
-  IconButton,
-  Drawer,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { green } from '@mui/material/colors';
+
+import { AppBar, LangThemeBlock, Link, Logo, LogoText, Nav, NavBlock } from './Header.styled';
 
 const primary = green[200];
 
@@ -36,12 +23,7 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
 
   const mobileMenu = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography
-        color="primary"
-        variant="h6"
-        component="div"
-        sx={{ flexGrow: 1, my: 2 }}
-      >
+      <Typography color="primary" variant="h6" component="div" sx={{ flexGrow: 1, my: 2 }}>
         <Logo to="/">
           <img src={Logotype} alt="logo" width="60px" />
           <span>GoFilm</span>
@@ -57,11 +39,7 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
   );
   return (
     <Box component={'header'} sx={{ position: 'relative', height: '44px' }}>
-      <AppBar
-        component={'nav'}
-        sx={{ bgcolor: '#B9E4C9', position: 'relative' }}
-        elevation={6}
-      >
+      <AppBar component={'nav'} sx={{ bgcolor: '#B9E4C9', position: 'relative' }} elevation={6}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
@@ -69,7 +47,7 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
             edge="start"
             sx={{
               mr: 2,
-              display: { sm: 'none' },
+              display: { sm: 'none' }
             }}
             onClick={handleDrawerToggle}
           >
@@ -90,10 +68,7 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
           </Box>
           <LangThemeBlock>
             <LangMenu t={t} />
-            <ToggleDarkLightMode
-              theme={theme}
-              toggleTheme={() => toggleTheme()}
-            />
+            <ToggleDarkLightMode theme={theme} toggleTheme={() => toggleTheme()} />
           </LangThemeBlock>
         </Toolbar>
       </AppBar>
@@ -107,8 +82,8 @@ export const Header = ({ theme = 'light', toggleTheme }) => {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: '280px',
-              backgroundColor: primary,
-            },
+              backgroundColor: primary
+            }
           }}
         >
           {mobileMenu}

@@ -6,7 +6,9 @@ export const PageNf = styled.div`
   height: 700px;
   padding-top: 200px;
   font-weight: 700;
-  text-shadow: 0 1px 1px #fff, 1px 1px 1px #4b1414;
+  text-shadow:
+    0 1px 1px #fff,
+    1px 1px 1px #4b1414;
 
   h1 {
     margin-bottom: ${props => props.theme.space[4]}px;

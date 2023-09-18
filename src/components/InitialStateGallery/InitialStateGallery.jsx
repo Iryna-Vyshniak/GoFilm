@@ -1,15 +1,13 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
+import HeroImg from 'assets/initialState.png';
+
 import {
   BlockHero,
   GradientBlockBottom,
   GradientBlockTop,
   Hero,
   HeroContainer,
-  //Text,
-  Wrapper,
+  Wrapper
 } from './InitialStateGallery.styled';
-import HeroImg from 'assets/initialState.png';
 
 export const InitialStateGallery = () => {
   return (
@@ -24,22 +22,3 @@ export const InitialStateGallery = () => {
     </Wrapper>
   );
 };
-
-// export const InitialStateGallery = ({ text }) => {
-//   return (
-//     <Wrapper>
-//       <Text>{text}</Text>
-//       <BlockHero>
-//         <HeroContainer>
-//           <GradientBlockTop></GradientBlockTop>
-//           <Hero src={HeroImg} alt="Actor" width="240" />
-//           <GradientBlockBottom></GradientBlockBottom>
-//         </HeroContainer>
-//       </BlockHero>
-//     </Wrapper>
-//   );
-// };
-
-// InitialStateGallery.propTypes = {
-//   text: PropTypes.string.isRequired,
-// };

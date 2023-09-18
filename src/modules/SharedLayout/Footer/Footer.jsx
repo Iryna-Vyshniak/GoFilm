@@ -1,10 +1,11 @@
-import React from 'react';
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
-} from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+
+import Save from 'assets/save@2x.png';
+import Action from 'assets/action@2x.png';
+import Hope from 'assets/hope@2x.png';
+import World from 'assets/world@2x.png';
+
 import {
   Btn,
   ContentWrapper,
@@ -14,14 +15,8 @@ import {
   MenuItem,
   MenuItems,
   Separator,
-  SocialIcons,
+  SocialIcons
 } from './Footer.styled';
-
-import Save from 'assets/save@2x.png';
-import Action from 'assets/action@2x.png';
-import Hope from 'assets/hope@2x.png';
-import World from 'assets/world@2x.png';
-import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const { t } = useTranslation();

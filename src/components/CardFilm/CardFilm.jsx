@@ -1,21 +1,21 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Rating } from '@mui/material';
 import PropTypes from 'prop-types';
+
 import NoPoster from 'assets/no-poster.jpg';
-import {
-  CircleRating,
-  GenresBlock,
-  MovieListItem,
-  MoviePoster,
-} from './CardFilm.styled';
+
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { Genres } from 'components/Genres/Genres';
-import { useTranslation } from 'react-i18next';
+
+import { CircleRating, GenresBlock, MovieListItem, MoviePoster } from './CardFilm.styled';
 
 export const CardFilm = ({
-  movie: { id, poster_path, original_title, vote_average, genre_ids },
+  movie: { id, poster_path, original_title, vote_average, genre_ids }
 }) => {
+  const [ratingValue, setRatingValue] = useState((vote_average / 10) * 5);
+
   const { i18n } = useTranslation();
   const lng = i18n.language;
   return (
@@ -23,11 +23,7 @@ export const CardFilm = ({
       <Link to={`/movies/${id}`}>
         <MoviePoster>
           <img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/original${poster_path}`
-                : NoPoster
-            }
+            src={poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : NoPoster}
             alt={original_title}
             width="200"
           />
@@ -38,8 +34,8 @@ export const CardFilm = ({
               <RatingProgressbar rating={vote_average?.toFixed(1)} />
             </CircleRating>
             <Rating
-              name="read-only"
-              defaultValue={(vote_average / 10) * 5}
+              name="controlled-rating"
+              value={ratingValue}
               precision={0.5}
               size="middle"
               readOnly
@@ -58,9 +54,10 @@ CardFilm.propTypes = {
   movie: PropTypes.shape({
     poster_path: PropTypes.string,
     id: PropTypes.number.isRequired,
-    original_title: PropTypes.string.isRequired,
+    original_title: PropTypes.string,
     release_date: PropTypes.string,
     first_air_date: PropTypes.string,
     vote_average: PropTypes.number,
-  }).isRequired,
+    genre_ids: PropTypes.any
+  }).isRequired
 };

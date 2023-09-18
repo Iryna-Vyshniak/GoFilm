@@ -10,8 +10,10 @@ export const AppBar = styled(HeaderBlock)`
   margin-bottom: 30px;
 
   background: ${({ theme }) => theme.backgroundHeaderFooter};
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
   backdrop-filter: blur(3.5px);
 `;
@@ -22,7 +24,10 @@ export const Logo = styled(NavLink)`
   gap: 8px;
   margin: 0;
   color: #fff;
-  text-shadow: 0 1px 1px #fd5523, 0 0.7px 0.7px #000, 0 -0.3px 0.3px #4b1414;
+  text-shadow:
+    0 1px 1px #fd5523,
+    0 0.7px 0.7px #000,
+    0 -0.3px 0.3px #4b1414;
   font-size: 18px;
   font-family: ${props => props.theme.fonts.heading};
   letter-spacing: 1.4px;

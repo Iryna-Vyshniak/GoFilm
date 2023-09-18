@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { MovieListStyled } from './MovieGallery.styled';
+
 import { MovieGalleryItem } from 'modules/MovieGalleryItem/MovieGalleryItem';
+
+import { MovieListStyled } from './MovieGallery.styled';
 
 export const MovieGallery = ({ movies, genres }) => {
   const location = useLocation();
   return (
     <MovieListStyled>
       {movies.map(movie => (
-        <MovieGalleryItem
-          key={movie.id}
-          movie={movie}
-          genres={genres}
-          state={{ from: location }}
-        />
+        <MovieGalleryItem key={movie.id} movie={movie} genres={genres} state={{ from: location }} />
       ))}
     </MovieListStyled>
   );
@@ -22,8 +19,8 @@ export const MovieGallery = ({ movies, genres }) => {
 MovieGallery.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired
     })
   ),
-  genres: PropTypes.array,
+  genres: PropTypes.array
 };

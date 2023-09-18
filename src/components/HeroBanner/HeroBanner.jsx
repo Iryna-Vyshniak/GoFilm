@@ -1,17 +1,18 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+
+import HeroPoster from 'assets/heroBanner.jpg';
+
 import {
   BackdropImg,
   GradientBlockBottom,
   GradientBlockTop,
   HeroContainer,
-  SectionHero,
+  SectionHero
 } from './HeroBanner.styled';
-import HeroPoster from 'assets/heroBanner.jpg';
 
 export const HeroBanner = ({ movies }) => {
   const poster_path = movies[Math.floor(Math.random() * 20)]?.poster_path;
-  // const {poster_path} = movies[Math.floor(Math.random() * 20)];
+
   return (
     <>
       <SectionHero>
@@ -40,7 +41,7 @@ export const HeroBanner = ({ movies }) => {
 HeroBanner.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired
     })
-  ),
+  )
 };

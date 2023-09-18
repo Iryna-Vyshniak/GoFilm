@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
-import { Link } from './LinkToBack.styled';
+
 import { HiArrowLeft } from 'react-icons/hi';
+
+import { Link } from './LinkToBack.styled';
 
 export const LinkToBack = ({ children, to }) => {
   return (
@@ -13,5 +15,5 @@ export const LinkToBack = ({ children, to }) => {
 
 LinkToBack.propTypes = {
   children: PropTypes.node.isRequired,
-  to: PropTypes.any.isRequired,
+  to: PropTypes.any.isRequired
 };

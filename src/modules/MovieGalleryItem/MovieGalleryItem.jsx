@@ -1,13 +1,3 @@
-import React from 'react';
-import {
-  CircleRating,
-  GenresBlock,
-  MovieListItem,
-  MoviePoster,
-  MovieTitle,
-  ReleaseDate,
-  Stars,
-} from './MovieGalleryItem.styled';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material';
@@ -17,29 +7,27 @@ import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressba
 import NoPoster from 'assets/no-poster.jpg';
 import { Genres } from 'components/Genres/Genres';
 
+import {
+  CircleRating,
+  GenresBlock,
+  MovieListItem,
+  MoviePoster,
+  MovieTitle,
+  ReleaseDate,
+  Stars
+} from './MovieGalleryItem.styled';
+
 export const MovieGalleryItem = ({
-  movie: {
-    id,
-    poster_path,
-    title,
-    original_title,
-    release_date,
-    vote_average,
-    genre_ids,
-  },
+  movie: { id, poster_path, title, original_title, release_date, vote_average, genre_ids },
   state,
-  genres,
+  genres
 }) => {
   return (
     <MovieListItem>
       <Link to={`/movies/${id}`} state={state}>
         <MoviePoster>
           <img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/original${poster_path}`
-                : NoPoster
-            }
+            src={poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : NoPoster}
             alt={original_title}
             width="200"
           />
@@ -53,9 +41,9 @@ export const MovieGalleryItem = ({
                 bgcolor: '#B9E4C9',
                 color: '#000',
                 width: '250px',
-                textAlign: 'center',
-              },
-            },
+                textAlign: 'center'
+              }
+            }
           }}
         >
           <MovieTitle>{title}</MovieTitle>
@@ -68,7 +56,7 @@ export const MovieGalleryItem = ({
               style={{
                 position: 'absolute',
                 top: '0',
-                right: '0',
+                right: '0'
               }}
               name="read-only"
               defaultValue={(vote_average / 10) * 5}
@@ -98,8 +86,8 @@ MovieGalleryItem.propTypes = {
     original_title: PropTypes.string.isRequired,
     release_date: PropTypes.string,
     first_air_date: PropTypes.string,
-    vote_average: PropTypes.number,
+    vote_average: PropTypes.number
   }).isRequired,
   state: PropTypes.objectOf(PropTypes.object).isRequired,
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.array.isRequired
 };

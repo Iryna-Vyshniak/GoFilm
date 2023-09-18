@@ -1,6 +1,15 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import { getActorDetailInfo } from 'services/themoviedbAPI';
+import { Loader } from 'components/Loader/Loader';
+import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
+import { LinkToBack } from 'components/LinkToBack/LinkToBack';
+import { Title } from 'components/Title/Title';
+import NoPoster from 'assets/no-poster.jpg';
+import ScrollInfo from 'components/ScrollInfo/ScrollInfo';
+
 import {
   ActorInfoMain,
   ActorsDetalis,
@@ -16,22 +25,13 @@ import {
   ActorInfoWrapper,
   MovieInfoTitle,
   ActorContainer,
-  NavLink,
+  NavLink
 } from './ActorDetailsPage.styled';
-import { getActorDetailInfo } from 'services/themoviedbAPI';
-import { Loader } from 'components/Loader/Loader';
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { LinkToBack } from 'components/LinkToBack/LinkToBack';
-import { useRef } from 'react';
-import { Title } from 'components/Title/Title';
-import NoPoster from 'assets/no-poster.jpg';
-import ScrollInfo from 'components/ScrollInfo/ScrollInfo';
 
 const ActorDetailsInfoPage = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/actors');
   const { personId } = useParams();
-  //console.log(personId);
 
   const [actorsData, setActorsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -47,10 +47,9 @@ const ActorDetailsInfoPage = () => {
         setIsLoading(true);
         setError(false);
         const data = await getActorDetailInfo(personId, lng);
-        //console.log(data);
         setActorsData(data);
       } catch (error) {
-        setError(`{t('moviesPage.set_error')}`);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -67,10 +66,7 @@ const ActorDetailsInfoPage = () => {
       {error && <ImageErrorView message={t('moviesPage.mistake')} />}
       {!error && (
         <ActorContainer>
-          <LinkToBack
-            to={backLinkLocationRef.current}
-            children={t('moviesPage.back_to_movies')}
-          />
+          <LinkToBack to={backLinkLocationRef.current}>{t('moviesPage.back_to_movies')}</LinkToBack>
           <Title title={t('actorsPage.bio')} />
 
           {actorsData && (
@@ -86,13 +82,9 @@ const ActorDetailsInfoPage = () => {
                   width={470}
                 />
                 <ActorInfoMain>
-                  {actorsData.name && (
-                    <ActorsInfoName>{actorsData.name}</ActorsInfoName>
-                  )}
+                  {actorsData.name && <ActorsInfoName>{actorsData.name}</ActorsInfoName>}
                   {actorsData.known_for_department && (
-                    <ActorsInfoDepartment>
-                      {actorsData.known_for_department}
-                    </ActorsInfoDepartment>
+                    <ActorsInfoDepartment>{actorsData.known_for_department}</ActorsInfoDepartment>
                   )}
                   {actorsData.birthday && (
                     <ActorsInfoBirth>
@@ -127,9 +119,7 @@ const ActorDetailsInfoPage = () => {
                 </ActorInfoMain>
               </ActorInfoWrapper>
               <MovieInfo>
-                <MovieInfoTitle>
-                  {t('moviesPage.additional_information')}
-                </MovieInfoTitle>
+                <MovieInfoTitle>{t('moviesPage.additional_information')}</MovieInfoTitle>
                 <nav>
                   <NavLink to="actors-movies" state={{ from: location }}>
                     {t('movie_link')}

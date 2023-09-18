@@ -17,9 +17,11 @@ export const LoaderBackdrop = styled.div`
 
 export const PendingDog = styled.img`
   position: absolute;
-  top: 35%;
-  left: 45%;
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
   width: 15vw;
   height: auto;
   object-fit: contain;

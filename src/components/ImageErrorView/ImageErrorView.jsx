@@ -1,4 +1,7 @@
 import HeroImg from 'assets/error.png';
+
+import PropTypes from 'prop-types';
+
 import {
   BlockHero,
   GradientBlockBottom,
@@ -6,9 +9,8 @@ import {
   Hero,
   HeroContainer,
   Text,
-  Wrapper,
+  Wrapper
 } from './ImageErrorView.styled';
-import PropTypes from 'prop-types';
 
 export default function ImageErrorView({ message }) {
   return (
@@ -26,5 +28,5 @@ export default function ImageErrorView({ message }) {
 }
 
 ImageErrorView.propTypes = {
-  message: PropTypes.string,
+  message: PropTypes.string
 };

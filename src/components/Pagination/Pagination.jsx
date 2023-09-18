@@ -1,9 +1,8 @@
-import { Paginate } from './Pagination.styled';
 import PropTypes from 'prop-types';
-//import ReactPaginate from 'react-paginate';
+
+import { Paginate } from './Pagination.styled';
 
 const Pagination = ({ pageCount, setSearchParams, params, currentPage }) => {
-  //console.log(pages);
   const handlePageClick = e => {
     setSearchParams({ ...params, page: e.selected + 1 });
   };
@@ -21,7 +20,7 @@ const Pagination = ({ pageCount, setSearchParams, params, currentPage }) => {
       renderOnZeroPageCount={null}
       onPageActive={window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'smooth'
       })}
     />
   );
@@ -33,5 +32,5 @@ Pagination.propTypes = {
   pageCount: PropTypes.number.isRequired,
   setSearchParams: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired
 };

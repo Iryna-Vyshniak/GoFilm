@@ -28,15 +28,13 @@ export const ToggleContainer = styled.button`
     /*  sun icon */
 
     &:first-child {
-      transform: ${({ lightTheme }) =>
-        lightTheme ? 'translateY(0)' : 'translateY(100px)'};
+      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(0)' : 'translateY(100px)')};
     }
 
     /* moon icon */
 
     &:last-child {
-      transform: ${({ lightTheme }) =>
-        lightTheme ? 'translateY(-100px)' : 'translateY(0)'};
+      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
     }
   }
 `;

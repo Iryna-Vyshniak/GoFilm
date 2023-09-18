@@ -1,28 +1,27 @@
+import { Rating, Tooltip } from '@mui/material';
+
 import { Genres } from 'components/Genres/Genres';
+
+import NoPoster from 'assets/no-poster.jpg';
+import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
+
 import {
   CardWrapper,
   MoviePoster,
   MovieTitle,
   GenresBlock,
-  CircleRating,
+  CircleRating
 } from './ActorsMoviesItem.styled';
-import NoPoster from 'assets/no-poster.jpg';
-import { Rating, Tooltip } from '@mui/material';
-import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 
 export const ActorsMoviesItem = ({
-  movie: { poster_path, title, original_title, vote_average, genre_ids },
+  movie: { poster_path, title, original_title, vote_average, genre_ids }
 }) => {
   return (
     <>
       <CardWrapper>
         <MoviePoster>
           <img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/original${poster_path}`
-                : NoPoster
-            }
+            src={poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : NoPoster}
             alt={original_title}
             width={300}
           />
@@ -36,9 +35,9 @@ export const ActorsMoviesItem = ({
                 bgcolor: '#B9E4C9',
                 color: '#000',
                 width: '250px',
-                textAlign: 'center',
-              },
-            },
+                textAlign: 'center'
+              }
+            }
           }}
         >
           <MovieTitle>{title}</MovieTitle>

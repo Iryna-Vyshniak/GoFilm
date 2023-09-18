@@ -1,21 +1,9 @@
-import { useState, useEffect, useMemo } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+
 import { notifyOptions } from 'utils/notify';
-
-//import { animateScroll as scroll } from 'react-scroll';
-import {
-  ActorList,
-  ActorListItem,
-  ActorsName,
-  ActorsDepartment,
-  ActorsRating,
-  Known,
-  ActorsContainer,
-} from './ActorsPage.styled';
-
 import { getActors } from 'services/themoviedbAPI';
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
@@ -24,7 +12,16 @@ import NoPoster from 'assets/no-poster.jpg';
 import Pagination from 'components/Pagination/Pagination';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 
-//  /actors
+import {
+  ActorList,
+  ActorListItem,
+  ActorsName,
+  ActorsDepartment,
+  ActorsRating,
+  Known,
+  ActorsContainer
+} from './ActorsPage.styled';
+
 const ActorsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,23 +31,18 @@ const ActorsPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams({
     page: 1,
-    query: '',
+    query: ''
   });
 
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]
-  );
+  const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
   const page = Number(params.page || 1);
   let { query } = params;
 
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const lng = i18n.language;
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
-
-  const { t } = useTranslation();
 
   useEffect(() => {
     (async () => {
@@ -58,7 +50,7 @@ const ActorsPage = () => {
         const dataActors = await getActors(page, query, lng);
 
         if (dataActors.results.length === 0) {
-          toast.error("Sorry, that's all actors we found", notifyOptions);
+          toast.error('Sorry, that`s all actors we found', notifyOptions);
         }
         setActors(dataActors.results);
         setTotalPages(dataActors.total_pages);
@@ -88,10 +80,7 @@ const ActorsPage = () => {
 
   return (
     <ActorsContainer>
-      <LinkToBack
-        to={backLinkLocationRef.current}
-        children={t('moviesPage.back_to_movies')}
-      />
+      <LinkToBack to={backLinkLocationRef.current}>{t('moviesPage.back_to_movies')}</LinkToBack>
       <Searchbar value={query} onChange={handleSearchChange} t={t} />
       {isLoading && <Loader />}
       {/*  якщо запит відбувся з помилкою - рендериться дефолтне зображення з
@@ -101,14 +90,7 @@ const ActorsPage = () => {
         <>
           <ActorList>
             {filteredActors.map(
-              ({
-                profile_path,
-                name,
-                known_for,
-                known_for_department,
-                popularity,
-                id,
-              }) => (
+              ({ profile_path, name, known_for, known_for_department, popularity, id }) => (
                 <Link to={`/actors/${id}`} state={{ from: location }} key={id}>
                   <ActorListItem key={id}>
                     <img

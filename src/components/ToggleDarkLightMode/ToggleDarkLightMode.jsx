@@ -1,6 +1,7 @@
 import { func, string } from 'prop-types';
 import { ReactComponent as MoonIcon } from 'assets/moon.svg';
 import { ReactComponent as SunIcon } from 'assets/sun.svg';
+
 import { ToggleContainer } from './ToggleDarkLightMode.styled';
 
 export const lightTheme = {
@@ -14,7 +15,7 @@ export const lightTheme = {
   gradientBlock: 'rgba(255, 255, 255, 0.8)',
   cardsTextColor: '#000',
   textShadow: '0 0.4px 0.4px #FFF',
-  buttonShadow: '-3px -3px 7px #FFF, 3px 3px 7px rgba(185, 228, 201, 0.773)',
+  buttonShadow: '-3px -3px 7px #FFF, 3px 3px 7px rgba(185, 228, 201, 0.773)'
 };
 
 export const darkTheme = {
@@ -32,7 +33,7 @@ export const darkTheme = {
   gradientBlock: 'none',
   cardsTextColor: '#FFF',
   textShadow: '0 0.4px 0.4px #000',
-  buttonShadow: '-1px -1px 1px #FFF, 1px 1px 1px rgba(185, 228, 201, 0.773)',
+  buttonShadow: '-1px -1px 1px #FFF, 1px 1px 1px rgba(185, 228, 201, 0.773)'
 };
 
 export const ToggleDarkLightMode = ({ theme, toggleTheme }) => {
@@ -48,5 +49,5 @@ export const ToggleDarkLightMode = ({ theme, toggleTheme }) => {
 
 ToggleDarkLightMode.propTypes = {
   theme: string.isRequired,
-  toggleTheme: func.isRequired,
+  toggleTheme: func.isRequired
 };

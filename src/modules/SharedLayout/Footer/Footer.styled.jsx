@@ -6,8 +6,10 @@ export const FooterBlock = styled.footer`
   padding: 16px 0;
 
   background: ${({ theme }) => theme.backgroundHeaderFooter};
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0 4px 5px 1px rgba(0, 0, 0, 0.14), 0px 1px 10px 1px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0 4px 5px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 10px 1px rgba(0, 0, 0, 0.12);
 `;
 
 export const ContentWrapper = styled.div`
@@ -105,11 +107,15 @@ export const Btn = styled.a`
   height: 34px;
   border-radius: 50%;
   background: transparent;
-  box-shadow: 0 -1px 1px #ffffff, 0 1px 1px rgba(185, 228, 201, 0.773);
+  box-shadow:
+    0 -1px 1px #ffffff,
+    0 1px 1px rgba(185, 228, 201, 0.773);
 
   :hover {
     background: #ecf0f3;
-    box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    box-shadow:
+      inset -3px -3px 7px #ffffff,
+      inset 3px 3px 5px #ceced1;
   }
 `;
 

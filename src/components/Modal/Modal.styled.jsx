@@ -15,7 +15,9 @@ export const CloseBtn = styled.button`
   border: 1px solid #fd5523;
 
   background: #ecf0f3;
-  box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1,
+  box-shadow:
+    inset -3px -3px 7px #ffffff,
+    inset 3px 3px 5px #ceced1,
     2px 2px 2px #0f0f0f;
   color: #fd5523;
 `;

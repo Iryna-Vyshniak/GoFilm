@@ -1,19 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { HomeBlock } from './HomePage.styled';
-import { Title } from 'components/Title/Title';
-import Pagination from 'components/Pagination/Pagination';
-import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
-import { Loader } from 'components/Loader/Loader';
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import {
-  getGenresMovies,
-  getPopularMovies,
-  getTopRatedMovies,
-} from 'services/themoviedbAPI';
-// import { langs } from 'services/i18next';
+import Grid2 from '@mui/material/Unstable_Grid2';
+import { useTranslation } from 'react-i18next';
 
-// CAROUSEL SWIPER IMPORT
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -21,10 +10,17 @@ import 'swiper/css/effect-cards';
 import 'swiper/css/effect-coverflow';
 import { EffectCoverflow, Navigation } from 'swiper';
 
+import { Title } from 'components/Title/Title';
+import Pagination from 'components/Pagination/Pagination';
+import { MovieGallery } from 'modules/MovieGallery/MovieGallery';
+import { Loader } from 'components/Loader/Loader';
+import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
+import { getGenresMovies, getPopularMovies, getTopRatedMovies } from 'services/themoviedbAPI';
+
 import { CardFilm } from 'components/CardFilm/CardFilm';
-import Grid2 from '@mui/material/Unstable_Grid2';
 import { HeroBanner } from 'components/HeroBanner/HeroBanner';
-import { useTranslation } from 'react-i18next';
+
+import { HomeBlock } from './HomePage.styled';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -38,10 +34,7 @@ const HomePage = () => {
   const { i18n } = useTranslation();
   const lng = i18n.language;
 
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]
-  );
+  const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
   const page = Number(params.page || 1);
   const { t } = useTranslation();
 
@@ -133,24 +126,24 @@ const HomePage = () => {
                   rotate: 0,
                   stretch: 0,
                   depth: 100,
-                  modifier: 2.5,
+                  modifier: 2.5
                 }}
                 breakpoints={{
                   // when window width is >= 320px
                   320: {
                     slidesPerView: 1,
-                    spaceBetween: 0,
+                    spaceBetween: 0
                   },
                   // when window width is >= 640px
                   640: {
                     slidesPerView: 4,
-                    spaceBetween: 20,
+                    spaceBetween: 20
                   },
                   // when window width is >= 1040px
                   1040: {
                     slidesPerView: 5,
-                    spaceBetween: 50,
-                  },
+                    spaceBetween: 50
+                  }
                 }}
               >
                 {topMovies.map(movie => {

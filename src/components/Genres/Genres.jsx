@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { Genre, GenresBlock } from './Genres.styled';
 
 export const Genres = ({ data, genres }) => {
@@ -20,5 +21,5 @@ export const Genres = ({ data, genres }) => {
 
 Genres.propTypes = {
   data: PropTypes.array.isRequired,
-  genres: PropTypes.array,
+  genres: PropTypes.array
 };

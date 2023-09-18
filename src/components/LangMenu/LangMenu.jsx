@@ -1,20 +1,23 @@
 import { useState } from 'react';
-//import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
 import { MenuItem } from '@mui/material';
 import { GoGlobe } from 'react-icons/go';
+
 import '/node_modules/flag-icons/css/flag-icons.min.css';
-import { Btn, TitleLang } from './LangMenu.styled';
-//import { useLocalStorage } from 'hooks/useLocaleStorage';
 import { languages } from 'utils/languages';
+
+import { Btn, TitleLang } from './LangMenu.styled';
+import {} from 'react';
 
 const ITEM_HEIGHT = 32;
 
-export const LangMenu = ({ t }) => {
+export const LangMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  //const [selectedIndex, setSelectedIndex] = useLocalStorage('index', 1);
+
+  const { t } = useTranslation();
 
   const open = Boolean(anchorEl);
   const handleClick = e => {
@@ -25,8 +28,7 @@ export const LangMenu = ({ t }) => {
     setAnchorEl(null);
   };
 
-  const handleMenuItemClick = (e, idx) => {
-    // setSelectedIndex(idx);
+  const handleMenuItemClick = () => {
     setAnchorEl(null);
   };
 
@@ -51,7 +53,7 @@ export const LangMenu = ({ t }) => {
       <Menu
         id="fade-menu"
         MenuListProps={{
-          'aria-labelledby': 'fade-button',
+          'aria-labelledby': 'fade-button'
         }}
         anchorEl={anchorEl}
         open={open}
@@ -65,27 +67,16 @@ export const LangMenu = ({ t }) => {
             justifyContent: 'center',
             gap: '8px',
             maxHeight: ITEM_HEIGHT * 4.2,
-            width: '8rem',
-          },
+            width: '8rem'
+          }
         }}
       >
         <TitleLang>
           <span>{t('language')}</span>
         </TitleLang>
         {languages.map(({ code, name, country_code }, idx) => (
-          <MenuItem
-            key={country_code}
-            //selected={idx === selectedIndex}
-            onClick={e => handleMenuItemClick(e, idx)}
-          >
-            <Btn
-              /*  onClick={() => {
-                 i18next.changeLanguage(code); 
-              }} */
-              type="button"
-              onClick={handleLanguageChange}
-              value={code}
-            >
+          <MenuItem key={country_code} onClick={e => handleMenuItemClick(e, idx)}>
+            <Btn type="button" onClick={handleLanguageChange} value={code}>
               <span className={`fi fi-${country_code}`}></span>
               {name}
             </Btn>

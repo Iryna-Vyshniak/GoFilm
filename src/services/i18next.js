@@ -7,16 +7,16 @@ import uk from 'data/locales/uk/translation.json';
 
 export const langs = {
   UK: 'uk',
-  EN: 'en',
+  EN: 'en'
 };
 
 const resources = {
   en: {
-    translation: en,
+    translation: en
   },
   uk: {
-    translation: uk,
-  },
+    translation: uk
+  }
 };
 
 i18n
@@ -26,7 +26,6 @@ i18n
   .init({
     supportedLngs: ['en', 'uk'],
     locales: ['en', 'uk'],
-    //defaultLocale: 'en',
     fallbackLng: langs.EN,
     debug: false,
     resources,
@@ -39,14 +38,14 @@ i18n
         'navigator',
         'htmlTag',
         'path',
-        'subdomain',
+        'subdomain'
       ],
       cashes: ['localStorage', 'cookie'],
-      htmlTag: document.documentElement,
+      htmlTag: document.documentElement
     },
     backend: {
-      loadPath: '../data/locales/{{lng}}/translation.json',
-    },
+      loadPath: '../data/locales/{{lng}}/translation.json'
+    }
   });
 
 export default i18n;

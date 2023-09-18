@@ -1,9 +1,19 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import { FaYoutube } from 'react-icons/fa';
 import { Rating } from '@mui/material';
+
+import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
+import { Loader } from 'components/Loader/Loader';
+import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
+import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
+import { ModalVideo } from 'components/Modal/Modal';
+import { LinkToBack } from 'components/LinkToBack/LinkToBack';
+import HeroPoster from 'assets/heroBanner.jpg';
+import NoPoster from 'assets/no-poster.jpg';
+
 import {
   AccentText,
   BackdropContainer,
@@ -25,17 +35,8 @@ import {
   WrapRelease,
   WrapperDetails,
   WrapperMovie,
-  WrapperPicVote,
+  WrapperPicVote
 } from './MovieDetailsPage.styled';
-
-import { getMoviesDetailsById, getVideosMovies } from 'services/themoviedbAPI';
-import { Loader } from 'components/Loader/Loader';
-import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
-import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
-import { ModalVideo } from 'components/Modal/Modal';
-import { LinkToBack } from 'components/LinkToBack/LinkToBack';
-import HeroPoster from 'assets/heroBanner.jpg';
-import NoPoster from 'assets/no-poster.jpg';
 
 const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState([]);
@@ -47,9 +48,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
-  //const params = useParams();
   const { movieId } = useParams();
-  //console.log(movieId);
   const { t } = useTranslation();
 
   const { i18n } = useTranslation();
@@ -119,7 +118,7 @@ const MovieDetailsPage = () => {
     overview,
     status,
     runtime,
-    production_companies,
+    production_companies
   } = movieDetails;
 
   return (
@@ -156,11 +155,7 @@ const MovieDetailsPage = () => {
               {/* постер фільму */}
               {`https://image.tmdb.org/t/p/original${poster_path}` && (
                 <PosterMovie
-                  src={
-                    poster_path
-                      ? `https://image.tmdb.org/t/p/original${poster_path}`
-                      : NoPoster
-                  }
+                  src={poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : NoPoster}
                   alt={title || original_title}
                   width="500"
                 />
@@ -263,9 +258,7 @@ const MovieDetailsPage = () => {
           </WrapperMovie>
           {/* внутрішня маршрутизація на кастинг та огляд фільму */}
           <MovieInfo>
-            <MovieInfoTitle>
-              {t('moviesPage.additional_information')}
-            </MovieInfoTitle>
+            <MovieInfoTitle>{t('moviesPage.additional_information')}</MovieInfoTitle>
             <LinkToBack
               to={backLinkLocationRef.current}
               children={t('moviesPage.back_to_movies')}
@@ -291,19 +284,7 @@ const MovieDetailsPage = () => {
           The best way to use that is creating a component where we have all the code that we need, a componet seems something like this:
           */}
 
-          <ModalVideo
-            isOpen={modalIsOpen}
-            onClose={toggleModal}
-            movieVideo={movieVideo}
-          />
-
-          {/* {modalIsOpen && (
-            <ModalVideo
-              isOpen={modalIsOpen}
-              onClose={toggleModal}
-              movieVideo={movieVideo}
-            />
-          )} */}
+          <ModalVideo isOpen={modalIsOpen} onClose={toggleModal} movieVideo={movieVideo} />
         </>
       )}
     </>

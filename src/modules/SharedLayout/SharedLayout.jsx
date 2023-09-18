@@ -4,12 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { Container } from './SharedLayout.styled';
-import {
-  lightTheme,
-  darkTheme,
-} from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
+import { lightTheme, darkTheme } from 'components/ToggleDarkLightMode/ToggleDarkLightMode';
 import { useDarkMode } from 'components/useDarkMode/useDarkMode';
+
+import { Container } from './SharedLayout.styled';
 import Footer from './Footer/Footer';
 import { Header } from './Header/Header';
 

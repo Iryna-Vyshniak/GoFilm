@@ -1,12 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import {
-  Icon,
-  SearchForm,
-  SearchFormBtn,
-  SearchFormInput,
-} from './Searchbar.styled';
 
 import PropTypes from 'prop-types';
+
+import { Icon, SearchForm, SearchFormBtn, SearchFormInput } from './Searchbar.styled';
 
 export const Searchbar = ({ value, onChange }) => {
   const { t } = useTranslation();
@@ -29,5 +25,5 @@ export const Searchbar = ({ value, onChange }) => {
 Searchbar.propType = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  t: PropTypes.any.isRequired,
+  t: PropTypes.any.isRequired
 };

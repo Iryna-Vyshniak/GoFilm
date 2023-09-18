@@ -12,7 +12,9 @@ export const Paginate = styled(ReactPaginate)`
     border: 1px solid #ffffff;
     border-radius: 50%;
     background: #ecf0f3;
-    box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+    box-shadow:
+      inset -3px -3px 7px #ffffff,
+      inset 3px 3px 5px #ceced1;
     text-shadow: 0.0625rem 0.0625rem 0.0625rem #fff;
     color: ${props => props.theme.colors.accent};
   }
@@ -41,7 +43,9 @@ export const Paginate = styled(ReactPaginate)`
 
     &:hover {
       background: #ecf0f3;
-      box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+      box-shadow:
+        inset -3px -3px 7px #ffffff,
+        inset 3px 3px 5px #ceced1;
       color: ${props => props.theme.colors.accent};
     }
   }

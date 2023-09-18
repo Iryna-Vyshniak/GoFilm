@@ -20,7 +20,9 @@ export const SearchForm = styled.div`
   border: 0;
   border-radius: 30px;
 
-  box-shadow: 1px 1px 1px #f84119, 1px 1px 1px #fff;
+  box-shadow:
+    1px 1px 1px #f84119,
+    1px 1px 1px #fff;
 
   overflow: hidden;
 `;

@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ImageErrorView from 'components/ImageErrorView/ImageErrorView';
 import { Loader } from 'components/Loader/Loader';
 import { getMoviesReviews } from 'services/themoviedbAPI';
 import Avatar from 'assets/avatar.png';
+
 import {
   ReviewContent,
   ReviewItem,
@@ -12,9 +14,8 @@ import {
   ReviewPhotoThumb,
   ReviewsAuthor,
   ReviewsList,
-  Wrap,
+  Wrap
 } from './Reviews.styled';
-import { useTranslation } from 'react-i18next';
 
 export const Reviews = () => {
   const { movieId } = useParams();
@@ -33,7 +34,7 @@ export const Reviews = () => {
         const data = await getMoviesReviews(movieId, lng);
         setMovieReviews(data);
       } catch (error) {
-        setError(`{t('moviesPage.set_error')}`);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
