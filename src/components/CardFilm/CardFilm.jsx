@@ -9,12 +9,17 @@ import NoPoster from 'assets/no-poster.jpg';
 import { RatingProgressbar } from 'components/RatingProgressbar/RatingProgressbar';
 import { Genres } from 'components/Genres/Genres';
 
-import { CircleRating, GenresBlock, MovieListItem, MoviePoster } from './CardFilm.styled';
+import {
+  CircleRating,
+  GenresBlock,
+  MovieListItem,
+  MoviePoster,
+} from './CardFilm.styled';
 
 export const CardFilm = ({
-  movie: { id, poster_path, original_title, vote_average, genre_ids }
+  movie: { id, poster_path, original_title, vote_average, genre_ids },
 }) => {
-  const [ratingValue, setRatingValue] = useState((vote_average / 10) * 5);
+  const [ratingValue] = useState((vote_average / 10) * 5);
 
   const { i18n } = useTranslation();
   const lng = i18n.language;
@@ -23,7 +28,11 @@ export const CardFilm = ({
       <Link to={`/movies/${id}`}>
         <MoviePoster>
           <img
-            src={poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : NoPoster}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/original${poster_path}`
+                : NoPoster
+            }
             alt={original_title}
             width="200"
           />
@@ -58,6 +67,6 @@ CardFilm.propTypes = {
     release_date: PropTypes.string,
     first_air_date: PropTypes.string,
     vote_average: PropTypes.number,
-    genre_ids: PropTypes.any
-  }).isRequired
+    genre_ids: PropTypes.any,
+  }).isRequired,
 };
