@@ -10,7 +10,6 @@ import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { languages } from 'utils/languages';
 
 import { Btn, TitleLang } from './LangMenu.styled';
-import {} from 'react';
 
 const ITEM_HEIGHT = 32;
 
@@ -53,7 +52,7 @@ export const LangMenu = () => {
       <Menu
         id="fade-menu"
         MenuListProps={{
-          'aria-labelledby': 'fade-button'
+          'aria-labelledby': 'fade-button',
         }}
         anchorEl={anchorEl}
         open={open}
@@ -67,15 +66,18 @@ export const LangMenu = () => {
             justifyContent: 'center',
             gap: '8px',
             maxHeight: ITEM_HEIGHT * 4.2,
-            width: '8rem'
-          }
+            width: '8rem',
+          },
         }}
       >
         <TitleLang>
           <span>{t('language')}</span>
         </TitleLang>
         {languages.map(({ code, name, country_code }, idx) => (
-          <MenuItem key={country_code} onClick={e => handleMenuItemClick(e, idx)}>
+          <MenuItem
+            key={country_code}
+            onClick={e => handleMenuItemClick(e, idx)}
+          >
             <Btn type="button" onClick={handleLanguageChange} value={code}>
               <span className={`fi fi-${country_code}`}></span>
               {name}
